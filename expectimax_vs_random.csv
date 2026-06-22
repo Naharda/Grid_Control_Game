@@ -1,0 +1,6 @@
+game,agent_a,agent_b,winner,score_a,score_b
+0,expectimax,random,A,106,1
+1,expectimax,random,A,107,5
+2,expectimax,random,draw,0,0
+3,expectimax,random,draw,0,0
+4,expectimax,random,A,102,3
