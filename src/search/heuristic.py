@@ -47,8 +47,7 @@ def _capture_threats(state: GameState, player: str) -> int:
         for b in state.positions[player]:
             if a >= b:
                 continue
-            aligned = a[0] == b[0] or a[1] == b[1]
-            if not aligned:
+            if manhattan(a, b) != 1:
                 continue
             for enemy in state.positions[opponent]:
                 if (enemy[0] == a[0] == b[0] or enemy[1] == a[1] == b[1]) and min(
@@ -60,13 +59,9 @@ def _capture_threats(state: GameState, player: str) -> int:
 
 def _net_potential(state: GameState, player: str) -> int:
     pieces = state.positions[player]
-    aligned = sum(1 for i, a in enumerate(pieces) for b in pieces[i + 1 :] if a[0] == b[0] or a[1] == b[1])
-    near_alignment = 0
-    for i, a in enumerate(pieces):
-        for b in pieces[i + 1 :]:
-            if abs(a[0] - b[0]) == 1 or abs(a[1] - b[1]) == 1:
-                near_alignment += 1
-    return aligned * 2 + near_alignment
+    formed = sum(1 for i, a in enumerate(pieces) for b in pieces[i + 1 :] if manhattan(a, b) == 1)
+    near = sum(1 for i, a in enumerate(pieces) for b in pieces[i + 1 :] if manhattan(a, b) == 2)
+    return formed * 2 + near
 
 
 def _swap_potential(state: GameState, player: str) -> int:
