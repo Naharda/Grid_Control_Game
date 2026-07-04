@@ -50,7 +50,7 @@ The implemented cards are:
 | Move 1 | Move one friendly piece up to one orthogonal tile. |
 | Move 2 | Move one friendly piece up to two orthogonal tiles. |
 | Mobilize | Move two different friendly pieces up to one tile each. |
-| Capture / Net Launcher | Capture adjacent enemy, or use an aligned friendly pair to capture along a line. |
+| Capture / Net Launcher | Capture adjacent enemy, or use an orthogonally adjacent friendly pair to capture along their shared line. |
 | Swap | Swap one friendly piece with one enemy piece within Manhattan range 3. |
 
 The default deck composition is:

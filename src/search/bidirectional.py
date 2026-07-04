@@ -67,7 +67,7 @@ def aligned_net_pattern_score(state: GameState, player: str) -> int:
     score = 0
     for i, a in enumerate(pieces):
         for b in pieces[i + 1 :]:
-            if a[0] == b[0] or a[1] == b[1]:
+            if manhattan(a, b) == 1:
                 score += 3
             else:
                 score += max(0, 2 - min(abs(a[0] - b[0]), abs(a[1] - b[1])))

@@ -162,7 +162,7 @@ Net Launcher is the formation-enhanced version of Capture.
 
 **Formation requirement:**
 
-- At least two friendly pieces must be aligned in the same row or column.
+- At least two friendly pieces must be orthogonally adjacent (side by side in the same row or column).
 
 **Effect:**
 
@@ -180,7 +180,7 @@ Recommended initial rule:
 
 Open implementation detail:
 - Define precisely which piece is the “front” firing piece.
-- Simpler option: generate all valid friendly aligned pairs, then generate rays extending outward from either end of the pair.
+- Simpler option: generate all valid adjacent friendly pairs, then generate rays extending outward from either end of the pair.
 
 ---
 
@@ -517,7 +517,7 @@ Recommended formulation:
 - Forward search from current piece configuration.
 - Backward search from a desired tactical pattern.
 - Example target:
-  - two friendly pieces aligned with enemy in range,
+  - two adjacent friendly pieces with enemy in range,
   - friendly piece on center,
   - enemy within swap range.
 
@@ -621,9 +621,9 @@ Count:
 
 Reward formations:
 
-- two friendly pieces aligned in row/column,
-- enemy on same line within possible range,
-- pieces close to forming alignment.
+- two friendly pieces orthogonally adjacent in a row/column,
+- enemy on the pair's line within possible range,
+- pieces close to forming an adjacent pair.
 
 #### Swap Potential
 
@@ -922,7 +922,7 @@ Before implementing too much, confirm these:
 2. Should a piece be allowed to stay still when playing Move 1 / Move 2 / Mobilize?
 3. Should Swap allow friendly-enemy only, or any two pieces?
 4. Should Net Launcher range be exactly 3 or configurable from the start?
-5. Should Net Launcher require adjacent friendly pieces, or merely two friendly pieces aligned in the same row/column?
+5. Should Net Launcher require adjacent friendly pieces, or merely two friendly pieces aligned in the same row/column? **Resolved: the pair must be orthogonally adjacent.**
 6. Should captured pieces return to a specific spawn tile or the nearest available spawn tile?
 7. Should the deck be modeled as an ordered shuffled list or only as a remaining card-count distribution for search?
 8. Should the first implementation prioritize Pygame visuals or text-based playability?
