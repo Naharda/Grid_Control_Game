@@ -4,16 +4,23 @@ from types import SimpleNamespace
 
 import pytest
 
+import csv
+
 from experiments.create_mode import build_mode_config, parse_param_overrides, parse_seeds
 from experiments.modes import (
     config_from_mode,
     effective_agent_params,
+    games_dir,
     load_mode,
     ordered_pairs,
     pair_key,
+    results_path,
     save_mode,
 )
+from experiments.run_mode import run_mode
 from game.config import GameConfig
+from game.match_log import read_game_csv, replay_rows
+from game.state import initial_state
 
 
 def _creation_args(name="tiny", agents=("greedy", "random"), **overrides):
@@ -117,3 +124,68 @@ def test_effective_agent_params_seed_policy() -> None:
 
 def test_pair_key() -> None:
     assert pair_key("greedy", "random") == "greedy_random"
+
+
+def _read_results(path):
+    with open(path, newline="", encoding="utf-8") as handle:
+        return list(csv.DictReader(handle))
+
+
+def test_run_mode_produces_all_pair_files(tmp_path) -> None:
+    _create_mode(tmp_path)
+    mode = load_mode("tiny", root=tmp_path)
+    run_mode(mode, root=tmp_path)
+
+    for a, b in [("greedy", "greedy"), ("greedy", "random"), ("random", "greedy"), ("random", "random")]:
+        results = _read_results(results_path("tiny", a, b, tmp_path))
+        assert [row["game"] for row in results] == ["0", "1"]
+        assert {row["agent_a"] for row in results} == {a}
+        assert {row["agent_b"] for row in results} == {b}
+        for i in range(2):
+            game_file = games_dir("tiny", a, b, tmp_path) / f"{i}.csv"
+            rows = read_game_csv(game_file)
+            assert len(rows) == 2 * mode["rules"]["turns_per_player"] + 1
+
+
+def test_run_mode_refuses_overwrite_without_force(tmp_path) -> None:
+    _create_mode(tmp_path)
+    mode = load_mode("tiny", root=tmp_path)
+    run_mode(mode, root=tmp_path)
+    with pytest.raises(SystemExit, match="--force"):
+        run_mode(mode, root=tmp_path)
+    run_mode(mode, root=tmp_path, force=True)
+
+
+def test_mirror_mode_runs_single_pair(tmp_path) -> None:
+    _create_mode(tmp_path, name="solo", agents=("greedy",))
+    mode = load_mode("solo", root=tmp_path)
+    run_mode(mode, root=tmp_path)
+    results_dir = tmp_path / "solo" / "results"
+    assert [p.name for p in sorted(results_dir.iterdir())] == ["greedy_greedy.csv"]
+
+
+def test_swapped_orders_share_seeds(tmp_path) -> None:
+    _create_mode(tmp_path)
+    mode = load_mode("tiny", root=tmp_path)
+    run_mode(mode, root=tmp_path)
+    for i in range(2):
+        ab = read_game_csv(games_dir("tiny", "greedy", "random", tmp_path) / f"{i}.csv")
+        ba = read_game_csv(games_dir("tiny", "random", "greedy", tmp_path) / f"{i}.csv")
+        market_keys = ["card_0", "card_1", "card_2"]
+        assert [ab[0][k] for k in market_keys] == [ba[0][k] for k in market_keys]
+
+
+def test_recorded_games_replay_and_match_results(tmp_path) -> None:
+    _create_mode(tmp_path)
+    mode = load_mode("tiny", root=tmp_path)
+    run_mode(mode, root=tmp_path)
+    for a, b in ordered_pairs(["greedy", "random"]):
+        results = _read_results(results_path("tiny", a, b, tmp_path))
+        for i, result_row in enumerate(results):
+            seed = mode["game_seeds"][i]
+            initial = initial_state(config_from_mode(mode, seed=seed))
+            rows = read_game_csv(games_dir("tiny", a, b, tmp_path) / f"{i}.csv")
+            states = replay_rows(initial, rows, validate=True)
+            final = states[-1]
+            assert final.scores["A"] == int(result_row["score_a"])
+            assert final.scores["B"] == int(result_row["score_b"])
