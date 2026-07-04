@@ -16,8 +16,8 @@ from agents.mcts_agent import MCTSAgent
 from agents.random_agent import RandomAgent
 from agents.rule_based_agent import RuleBasedAgent
 from agents.search_agent import SearchAgent
+from experiments.modes import entry_game_setup, mode_agent_spec
 from game.engine import play_match
-from game.setup_loader import build_config, load_board, load_deck
 from game.state import initial_state
 from visualization.text_view import render_state
 
@@ -50,28 +50,31 @@ def build_agent(name: str, params: dict | None = None) -> Agent:
     return cls(**merged)
 
 
-def config_from_args(args: argparse.Namespace):
-    board = load_board(args.board) if args.board else None
-    deck = load_deck(args.deck) if args.deck else None
-    return build_config(board=board, deck=deck, seed=args.seed)
-
-
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--a", default="greedy", choices=AGENT_NAMES)
-    parser.add_argument("--b", default="random", choices=AGENT_NAMES)
+    parser.add_argument("--a", choices=AGENT_NAMES, help="Player A agent (default: greedy, or the mode's first agent).")
+    parser.add_argument("--b", choices=AGENT_NAMES, help="Player B agent (default: random, or the mode's second agent).")
+    parser.add_argument("--mode", help="game mode name in modes/; sets board, deck, rules, and default agents")
     parser.add_argument("--board", help="board name in boards/ (or path to a board JSON)")
     parser.add_argument("--deck", help="deck name in decks/ (or path to a deck JSON)")
-    parser.add_argument("--seed", type=int, default=1)
+    parser.add_argument("--seed", type=int, help="game seed (default: the mode's first game seed, else 1)")
     parser.add_argument("--show-initial", action="store_true")
     parser.add_argument("--log", action="store_true")
     args = parser.parse_args()
 
-    state = initial_state(config_from_args(args))
+    config, mode = entry_game_setup(args.mode, args.board, args.deck, args.seed)
+    if mode:
+        name_a, params_a = mode_agent_spec(mode, args.a, 0)
+        name_b, params_b = mode_agent_spec(mode, args.b, 1)
+    else:
+        name_a, params_a = args.a or "greedy", None
+        name_b, params_b = args.b or "random", None
+
+    state = initial_state(config)
     if args.show_initial:
         print(render_state(state))
         print()
-    result = play_match(build_agent(args.a), build_agent(args.b), state, log=args.log)
+    result = play_match(build_agent(name_a, params_a), build_agent(name_b, params_b), state, log=args.log)
     print(f"Winner: {result.winner or 'draw'}")
     print(f"Scores: A={result.scores['A']} B={result.scores['B']}")
     print(f"Turns: A={result.turns['A']} B={result.turns['B']}")

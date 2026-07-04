@@ -451,8 +451,10 @@ def run_pygame_game(
     agent_b: Agent | None = None,
     state: GameState | None = None,
     history: list[GameState] | None = None,
-) -> None:
-    PygameGame(agent_a=agent_a, agent_b=agent_b, state=state, history=history).run()
+) -> PygameGame:
+    game = PygameGame(agent_a=agent_a, agent_b=agent_b, state=state, history=history)
+    game.run()
+    return game
 
 
 def run_pygame_view(state: GameState) -> None:
