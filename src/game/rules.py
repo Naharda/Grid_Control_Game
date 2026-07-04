@@ -79,12 +79,12 @@ def apply_action(state: GameState, action: Action, draw_card: CardType | None = 
             rng.shuffle(deck)
         if deck:
             draw_card = deck.pop(0)
+    elif draw_card in deck:
+        deck.remove(draw_card)
+    elif not deck and draw_card in discard:
+        discard.remove(draw_card)
 
     if draw_card is not None:
-        if draw_card in deck:
-            deck.remove(draw_card)
-        elif not deck and draw_card in discard:
-            discard.remove(draw_card)
         market[action.card_index] = draw_card
     else:
         market.pop(action.card_index)
