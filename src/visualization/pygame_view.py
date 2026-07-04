@@ -423,9 +423,10 @@ class PygameGame:
         for action in get_legal_actions(self.state):
             if action.card_index != self.selection.card_index:
                 continue
-            for move in action.moves:
-                if self.selection.piece_id is None or move.piece_id == self.selection.piece_id:
-                    cells.add(move.to_pos)
+            if action.card_type != CardType.CAPTURE:
+                for move in action.moves:
+                    if self.selection.piece_id is None or move.piece_id == self.selection.piece_id:
+                        cells.add(move.to_pos)
             if action.target_piece:
                 cells.add(self.state.positions[action.target_piece[0]][action.target_piece[1]])
             if action.swap_piece:
