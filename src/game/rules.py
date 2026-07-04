@@ -62,8 +62,9 @@ def apply_action(state: GameState, action: Action, draw_card: CardType | None = 
             positions[player][friendly_idx],
         )
 
-    if state.config.center in positions[player]:
-        scores[player] += state.config.center_score
+    for cell, points in state.config.scoring_cells.items():
+        if cell in positions[player]:
+            scores[player] += points
 
     used_card = state.market[action.card_index]
     market = list(state.market)

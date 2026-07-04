@@ -6,6 +6,7 @@ from game.state import GameState
 
 def render_state(state: GameState) -> str:
     occupied = state.occupied()
+    scoring = state.config.scoring_cells
     rows: list[str] = []
     for r in range(state.board.rows):
         cells: list[str] = []
@@ -15,8 +16,10 @@ def render_state(state: GameState) -> str:
             if occupant:
                 player, idx = occupant
                 cells.append(f"{player}{idx}")
-            elif pos == state.config.center:
-                cells.append("C ")
+            elif pos in state.board.blocked:
+                cells.append("##")
+            elif pos in scoring:
+                cells.append(f"+{min(scoring[pos], 9)}")
             else:
                 cells.append(". ")
         rows.append(" ".join(cells))
