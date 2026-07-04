@@ -124,6 +124,14 @@ class GameCsvRecorder:
         return row
 
 
+def rows_from_history(history: list[GameState], actions: list[Action | None], market_size: int) -> list[dict]:
+    """Build games-CSV rows from a viewer-style (history, actions) pair."""
+    recorder = GameCsvRecorder(market_size)
+    for before, action, after in zip(history, actions, history[1:]):
+        recorder.record_step(before, action, after)
+    return recorder.finalize()
+
+
 def write_game_csv(path: Path, rows: list[dict], market_size: int) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", newline="", encoding="utf-8") as handle:

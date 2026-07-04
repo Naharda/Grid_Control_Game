@@ -25,6 +25,7 @@ from game.config import GameConfig
 from game.setup_loader import (
     REPO_ROOT,
     board_config_kwargs,
+    build_config,
     deck_config_kwargs,
     load_board,
     load_deck,
@@ -155,3 +156,45 @@ def effective_agent_params(params: dict, policy: str, game_seed: int, side: int)
     if policy == "derived" and "seed" in params and params["seed"] is None:
         return {**params, "seed": game_seed * 2 + side}
     return dict(params)
+
+
+def entry_game_setup(
+    mode_name: str | None = None,
+    board: str | None = None,
+    deck: str | None = None,
+    seed: int | None = None,
+    modes_root: Path | None = None,
+) -> tuple[GameConfig, dict | None]:
+    """Shared --mode/--board/--deck/--seed resolution for the entry-point CLIs.
+
+    Returns the GameConfig plus the loaded mode dict (None without --mode).
+    An unset seed falls back to the mode's first game seed, else 1.
+    """
+    if mode_name:
+        if board or deck:
+            raise SystemExit("--mode cannot be combined with --board/--deck")
+        mode = load_mode(mode_name, root=modes_root)
+        effective_seed = seed if seed is not None else mode["game_seeds"][0]
+        return config_from_mode(mode, seed=effective_seed), mode
+    board_def = load_board(board) if board else None
+    deck_def = load_deck(deck) if deck else None
+    return build_config(board=board_def, deck=deck_def, seed=seed if seed is not None else 1), None
+
+
+def mode_agent_spec(mode: dict, cli_name: str | None, position: int) -> tuple[str, dict | None]:
+    """Resolve an entry-point agent under --mode.
+
+    An explicit CLI name wins (reusing the mode's recorded params when the
+    name matches a mode agent); otherwise the mode's agent at `position`
+    (wrapping, so single-agent modes fill both sides).
+    """
+    if cli_name:
+        by_name = {entry["name"]: entry["params"] for entry in mode["agents"]}
+        return cli_name, by_name.get(cli_name)
+    entry = mode["agents"][position % len(mode["agents"])]
+    return entry["name"], entry["params"]
+
+
+def gui_record_path(mode_name: str, source: str, seed: int, timestamp: str, root: Path | None = None) -> Path:
+    """Path for a hand-played game: modes/<m>/games/<source>/<timestamp>_seed<seed>.csv."""
+    return mode_dir(mode_name, root) / "games" / source / f"{timestamp}_seed{seed}.csv"
