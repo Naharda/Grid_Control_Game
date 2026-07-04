@@ -16,14 +16,14 @@ class PatternSearchResult:
 
 def bidirectional_piece_to_center(state: GameState, player: str, max_depth: int = 6) -> PatternSearchResult:
     starts = frozenset(state.positions[player])
-    goals = frozenset({state.config.center})
-    if state.config.center in starts:
+    goals = frozenset(state.config.scoring_cells)
+    if starts & goals:
         return PatternSearchResult(True, 0, 0)
 
     forward = deque([(pos, 0) for pos in starts])
-    backward = deque([(state.config.center, 0)])
+    backward = deque([(goal, 0) for goal in goals])
     f_seen = {pos: 0 for pos in starts}
-    b_seen = {state.config.center: 0}
+    b_seen = {goal: 0 for goal in goals}
     occupied = set(state.occupied()) - starts
     expanded = 0
 

@@ -339,14 +339,23 @@ class PygameGame:
         colors = {"A": (42, 111, 219), "B": (216, 67, 67)}
         occupied = self.state.occupied()
         legal_targets = self._legal_target_cells()
+        scoring = self.state.config.scoring_cells
         for r in range(self.state.board.rows):
             for c in range(self.state.board.cols):
                 rect = pygame.Rect(c * self.cell, r * self.cell, self.cell, self.cell)
-                fill = (232, 221, 145) if (r, c) == self.state.config.center else (255, 255, 255)
+                if (r, c) in self.state.board.blocked:
+                    pygame.draw.rect(screen, (70, 70, 70), rect)
+                    pygame.draw.rect(screen, (50, 50, 50), rect, 1)
+                    continue
+                fill = (232, 221, 145) if (r, c) in scoring else (255, 255, 255)
                 if (r, c) in legal_targets:
                     fill = (192, 231, 205)
                 pygame.draw.rect(screen, fill, rect)
                 pygame.draw.rect(screen, (50, 50, 50), rect, 1)
+                if (r, c) in scoring:
+                    points = fonts["title"].render(f"+{scoring[(r, c)]}", True, (120, 100, 20))
+                    points.set_alpha(110)
+                    screen.blit(points, points.get_rect(center=rect.center))
                 occupant = occupied.get((r, c))
                 if occupant:
                     player, idx = occupant

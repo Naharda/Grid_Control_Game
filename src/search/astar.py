@@ -4,9 +4,9 @@ import heapq
 from dataclasses import dataclass
 
 from game.actions import Action
-from game.board import manhattan
 from game.rules import apply_action, get_legal_actions
 from game.state import GameState
+from search.heuristic import nearest_scoring_distance
 
 
 @dataclass
@@ -41,7 +41,7 @@ def astar_to_center(state: GameState, player: str, horizon: int = 6, expansion_l
         seen.add(key)
         best = item
         expanded += 1
-        if cur.config.center in cur.positions[player]:
+        if any(cell in cur.positions[player] for cell in cur.config.scoring_cells):
             return TacticalPlan(first_action, cost, expanded, True)
         if cost >= horizon:
             continue
@@ -53,4 +53,5 @@ def astar_to_center(state: GameState, player: str, horizon: int = 6, expansion_l
 
 
 def _center_distance(state: GameState, player: str) -> int:
-    return min(manhattan(pos, state.config.center) for pos in state.positions[player])
+    scoring = state.config.scoring_cells
+    return min(nearest_scoring_distance(pos, scoring) for pos in state.positions[player])

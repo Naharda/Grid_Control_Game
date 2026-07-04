@@ -1,22 +1,31 @@
 from __future__ import annotations
 
-from game.board import manhattan
+from game.board import Position, manhattan
 from game.cards import CardType
 from game.rules import get_legal_actions, other
 from game.state import GameState
+
+
+def nearest_scoring_distance(pos: Position, scoring_cells: dict[Position, int]) -> int:
+    if not scoring_cells:
+        return 0
+    return min(manhattan(pos, cell) for cell in scoring_cells)
 
 
 def evaluate_state(state: GameState, player: str, weights: dict[str, float] | None = None) -> float:
     weights = weights or state.config.heuristic_weights
     opponent = other(player)
     score_diff = state.scores[player] - state.scores[opponent]
-    center = state.config.center
+    scoring = state.config.scoring_cells
     my_positions = state.positions[player]
     opp_positions = state.positions[opponent]
 
-    center_control = int(center in my_positions) - int(center in opp_positions)
-    center_distance = sum(manhattan(p, center) for p in opp_positions) - sum(
-        manhattan(p, center) for p in my_positions
+    center_control = sum(
+        points * (int(cell in my_positions) - int(cell in opp_positions))
+        for cell, points in scoring.items()
+    )
+    center_distance = sum(nearest_scoring_distance(p, scoring) for p in opp_positions) - sum(
+        nearest_scoring_distance(p, scoring) for p in my_positions
     )
     capture_threat = _capture_threats(state, player) - _capture_threats(state, opponent)
     net_potential = _net_potential(state, player) - _net_potential(state, opponent)
@@ -66,14 +75,14 @@ def _net_potential(state: GameState, player: str) -> int:
 
 def _swap_potential(state: GameState, player: str) -> int:
     opponent = other(player)
-    center = state.config.center
+    scoring = state.config.scoring_cells
     value = 0
     for friendly in state.positions[player]:
         for enemy in state.positions[opponent]:
             if manhattan(friendly, enemy) <= state.config.swap_range:
-                if enemy == center:
+                if enemy in scoring:
                     value += 3
-                if friendly == center:
+                if friendly in scoring:
                     value -= 1
                 value += 1
     return value
