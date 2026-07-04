@@ -20,6 +20,7 @@ class Action:
     target_piece: tuple[str, int] | None = None
     swap_piece: tuple[str, int] | None = None
     mode: str = "base"
+    launcher_id: int | None = None
 
     def compact(self) -> str:
         bits = [f"{self.card_index}:{self.card_type.value}"]
@@ -31,4 +32,6 @@ class Action:
             bits.append(f"swap={self.swap_piece[0]}{self.swap_piece[1]}")
         if self.mode != "base":
             bits.append(self.mode)
+        if self.launcher_id is not None:
+            bits.append(f"launcher={self.launcher_id}")
         return " ".join(bits)

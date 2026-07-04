@@ -165,20 +165,37 @@ def _capture_actions(state: GameState, card_index: int, card: CardType) -> list[
                 key = (friendly_idx, enemy_idx, "capture")
                 if key not in seen:
                     seen.add(key)
-                    actions.append(Action(card_index, card, target_piece=(enemy, enemy_idx)))
+                    actions.append(
+                        Action(
+                            card_index,
+                            card,
+                            moves=(PieceMove(friendly_idx, friendly_pos),),
+                            target_piece=(enemy, enemy_idx),
+                        )
+                    )
 
-    for start, direction in _net_rays(state, player):
-        for cell in state.board.ray(start, direction, state.config.net_range):
+    for launched_idx, launcher_idx, direction in _net_rays(state, player):
+        launched_pos = state.positions[player][launched_idx]
+        for cell in state.board.ray(launched_pos, direction, state.config.net_range):
             occupant = occupied.get(cell)
             if occupant is None:
                 continue
             occ_player, occ_idx = occupant
             if occ_player == player:
                 break
-            key = (start[0] * 10 + start[1], occ_idx, f"net{direction}")
+            key = (launched_idx, occ_idx, f"net{direction}")
             if key not in seen:
                 seen.add(key)
-                actions.append(Action(card_index, card, target_piece=(enemy, occ_idx), mode="net"))
+                actions.append(
+                    Action(
+                        card_index,
+                        card,
+                        moves=(PieceMove(launched_idx, launched_pos),),
+                        target_piece=(enemy, occ_idx),
+                        mode="net",
+                        launcher_id=launcher_idx,
+                    )
+                )
             break
     return actions
 
@@ -201,20 +218,22 @@ def _swap_actions(state: GameState, card_index: int, card: CardType) -> list[Act
     return actions
 
 
-def _net_rays(state: GameState, player: str) -> set[tuple[Position, Position]]:
+def _net_rays(state: GameState, player: str) -> list[tuple[int, int, Position]]:
+    """Outward rays from adjacent friendly pairs as (launched_id, launcher_id, direction)."""
     pieces = state.positions[player]
-    rays: set[tuple[Position, Position]] = set()
-    for a, b in combinations(pieces, 2):
+    rays: list[tuple[int, int, Position]] = []
+    for i, j in combinations(range(len(pieces)), 2):
+        a, b = pieces[i], pieces[j]
         if manhattan(a, b) != 1:
             continue
         if a[0] == b[0]:
-            left, right = sorted((a, b), key=lambda p: p[1])
-            rays.add((left, (0, -1)))
-            rays.add((right, (0, 1)))
+            (left_idx, _), (right_idx, _) = sorted(((i, a), (j, b)), key=lambda p: p[1][1])
+            rays.append((left_idx, right_idx, (0, -1)))
+            rays.append((right_idx, left_idx, (0, 1)))
         else:
-            top, bottom = sorted((a, b), key=lambda p: p[0])
-            rays.add((top, (-1, 0)))
-            rays.add((bottom, (1, 0)))
+            (top_idx, _), (bottom_idx, _) = sorted(((i, a), (j, b)), key=lambda p: p[1][0])
+            rays.append((top_idx, bottom_idx, (-1, 0)))
+            rays.append((bottom_idx, top_idx, (1, 0)))
     return rays
 
 
