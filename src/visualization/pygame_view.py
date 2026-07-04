@@ -40,12 +40,20 @@ class PygameGame:
         agent_a: Agent | None = None,
         agent_b: Agent | None = None,
         state: GameState | None = None,
+        history: list[GameState] | None = None,
     ) -> None:
         self.agents = {"A": agent_a, "B": agent_b}
-        self.history = [state or initial_state()]
+        if history:
+            self.history = list(history)
+            self.message = "Reviewing recorded game. Use Back/Next."
+        else:
+            self.history = [state or initial_state()]
+            self.message = "Choose a card."
+        # Action leading from history[i] to history[i+1]; None for replayed
+        # or passed turns. Kept in lockstep with history for game recording.
+        self.actions: list[Action | None] = [None] * (len(self.history) - 1)
         self.index = 0
         self.selection = Selection()
-        self.message = "Choose a card."
         self.auto_play = False
 
         self.cell = 86
@@ -247,7 +255,9 @@ class PygameGame:
 
     def _commit_action(self, action: Action) -> None:
         self.history = self.history[: self.index + 1]
+        self.actions = self.actions[: self.index]
         self.history.append(apply_action(self.state, action))
+        self.actions.append(action)
         self.index += 1
         self.message = f"Played {action.compact()}."
         while not self.state.is_terminal and not self._is_human_turn():
@@ -268,8 +278,10 @@ class PygameGame:
             self.message = "No legal actions."
             return
         self.history = self.history[: self.index + 1]
+        self.actions = self.actions[: self.index]
         action = agent.choose_action(self.state, legal)
         self.history.append(apply_action(self.state, action))
+        self.actions.append(action)
         self.index += 1
         self.message = f"Computer played {action.compact()}."
 
@@ -438,8 +450,9 @@ def run_pygame_game(
     agent_a: Agent | None = None,
     agent_b: Agent | None = None,
     state: GameState | None = None,
+    history: list[GameState] | None = None,
 ) -> None:
-    PygameGame(agent_a=agent_a, agent_b=agent_b, state=state).run()
+    PygameGame(agent_a=agent_a, agent_b=agent_b, state=state, history=history).run()
 
 
 def run_pygame_view(state: GameState) -> None:

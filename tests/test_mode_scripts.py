@@ -17,9 +17,10 @@ from experiments.modes import (
     results_path,
     save_mode,
 )
+from experiments.reconstruct_game import reconstruct_states
 from experiments.run_mode import run_mode
 from game.config import GameConfig
-from game.match_log import read_game_csv, replay_rows
+from game.match_log import ReplayError, read_game_csv, replay_rows, write_game_csv
 from game.state import initial_state
 
 
@@ -189,3 +190,37 @@ def test_recorded_games_replay_and_match_results(tmp_path) -> None:
             final = states[-1]
             assert final.scores["A"] == int(result_row["score_a"])
             assert final.scores["B"] == int(result_row["score_b"])
+
+
+def test_reconstruct_states_validates_against_results(tmp_path) -> None:
+    _create_mode(tmp_path)
+    mode = load_mode("tiny", root=tmp_path)
+    run_mode(mode, root=tmp_path)
+    states = reconstruct_states(mode, "greedy", "random", 0, validate=True, root=tmp_path)
+    assert len(states) == 2 * mode["rules"]["turns_per_player"] + 1
+    assert states[-1].is_terminal
+
+
+def test_reconstruct_detects_tampered_scores(tmp_path) -> None:
+    _create_mode(tmp_path)
+    mode = load_mode("tiny", root=tmp_path)
+    run_mode(mode, root=tmp_path)
+    game_path = games_dir("tiny", "greedy", "random", tmp_path) / "0.csv"
+    rows = read_game_csv(game_path)
+    rows[-1]["score_a"] = str(int(rows[-1]["score_a"]) + 1)
+    write_game_csv(game_path, rows, mode["rules"]["market_size"])
+    with pytest.raises(ReplayError, match="score_a"):
+        reconstruct_states(mode, "greedy", "random", 0, validate=True, root=tmp_path)
+
+
+def test_reconstruct_detects_tampered_moves(tmp_path) -> None:
+    _create_mode(tmp_path)
+    mode = load_mode("tiny", root=tmp_path)
+    run_mode(mode, root=tmp_path)
+    game_path = games_dir("tiny", "greedy", "random", tmp_path) / "0.csv"
+    rows = read_game_csv(game_path)
+    target = next(row for row in rows if row["src_0"] != "-1")
+    target["src_0"], target["dst_0"] = target["dst_0"], target["src_0"]
+    write_game_csv(game_path, rows, mode["rules"]["market_size"])
+    with pytest.raises(ReplayError):
+        reconstruct_states(mode, "greedy", "random", 0, validate=True, root=tmp_path)
