@@ -204,11 +204,13 @@ def _net_rays(state: GameState, player: str) -> set[tuple[Position, Position]]:
     pieces = state.positions[player]
     rays: set[tuple[Position, Position]] = set()
     for a, b in combinations(pieces, 2):
+        if manhattan(a, b) != 1:
+            continue
         if a[0] == b[0]:
             left, right = sorted((a, b), key=lambda p: p[1])
             rays.add((left, (0, -1)))
             rays.add((right, (0, 1)))
-        if a[1] == b[1]:
+        else:
             top, bottom = sorted((a, b), key=lambda p: p[0])
             rays.add((top, (-1, 0)))
             rays.add((bottom, (1, 0)))
