@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "mode_name": "baseline_full",
+  "description": "",
+  "created_at": "2026-07-05T11:12:34+00:00",
+  "code_version": "78546b4",
+  "board": {
+    "name": "default",
+    "definition": {
+      "schema_version": 1,
+      "name": "default",
+      "description": "Standard 5x5 board; one 1-point capture cell at the center.",
+      "rows": 5,
+      "cols": 5,
+      "spawns": {
+        "A": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ]
+        ],
+        "B": [
+          [
+            4,
+            1
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            4,
+            3
+          ]
+        ]
+      },
+      "capture_cells": [
+        {
+          "cell": [
+            2,
+            2
+          ],
+          "points": 1
+        }
+      ],
+      "blocked_cells": []
+    }
+  },
+  "deck": {
+    "name": "default",
+    "definition": {
+      "schema_version": 1,
+      "name": "default",
+      "description": "Standard 28-card deck.",
+      "cards": {
+        "move1": 8,
+        "move2": 6,
+        "mobilize": 5,
+        "capture": 5,
+        "swap": 4
+      }
+    }
+  },
+  "rules": {
+    "turns_per_player": 50,
+    "market_size": 3,
+    "capture_score": 3,
+    "swap_range": 3,
+    "net_range": 3
+  },
+  "heuristic_weights": {
+    "score": 100,
+    "center": 10,
+    "center_distance": 2,
+    "capture_threat": 15,
+    "net_potential": 20,
+    "swap_potential": 8,
+    "safety": 10,
+    "mobility": 1
+  },
+  "agents": [
+    {
+      "name": "random",
+      "params": {
+        "seed": null
+      }
+    },
+    {
+      "name": "greedy",
+      "params": {}
+    },
+    {
+      "name": "rule",
+      "params": {}
+    },
+    {
+      "name": "minimax",
+      "params": {
+        "method": "minimax",
+        "depth": 2,
+        "top_k": 10
+      }
+    },
+    {
+      "name": "expectimax",
+      "params": {
+        "method": "expectimax",
+        "depth": 2,
+        "top_k": 10
+      }
+    },
+    {
+      "name": "mcts",
+      "params": {
+        "simulations": 200,
+        "rollout_depth": 20,
+        "seed": null
+      }
+    }
+  ],
+  "num_games": 30,
+  "game_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29
+  ],
+  "agent_seed_policy": "derived"
+}
