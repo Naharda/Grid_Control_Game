@@ -31,6 +31,7 @@ AGENT_SPECS: dict[str, tuple[type, dict]] = {
     "mcts": (MCTSAgent, {"simulations": 200, "rollout_depth": 20, "seed": None}),
 }
 AGENT_NAMES = list(AGENT_SPECS)
+NON_HUMAN_AGENT_NAMES = [n for n in AGENT_SPECS if n != "human"]
 
 
 def default_params(name: str) -> dict:
