@@ -9,7 +9,6 @@ Use Python 3.10+ (`pip install -r requirements.txt`).
 ```bash
 python start_game.py --a human --b greedy --show-initial
 python start_game.py --gui --a human --b greedy
-python visual_game.py --a human --b greedy
 python src/experiments/run_match.py --a greedy --b random --show-initial
 pytest
 ```
@@ -22,6 +21,8 @@ agents (with hyperparameters), and per-game seeds, defined *before* running.
 ```bash
 # 1. Define a mode (refuses to overwrite an existing one; try --interactive)
 python src/experiments/create_mode.py baseline --agents greedy minimax --games 20
+#    ...or pit every non-human agent against each other:
+python src/experiments/create_mode.py full --all-agents --games 20
 
 # 2. Run every ordered agent pair (A-vs-B and B-vs-A share seeds per game index)
 python src/experiments/run_mode.py baseline
@@ -57,7 +58,7 @@ center). See `boards/crossfire.json` for a custom example.
 ## Pygame Controls
 
 ```bash
-python visual_game.py --a human --b greedy
+python start_game.py --gui --a human --b greedy
 ```
 
 - Click a market card, then click the required pieces/cells.
@@ -66,4 +67,4 @@ python visual_game.py --a human --b greedy
 - `Auto` button or `A` toggles automatic computer play.
 - `Clear` button or `Esc` clears the current selection.
 
-The default game rules follow the defaults listed in `graph_card_control_codex_plan.md`.
+The full rules are in [`Instructions.md`](Instructions.md); all numeric values are `GameConfig` defaults, configurable per board/deck/mode.
