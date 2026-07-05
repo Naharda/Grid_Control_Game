@@ -5,6 +5,7 @@ current standard setup. The config embeds full board/deck snapshots plus all
 rule values and agent hyperparameters, so a mode is reproducible on its own.
 
     python src/experiments/create_mode.py baseline --agents greedy minimax
+    python src/experiments/create_mode.py everyone --all-agents --games 20
     python src/experiments/create_mode.py deep --agents minimax mcts \
         --param minimax.depth=3 --param mcts.simulations=500
     python src/experiments/create_mode.py custom --agents greedy random --interactive
@@ -24,7 +25,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from experiments.modes import SEED_POLICIES, save_mode
-from experiments.run_match import AGENT_NAMES, build_agent, default_params
+from experiments.run_match import AGENT_NAMES, NON_HUMAN_AGENT_NAMES, build_agent, default_params
 from game.config import GameConfig
 from game.setup_loader import REPO_ROOT, load_board, load_deck
 
@@ -154,8 +155,11 @@ def build_mode_config(args: argparse.Namespace) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser(description="Define a new game mode (fails if it already exists).")
     parser.add_argument("name", help="Mode name; creates modes/<name>/config.json.")
-    parser.add_argument("--agents", nargs="+", required=True, metavar="AGENT",
-                        help=f"Agents to compare (from: {', '.join(n for n in AGENT_NAMES if n != 'human')}).")
+    agent_group = parser.add_mutually_exclusive_group(required=True)
+    agent_group.add_argument("--agents", nargs="+", metavar="AGENT",
+                             help=f"Agents to compare (from: {', '.join(NON_HUMAN_AGENT_NAMES)}).")
+    agent_group.add_argument("--all-agents", action="store_true",
+                             help="Shorthand for --agents with every non-human agent.")
     parser.add_argument("--board", default="default", help="Board name in boards/ (or path to a board JSON).")
     parser.add_argument("--deck", default="default", help="Deck name in decks/ (or path to a deck JSON).")
     parser.add_argument("--games", type=int, default=20, help="Number of games per ordered agent pair.")
@@ -174,11 +178,14 @@ def main() -> None:
     parser.add_argument("--modes-root", type=Path, help="Override the modes/ directory (mainly for tests).")
     args = parser.parse_args()
 
+    if args.all_agents:
+        args.agents = list(NON_HUMAN_AGENT_NAMES)
+
     for name in args.agents:
         if name == "human":
             raise SystemExit("The 'human' agent cannot be used in a mode; play modes via start_game.py --mode.")
         if name not in AGENT_NAMES:
-            raise SystemExit(f"Unknown agent {name!r}; choose from {[n for n in AGENT_NAMES if n != 'human']}")
+            raise SystemExit(f"Unknown agent {name!r}; choose from {NON_HUMAN_AGENT_NAMES}")
     if len(set(args.agents)) != len(args.agents):
         raise SystemExit("Duplicate agent names are not allowed (results files would collide).")
 
@@ -191,7 +198,7 @@ def main() -> None:
     except FileExistsError as exc:
         raise SystemExit(str(exc))
     print(f"Created {path}")
-    pairs = len(config["agents"]) ** 2 - len(config["agents"]) or 1
+    pairs = len(config["agents"]) ** 2
     print(f"{config['num_games']} games x {pairs} ordered pair(s); run with:")
     print(f"  python src/experiments/run_mode.py {config['mode_name']}")
 

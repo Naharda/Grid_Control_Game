@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import sys
 from types import SimpleNamespace
 
 import pytest
@@ -7,6 +8,7 @@ import pytest
 import csv
 
 from experiments.create_mode import build_mode_config, parse_param_overrides, parse_seeds
+from experiments.create_mode import main as create_mode_main
 from experiments.modes import (
     config_from_mode,
     effective_agent_params,
@@ -18,6 +20,7 @@ from experiments.modes import (
     save_mode,
 )
 from experiments.reconstruct_game import reconstruct_states
+from experiments.run_match import NON_HUMAN_AGENT_NAMES
 from experiments.run_mode import run_mode
 from game.config import GameConfig
 from game.match_log import ReplayError, read_game_csv, replay_rows, write_game_csv
@@ -93,6 +96,31 @@ def test_create_rejects_existing_mode(tmp_path) -> None:
 def test_create_rejects_unknown_param(tmp_path) -> None:
     with pytest.raises(ValueError, match="depth"):
         _create_mode(tmp_path, agents=("greedy",), param=["greedy.depth=3"])
+
+
+def _run_create_cli(argv, monkeypatch):
+    monkeypatch.setattr(sys, "argv", ["create_mode.py", *argv])
+    create_mode_main()
+
+
+def test_all_agents_flag_uses_every_non_human_agent(tmp_path, monkeypatch, capsys) -> None:
+    _run_create_cli(["everyone", "--all-agents", "--games", "2", "--modes-root", str(tmp_path)], monkeypatch)
+    mode = load_mode("everyone", root=tmp_path)
+    names = [entry["name"] for entry in mode["agents"]]
+    assert names == NON_HUMAN_AGENT_NAMES
+    assert "human" not in names
+    n = len(NON_HUMAN_AGENT_NAMES)
+    assert f"x {n * n} ordered pair(s)" in capsys.readouterr().out  # self-play pairs counted
+
+
+def test_all_agents_conflicts_with_agents(tmp_path, monkeypatch) -> None:
+    with pytest.raises(SystemExit):
+        _run_create_cli(["clash", "--all-agents", "--agents", "greedy", "--modes-root", str(tmp_path)], monkeypatch)
+
+
+def test_agent_selection_is_required(tmp_path, monkeypatch) -> None:
+    with pytest.raises(SystemExit):
+        _run_create_cli(["none", "--modes-root", str(tmp_path)], monkeypatch)
 
 
 def test_load_mode_round_trip(tmp_path) -> None:
