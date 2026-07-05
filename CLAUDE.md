@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Context
 
-"Graph Card Control" — a custom two-player, turn-based, stochastic, perfect-information strategy game built as a university final project for Search Methods in AI (comparing search-based agents against baseline agents). The game design spec is `graph_card_control_codex_plan.md` (default rules follow it), the lab report draft is `graph_card_control_report.md`, and the course submission guidelines are `project_instructions_en.md`. The root CSV files are legacy outputs from the pre-mode `tournament.py`; new experiments live under `modes/`.
+"Graph Card Control" — a custom two-player, turn-based, stochastic, perfect-information strategy game built as a university final project for Search Methods in AI (comparing search-based agents against baseline agents). The canonical ruleset is `Instructions.md` (default rules follow it), the lab report draft is `graph_card_control_report.md`, and the course submission guidelines are `project_instructions_en.md`. Experiments live under `modes/`.
 
 ## Commands
 
@@ -15,16 +15,14 @@ pytest                                          # run all tests (pytest.ini sets
 pytest tests/test_core_game.py::test_name       # run a single test
 
 python start_game.py --a human --b greedy --show-initial   # text-mode match
-python start_game.py --gui --a human --b greedy            # Pygame GUI (also: python visual_game.py)
+python start_game.py --gui --a human --b greedy            # Pygame GUI
 python start_game.py --gui --mode baseline --a human --record   # play a mode; save the game CSV
 python src/experiments/run_match.py --a greedy --b random --log
 
-python src/experiments/create_mode.py NAME --agents greedy minimax   # define a mode (fails if it exists)
+python src/experiments/create_mode.py NAME --agents greedy minimax   # define a mode (fails if it exists; --all-agents = every non-human agent)
 python src/experiments/run_mode.py NAME                              # play all pairs, write results + game logs
 python src/experiments/reconstruct_game.py NAME greedy minimax 0 --gui  # replay/validate a recorded game
 python src/experiments/analyze_results.py modes/NAME/results/greedy_minimax.csv
-
-python src/experiments/tournament.py --a expectimax --b greedy --games 20 --out results.csv  # legacy
 ```
 
 Agent names accepted by all CLIs: `human`, `random`, `rule`, `greedy`, `minimax`, `expectimax`, `mcts` (`human` is not allowed inside a mode; play modes via `--mode` + `--a human`).
@@ -52,14 +50,14 @@ modes/<mode_name>/
 
 ### Import root is `src/`, not the repo root
 
-All modules import as `game.*`, `agents.*`, `search.*`, `experiments.*`, `visualization.*` — never `src.game.*`. Root entry points (`start_game.py`, `visual_game.py`) and the experiment scripts insert `src` into `sys.path` themselves; pytest gets it from `pythonpath = src` in `pytest.ini`. Any new script needs the same shim or `PYTHONPATH=src`.
+All modules import as `game.*`, `agents.*`, `search.*`, `experiments.*`, `visualization.*` — never `src.game.*`. The root entry point (`start_game.py`) and the experiment scripts insert `src` into `sys.path` themselves; pytest gets it from `pythonpath = src` in `pytest.ini`. Any new script needs the same shim or `PYTHONPATH=src`.
 
 ### Layers (dependency order: game ← search ← agents ← experiments/visualization)
 
 - **`game/`** — pure rules engine. `GameState` (`state.py`) is a frozen dataclass; all transitions are pure functions in `rules.py` (`get_legal_actions`, `apply_action`) returning new states via `state.with_updates(...)`. `engine.play_match` loops a full match (optional `on_step(before, action|None, after)` observer, fired for pass turns too) and returns a `MatchResult`. `GameConfig` (`config.py`) holds all tunables; `scoring_cells` resolves `capture_cells` (position→points) or falls back to `{center: center_score}`. `setup_loader.py` loads/validates board & deck JSON into config kwargs; `match_log.py` is the games-CSV writer/replayer.
 - **`search/`** — two distinct kinds of module: full decision procedures over game states (`minimax.py`, `expectimax.py`, `mcts.py`) and single-agent tactical pathfinding helpers (`astar.py`, `greedy_best_first.py`, `bidirectional.py`). Goal cells are the config's `scoring_cells` (nearest-cell distance). `heuristic.evaluate_state` is the shared state evaluation used by greedy, minimax, expectimax, and MCTS rollouts; its weights come from `GameConfig.heuristic_weights` (the `center`/`center_distance` keys now mean capture-cell control/distance).
 - **`agents/`** — implement `Agent.choose_action(state, legal_actions)` (`base.py`). `SearchAgent` wraps minimax/expectimax; `MCTSAgent` wraps MCTS.
-- **`experiments/`** — `run_match.py` holds `AGENT_SPECS`/`build_agent(name, params)`, the single agent registry (defaults recorded into mode configs). `modes.py` is mode config I/O; `create_mode.py`/`run_mode.py`/`reconstruct_game.py` are the mode CLIs. `tournament.py` is the legacy single-pair runner.
+- **`experiments/`** — `run_match.py` holds `AGENT_SPECS`/`build_agent(name, params)`, the single agent registry (defaults recorded into mode configs). `modes.py` is mode config I/O; `create_mode.py`/`run_mode.py`/`reconstruct_game.py` are the mode CLIs.
 - **`visualization/`** — `text_view.render_state` (capture cells as `+N`, blocked as `##`) and the Pygame viewer (`pygame_view.run_pygame_game`), which supports human click-play, history review (also of reconstructed games via `history=`), auto-play, and translucent `+N` labels on capture cells.
 
 **Adding a new agent** means adding one `AGENT_SPECS` entry in `src/experiments/run_match.py` (name → class + default params); all CLIs share `AGENT_NAMES`.
