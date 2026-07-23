@@ -74,7 +74,7 @@ def initial_state(config: GameConfig | None = None) -> GameState:
     rows, cols = config.board_size
     return GameState(
         config=config,
-        board=Board.grid(rows, cols),
+        board=Board.grid(rows, cols, set(config.blocked_cells)),
         current_player="A",
         turn_counts={"A": 0, "B": 0},
         positions={"A": config.player_a_spawns, "B": config.player_b_spawns},

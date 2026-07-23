@@ -73,7 +73,7 @@ The implementation is written in Python. The code is organized into modules:
 | `src/agents` | Random, rule-based, greedy, human, search, and MCTS agents. |
 | `src/search` | Heuristic evaluation, minimax, expectimax, MCTS, A*, greedy best-first, and bidirectional helpers. |
 | `src/visualization` | Text renderer and interactive Pygame visual game/review tool. |
-| `src/experiments` | Match runner, tournament runner, and result analysis. |
+| `src/experiments` | Single-match runner, game-mode creation/execution/reconstruction, and result analysis. |
 | `tests` | Smoke tests for the core game. |
 
 The most important implementation decision is that all agents use the same legal action generator:
@@ -104,6 +104,8 @@ The following agents were implemented:
 | MCTS | Monte Carlo Tree Search using UCB-style child selection and random rollouts. |
 | Human | Text or Pygame-driven human interaction. |
 
+The search agents ship with explicit defaults: minimax and expectimax use `depth=2` with `top_k=10` beam filtering, and MCTS uses `simulations=200` with `rollout_depth=20`. The depth limit and top-K action filtering (keeping only the K best immediate successors by heuristic score) are the primary controls on the game's branching factor; alpha-beta pruning applies only to the deterministic minimax variant, while expectimax expands chance nodes exactly over the replacement-card draw distribution. These hyperparameters are recorded verbatim into each game mode's config, so every experiment snapshot documents the exact agent settings it was run with.
+
 ### 2.5 Heuristic Function
 
 The heuristic evaluates a state from one player's perspective:
@@ -120,22 +122,33 @@ H(state, player) =
 + 1   * mobility
 ```
 
-The score term is intentionally dominant because the game objective is score maximization. The other terms estimate positional strength, tactical opportunities, safety, and future action availability.
+The score term is intentionally dominant because the game objective is score maximization. The other terms estimate positional strength, tactical opportunities, safety, and future action availability:
+
+| Component | Meaning |
+|---|---|
+| `score_difference` | `my_score - opponent_score`; the dominant term. |
+| `center_control` | Occupying the scoring cell(s). |
+| `center_distance_advantage` | Sum of opponent piece distances to the nearest scoring cell minus own. |
+| `capture_threats` | Enemies capturable next move: adjacent enemies plus enemies hittable by a Net Launcher ray. |
+| `net_launcher_potential` | Friendly orthogonally adjacent pairs with an enemy on their line, and near-pairs. |
+| `swap_potential` | Useful swaps in range: displacing an enemy from a scoring cell or breaking a formation. |
+| `piece_safety` | Penalty for exposure: pieces adjacent to an enemy, on an enemy net line, or vulnerable to swap-then-capture. |
+| `mobility` | Legal action count; deliberately weighted low so it cannot dominate. |
+
+The weights live in `GameConfig.heuristic_weights` and are recorded into each mode config, so they are tunable per experiment. On custom boards the `center`/`center_distance` components generalize to weighted **capture cells** (control of, and distance to, the nearest scoring cell); the default board has the single 1-point center.
 
 ### 2.6 Evaluation Method
 
-The evaluation compares agents in tournaments. Each game uses a deterministic seed so experiments are reproducible. The tournament script records:
+Experiments are packaged as **game modes**: a mode is a pre-declared, self-contained bundle under `modes/<name>/` whose `config.json` embeds full board and deck snapshots, all rule values, the heuristic weights, every agent's exact hyperparameters, the per-game seeds, and the agent seed policy. A mode is therefore reproducible on its own even if the shared board/deck files change later.
 
-- winner,
-- final score for each player,
-- average score difference,
-- number of games.
+Running a mode plays **every ordered pair** of its agents — including mirrored orderings and self-play — with the same seeds in both orientations, so first-move advantage can be measured directly. Each pair produces a results CSV (`modes/<name>/results/<a>_<b>.csv` with winner and final scores per game) plus a per-turn move log for every game (`modes/<name>/games/<a>_<b>/<i>.csv`), which can be replayed and validated move-by-move with `reconstruct_game.py`.
 
 The main command format is:
 
-```powershell
-python src/experiments/tournament.py --a rule --b random --games 30 --out rule_vs_random.csv
-python src/experiments/analyze_results.py rule_vs_random.csv
+```bash
+python src/experiments/create_mode.py baseline --agents greedy random --games 20
+python src/experiments/run_mode.py baseline
+python src/experiments/analyze_results.py modes/baseline/results/greedy_random.csv
 ```
 
 The current experiments are preliminary smoke-scale experiments, intended to validate the system and expose early behavioral patterns. Larger experiments should be run before final submission.
@@ -144,13 +157,15 @@ The current experiments are preliminary smoke-scale experiments, intended to val
 
 ### 3.1 Environment
 
-Experiments were run in the `search_methods` Conda environment using Python 3.13.13. The core smoke tests passed:
+Experiments were run in a Conda environment using Python 3.13. The full test suite passed:
 
 ```text
-3 passed in 0.02s
+66 passed in 0.51s
 ```
 
-### 3.2 Tournament Results
+### 3.2 Preliminary Results
+
+These preliminary results were produced with an earlier single-pair runner that predates the game-mode system; final experiments will be re-run as modes.
 
 | Matchup | Games | Player A Wins | Player B Wins | Draws | Avg. A-B Score Difference |
 |---|---:|---:|---:|---:|---:|
@@ -164,13 +179,13 @@ The rule-based agent strongly outperformed random play, winning 29 of 30 games w
 
 The greedy heuristic agent lost heavily to the rule-based agent. This is an important result because it suggests that the current heuristic, although richer than the rule-based policy, may not be calibrated correctly. The greedy agent maximizes a weighted evaluation of the immediate successor state, but the rule-based agent follows a sharper tactical priority: capture first, center second. The result indicates that the heuristic may overvalue secondary terms such as mobility, swap potential, or net potential relative to directly useful tactical objectives.
 
-Expectimax beat random in the small 5-game sample, winning 3 games and drawing 2. However, expectimax is much slower than rule-based or greedy play because it evaluates action choices, opponent responses, and stochastic card draws. A 20-game expectimax tournament exceeded the quick-run time budget, which demonstrates the practical importance of top-K pruning, depth limits, and possibly time-limited search.
+Expectimax beat random in the small 5-game sample, winning 3 games and drawing 2. However, expectimax is much slower than rule-based or greedy play because it evaluates action choices, opponent responses, and stochastic card draws. A 20-game expectimax series exceeded the quick-run time budget, which demonstrates the practical importance of top-K pruning, depth limits, and possibly time-limited search.
 
-MCTS was implemented, but the default setting of 200 simulations per move was too slow for quick tournament-scale evaluation in the current environment. This does not invalidate MCTS as a project component; rather, it suggests that the final experimental design should include a configurable simulation budget such as 25, 50, 100, and 200 rollouts per move, and should measure both win rate and decision time.
+MCTS was implemented, but the default setting of 200 simulations per move was too slow for quick experiment-scale evaluation in the current environment. This does not invalidate MCTS as a project component; rather, it suggests that the final experimental design should include a configurable simulation budget such as 25, 50, 100, and 200 rollouts per move, and should measure both win rate and decision time.
 
 ## 4. Experimental Conclusions and Summary
 
-The project objective was to create a custom strategy game and compare search-based agents against threshold agents. This objective was achieved at the implementation level: the game, agents, search algorithms, visualization, tournament runner, and analysis scripts are all implemented and runnable.
+The project objective was to create a custom strategy game and compare search-based agents against threshold agents. This objective was achieved at the implementation level: the game, agents, search algorithms, visualization, game-mode experiment runner, and analysis scripts are all implemented and runnable.
 
 The initial results support several conclusions:
 
@@ -179,52 +194,49 @@ The initial results support several conclusions:
 3. Search-based agents such as expectimax are promising but computationally expensive due to stochastic card replacement and branching-factor growth.
 4. The game is suitable for further research because it exposes tradeoffs between tactical captures, center control, card availability, and computational cost.
 
-The main limitation of the current work is that the experiments are still preliminary. The sample sizes are small, and the slower agents need better runtime controls before large tournaments can be completed. In addition, the current report includes tables but not yet generated plots.
+The main limitation of the current work is that the experiments are still preliminary. The sample sizes are small, and the slower agents need better runtime controls before large experiments can be completed. In addition, the current report includes tables but not yet generated plots.
 
 Recommended remaining implementation work before final submission:
 
-- Add command-line parameters for search depth, top-K pruning, and MCTS simulation count.
 - Add timing metrics per move and nodes expanded per decision.
 - Add plot generation from CSV results.
-- Run larger tournaments, for example 100 games per matchup.
+- Run larger experiments, for example 100 games per matchup.
 - Tune or ablate the heuristic weights to explain why greedy loses to the rule-based baseline.
 - Include MCTS results at several rollout budgets.
+- Test deck-composition variants as modes, e.g. a rush deck (Move1: 6, Move2: 10, Mobilize: 8, Capture: 3, Swap: 3) and a combat/formations deck (Move1: 6, Move2: 4, Mobilize: 5, Capture: 9, Swap: 6) against the default balanced deck.
 
 ## 5. Reproducibility
 
 Install dependencies:
 
-```powershell
-conda activate search_methods
+```bash
 python -m pip install -r requirements.txt
 ```
 
 Run tests:
 
-```powershell
+```bash
 python -m pytest
 ```
 
-Run the visual game:
+Play the game in the Pygame GUI:
 
-```powershell
-python visual_game.py --a human --b greedy
+```bash
+python start_game.py --gui --a human --b greedy
 ```
 
-Run tournaments:
+Define and run a game mode (all non-human agents, every ordered pair, fixed seeds):
 
-```powershell
-python src/experiments/tournament.py --a rule --b random --games 30 --out rule_vs_random.csv
-python src/experiments/tournament.py --a greedy --b rule --games 30 --out greedy_vs_rule.csv
-python src/experiments/tournament.py --a expectimax --b random --games 5 --out expectimax_vs_random.csv
+```bash
+python src/experiments/create_mode.py full --all-agents --games 20
+python src/experiments/run_mode.py full
 ```
 
-Analyze results:
+Analyze results and replay a recorded game to validate it:
 
-```powershell
-python src/experiments/analyze_results.py rule_vs_random.csv
-python src/experiments/analyze_results.py greedy_vs_rule.csv
-python src/experiments/analyze_results.py expectimax_vs_random.csv
+```bash
+python src/experiments/analyze_results.py modes/full/results/greedy_random.csv
+python src/experiments/reconstruct_game.py full greedy random 0 --gui
 ```
 
 ## References

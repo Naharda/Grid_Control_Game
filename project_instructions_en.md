@@ -44,16 +44,3 @@ However, there are a number of ideas that are liable to receive a low grade sinc
 * Comparing A* against IDA* on popular domains in the literature.
 * Comparing BFS against DFS.
 * Comparing Minimax against Alpha-Beta pruning.
-
-
-
-# Scratch
-
-## Deciding the project idea
-
-1. Testing bidirectional search algorithms in Voxel Benchmarks for 3D Pathfinding.
-	- **Why Reder likes this idea:** If it's a known benchmark that's been tested on, we have plenty of references for the evaluation, metrics, etc. likely even in code, and Claude could do an amazing job replicating these data formats without much intervention
-2. Parallelizing existing algorithms that do not yet have a parallel version.
-	- **Why Reder:** IDK just sounds awfully simple, a little bit of research into evaluation metrics and how to implement, but sounds straightforward enough
-3. Creating a search-based agent for a strategy game and comparing it against a threshold metric such as a random, rule-based, or human agent, etc. Please avoid popular games such as Chess, Checkers, Connect Four, and Backgammon. Interesting games that can be tried include Abalone, Attax, Ultimate Tic-Tac Toe, and more.
-	- **Why Omri:** Doesn't sound too hard, it's all about finding a "pathfinding-able" game and a reasonable\self-explanatory heuristic for it 

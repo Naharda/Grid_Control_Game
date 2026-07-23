@@ -1,11 +1,10 @@
 from __future__ import annotations
 
 from game.actions import Action
-from game.board import manhattan
 from game.cards import CardType
 from game.rules import apply_action
 from game.state import GameState
-from search.heuristic import evaluate_state
+from search.heuristic import evaluate_state, nearest_scoring_distance
 
 from .base import Agent
 
@@ -19,10 +18,11 @@ class RuleBasedAgent(Agent):
         if captures:
             return max(captures, key=lambda action: evaluate_state(apply_action(state, action), player))
 
+        scoring = state.config.scoring_cells
         center_actions = [
             action
             for action in legal_actions
-            if state.config.center in apply_action(state, action).positions[player]
+            if any(cell in apply_action(state, action).positions[player] for cell in scoring)
         ]
         if center_actions:
             return max(center_actions, key=lambda action: evaluate_state(apply_action(state, action), player))
@@ -36,7 +36,7 @@ class RuleBasedAgent(Agent):
             return min(
                 movable,
                 key=lambda action: min(
-                    manhattan(pos, state.config.center)
+                    nearest_scoring_distance(pos, scoring)
                     for pos in apply_action(state, action).positions[player]
                 ),
             )

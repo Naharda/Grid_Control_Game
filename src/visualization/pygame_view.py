@@ -40,12 +40,20 @@ class PygameGame:
         agent_a: Agent | None = None,
         agent_b: Agent | None = None,
         state: GameState | None = None,
+        history: list[GameState] | None = None,
     ) -> None:
         self.agents = {"A": agent_a, "B": agent_b}
-        self.history = [state or initial_state()]
+        if history:
+            self.history = list(history)
+            self.message = "Reviewing recorded game. Use Back/Next."
+        else:
+            self.history = [state or initial_state()]
+            self.message = "Choose a card."
+        # Action leading from history[i] to history[i+1]; None for replayed
+        # or passed turns. Kept in lockstep with history for game recording.
+        self.actions: list[Action | None] = [None] * (len(self.history) - 1)
         self.index = 0
         self.selection = Selection()
-        self.message = "Choose a card."
         self.auto_play = False
 
         self.cell = 86
@@ -247,7 +255,9 @@ class PygameGame:
 
     def _commit_action(self, action: Action) -> None:
         self.history = self.history[: self.index + 1]
+        self.actions = self.actions[: self.index]
         self.history.append(apply_action(self.state, action))
+        self.actions.append(action)
         self.index += 1
         self.message = f"Played {action.compact()}."
         while not self.state.is_terminal and not self._is_human_turn():
@@ -268,8 +278,10 @@ class PygameGame:
             self.message = "No legal actions."
             return
         self.history = self.history[: self.index + 1]
+        self.actions = self.actions[: self.index]
         action = agent.choose_action(self.state, legal)
         self.history.append(apply_action(self.state, action))
+        self.actions.append(action)
         self.index += 1
         self.message = f"Computer played {action.compact()}."
 
@@ -339,14 +351,23 @@ class PygameGame:
         colors = {"A": (42, 111, 219), "B": (216, 67, 67)}
         occupied = self.state.occupied()
         legal_targets = self._legal_target_cells()
+        scoring = self.state.config.scoring_cells
         for r in range(self.state.board.rows):
             for c in range(self.state.board.cols):
                 rect = pygame.Rect(c * self.cell, r * self.cell, self.cell, self.cell)
-                fill = (232, 221, 145) if (r, c) == self.state.config.center else (255, 255, 255)
+                if (r, c) in self.state.board.blocked:
+                    pygame.draw.rect(screen, (70, 70, 70), rect)
+                    pygame.draw.rect(screen, (50, 50, 50), rect, 1)
+                    continue
+                fill = (232, 221, 145) if (r, c) in scoring else (255, 255, 255)
                 if (r, c) in legal_targets:
                     fill = (192, 231, 205)
                 pygame.draw.rect(screen, fill, rect)
                 pygame.draw.rect(screen, (50, 50, 50), rect, 1)
+                if (r, c) in scoring:
+                    points = fonts["title"].render(f"+{scoring[(r, c)]}", True, (120, 100, 20))
+                    points.set_alpha(110)
+                    screen.blit(points, points.get_rect(center=rect.center))
                 occupant = occupied.get((r, c))
                 if occupant:
                     player, idx = occupant
@@ -414,9 +435,10 @@ class PygameGame:
         for action in get_legal_actions(self.state):
             if action.card_index != self.selection.card_index:
                 continue
-            for move in action.moves:
-                if self.selection.piece_id is None or move.piece_id == self.selection.piece_id:
-                    cells.add(move.to_pos)
+            if action.card_type != CardType.CAPTURE:
+                for move in action.moves:
+                    if self.selection.piece_id is None or move.piece_id == self.selection.piece_id:
+                        cells.add(move.to_pos)
             if action.target_piece:
                 cells.add(self.state.positions[action.target_piece[0]][action.target_piece[1]])
             if action.swap_piece:
@@ -428,8 +450,11 @@ def run_pygame_game(
     agent_a: Agent | None = None,
     agent_b: Agent | None = None,
     state: GameState | None = None,
-) -> None:
-    PygameGame(agent_a=agent_a, agent_b=agent_b, state=state).run()
+    history: list[GameState] | None = None,
+) -> PygameGame:
+    game = PygameGame(agent_a=agent_a, agent_b=agent_b, state=state, history=history)
+    game.run()
+    return game
 
 
 def run_pygame_view(state: GameState) -> None:

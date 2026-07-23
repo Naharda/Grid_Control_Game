@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "name": "default",
+  "description": "Standard 5x5 board; one 1-point capture cell at the center.",
+  "rows": 5,
+  "cols": 5,
+  "spawns": {
+    "A": [[0, 1], [0, 2], [0, 3]],
+    "B": [[4, 1], [4, 2], [4, 3]]
+  },
+  "capture_cells": [
+    { "cell": [2, 2], "points": 1 }
+  ],
+  "blocked_cells": []
+}

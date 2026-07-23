@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "name": "default",
+  "description": "Standard 28-card deck.",
+  "cards": {
+    "move1": 8,
+    "move2": 6,
+    "mobilize": 5,
+    "capture": 5,
+    "swap": 4
+  }
+}

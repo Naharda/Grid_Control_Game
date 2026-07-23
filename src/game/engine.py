@@ -1,11 +1,15 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from typing import Callable
 
 from agents.base import Agent
 
+from .actions import Action
 from .rules import apply_action, get_legal_actions
 from .state import GameState, initial_state
+
+StepObserver = Callable[[GameState, "Action | None", GameState], None]
 
 
 @dataclass
@@ -21,6 +25,7 @@ def play_match(
     agent_b: Agent,
     state: GameState | None = None,
     log: bool = False,
+    on_step: StepObserver | None = None,
 ) -> MatchResult:
     state = state or initial_state()
     agents = {"A": agent_a, "B": agent_b}
@@ -29,14 +34,20 @@ def play_match(
     while not state.is_terminal:
         legal = get_legal_actions(state)
         if not legal:
-            state = state.with_updates(
+            new_state = state.with_updates(
                 current_player="B" if state.current_player == "A" else "A",
                 turn_counts={**state.turn_counts, state.current_player: state.turn_counts[state.current_player] + 1},
                 last_action="pass",
             )
+            if on_step:
+                on_step(state, None, new_state)
+            state = new_state
             continue
         action = agents[state.current_player].choose_action(state, legal)
-        state = apply_action(state, action)
+        new_state = apply_action(state, action)
+        if on_step:
+            on_step(state, action, new_state)
+        state = new_state
         if log:
             history.append(f"{state.current_player} next after {state.last_action}; scores={state.scores}")
 
