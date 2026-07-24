@@ -28,6 +28,11 @@ AGENT_SPECS: dict[str, tuple[type, dict]] = {
     "human": (HumanAgent, {}),
     "minimax": (SearchAgent, {"method": "minimax", "depth": 2, "top_k": 10}),
     "expectimax": (SearchAgent, {"method": "expectimax", "depth": 2, "top_k": 10}),
+    # Named variants allow different expectimax depths to play one another in
+    # the same reproducible mode without colliding in result paths.
+    "expectimax_d2": (SearchAgent, {"method": "expectimax", "depth": 2, "top_k": 2}),
+    "expectimax_d3": (SearchAgent, {"method": "expectimax", "depth": 3, "top_k": 2}),
+    "expectimax_d4": (SearchAgent, {"method": "expectimax", "depth": 4, "top_k": 2}),
     "mcts": (MCTSAgent, {"simulations": 200, "rollout_depth": 20, "seed": None}),
 }
 AGENT_NAMES = list(AGENT_SPECS)

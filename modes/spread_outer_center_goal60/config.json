@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "mode_name": "spread_outer_center_goal60",
+  "description": "Outer-orbit spawns, high center, first to 60",
+  "created_at": "2026-07-23T14:24:44+00:00",
+  "code_version": "unknown",
+  "board": {
+    "name": "outer_orbit_center_9x9",
+    "definition": {
+      "schema_version": 1,
+      "name": "outer_orbit_center_9x9",
+      "description": "Widely separated opposing arcs on a 9x9 orbit; the single center is worth 6 points per occupied turn.",
+      "rows": 9,
+      "cols": 9,
+      "pieces_per_player": 3,
+      "spawns": {
+        "A": [
+          [
+            1,
+            4
+          ],
+          [
+            3,
+            1
+          ],
+          [
+            3,
+            7
+          ]
+        ],
+        "B": [
+          [
+            7,
+            4
+          ],
+          [
+            5,
+            7
+          ],
+          [
+            5,
+            1
+          ]
+        ]
+      },
+      "capture_cells": [
+        {
+          "cell": [
+            4,
+            4
+          ],
+          "points": 6
+        }
+      ],
+      "blocked_cells": []
+    }
+  },
+  "deck": {
+    "name": "default",
+    "definition": {
+      "schema_version": 1,
+      "name": "default",
+      "description": "Standard 28-card deck.",
+      "cards": {
+        "move1": 8,
+        "move2": 6,
+        "mobilize": 5,
+        "capture": 5,
+        "swap": 4
+      }
+    }
+  },
+  "rules": {
+    "turns_per_player": 50,
+    "market_size": 3,
+    "capture_score": 1,
+    "swap_range": 3,
+    "net_range": 3,
+    "market_refresh_after_passes": 2,
+    "score_to_win": 60
+  },
+  "heuristic_weights": {
+    "score": 100,
+    "center": 10,
+    "center_distance": 2,
+    "capture_threat": 15,
+    "net_potential": 20,
+    "swap_potential": 8,
+    "safety": 10,
+    "mobility": 1
+  },
+  "agents": [
+    {
+      "name": "random",
+      "params": {
+        "seed": null
+      }
+    },
+    {
+      "name": "greedy",
+      "params": {}
+    },
+    {
+      "name": "rule",
+      "params": {}
+    }
+  ],
+  "num_games": 8,
+  "game_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "agent_seed_policy": "derived"
+}

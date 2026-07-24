@@ -36,21 +36,29 @@ from game.engine import play_match
 from game.match_log import GameCsvRecorder, write_game_csv
 from game.state import initial_state
 
-RESULTS_FIELDS = ["game", "agent_a", "agent_b", "winner", "score_a", "score_b"]
+RESULTS_FIELDS = [
+    "game", "agent_a", "agent_b", "winner", "score_a", "score_b",
+    "decision_time_a_seconds", "decision_time_b_seconds",
+    "decisions_a", "decisions_b",
+    "turns_a", "turns_b",
+]
 
-def _get_elapsed(start_time: float, as_string: bool = True) -> float:
+def _format_elapsed(elapsed: float) -> str:
+    hours, rem = divmod(elapsed, 3600)
+    minutes, seconds = divmod(rem, 60)
+    days, hours = divmod(hours, 24)
+    if days > 0:
+        return f"{int(days)}:{int(hours):02}:{int(minutes):02}:{int(seconds):02}"
+    return f"{int(hours):02}:{int(minutes):02}:{int(seconds):02}"
+
+
+def _get_elapsed(start_time: float, as_string: bool = True) -> float | str:
     """Get the elapsed time since start_time, optionally formatted as a string.
     String format: [D:]HH:MM:SS
     """
     _elapsed = time() - start_time
     if as_string:
-        hours, rem = divmod(_elapsed, 3600)
-        minutes, seconds = divmod(rem, 60)
-        days, hours = divmod(hours, 24)
-        if days > 0:
-            return f"{int(days)}:{int(hours):02}:{int(minutes):02}:{int(seconds):02}"
-        else:
-            return f"{int(hours):02}:{int(minutes):02}:{int(seconds):02}"
+        return _format_elapsed(_elapsed)
     return _elapsed
 
 def run_pair(mode: dict, name_a: str, name_b: str, root: Path | None = None) -> dict[str, int]:
@@ -77,6 +85,12 @@ def run_pair(mode: dict, name_a: str, name_b: str, root: Path | None = None) -> 
                 "winner": result.winner or "draw",
                 "score_a": result.scores["A"],
                 "score_b": result.scores["B"],
+                "decision_time_a_seconds": f"{result.decision_time_seconds['A']:.9f}",
+                "decision_time_b_seconds": f"{result.decision_time_seconds['B']:.9f}",
+                "decisions_a": result.decisions["A"],
+                "decisions_b": result.decisions["B"],
+                "turns_a": result.turns["A"],
+                "turns_b": result.turns["B"],
             }
         )
 
@@ -106,8 +120,8 @@ def run_mode(mode: dict, pairs: list[tuple[str, str]] | None = None, force: bool
         wins = run_pair(mode, a, b, root)
         t_pair = time() - s_pair
         t_round = t_pair/(len(mode['game_seeds']) or 1)
-        elapsed_pair = _get_elapsed(t_pair, as_string=True)
-        elapsed_round = _get_elapsed(t_round, as_string=True)
+        elapsed_pair = _format_elapsed(t_pair)
+        elapsed_round = _format_elapsed(t_round)
         print(f"{pair_key(a, b)}: {len(mode['game_seeds'])} games, "
               f"A({a}) wins={wins['A']} B({b}) wins={wins['B']} draws={wins['draw']} "
               f"[{elapsed_pair} ({elapsed_round} * {len(mode['game_seeds'])})]")

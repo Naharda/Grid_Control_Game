@@ -1,0 +1,4 @@
+game,agent_a,agent_b,winner,score_a,score_b,decision_time_a_seconds,decision_time_b_seconds,decisions_a,decisions_b
+0,rule,mcts,A,9,0,0.020111400,0.234152700,4,4
+1,rule,mcts,draw,0,0,0.002591300,0.023976000,1,1
+2,rule,mcts,B,4,19,0.031245300,0.776968000,7,7

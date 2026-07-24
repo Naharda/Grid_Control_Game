@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "name": "inner_ring_multi_7x7",
+  "description": "The same inner-ring spawns with a 2-point center and two 1-point side objectives.",
+  "rows": 7,
+  "cols": 7,
+  "pieces_per_player": 3,
+  "spawns": {
+    "A": [[1, 3], [2, 1], [2, 5]],
+    "B": [[5, 3], [4, 5], [4, 1]]
+  },
+  "capture_cells": [
+    {"cell": [3, 0], "points": 1},
+    {"cell": [3, 3], "points": 2},
+    {"cell": [3, 6], "points": 1}
+  ],
+  "blocked_cells": []
+}

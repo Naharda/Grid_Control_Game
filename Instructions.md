@@ -48,6 +48,11 @@ Score more points than your opponent by the time the game ends. Points are earne
 - The game ends once **both** players have taken all 50 of their turns.
 - The player with the **higher score** wins. Equal scores are a **draw**.
 
+**Optional point-goal variant.** A mode may set `score_to_win` to a positive
+number. In that variant, the game ends immediately when either player reaches
+the goal; the configured turn limit remains a safety cap. If the cap is reached
+first, the higher score wins as usual.
+
 ## 5. Turn Structure
 
 On your turn:
@@ -59,6 +64,11 @@ On your turn:
 5. Your turn ends and play passes to your opponent.
 
 **Passing:** If no card in the market offers any legal action (extremely rare), your turn is skipped. The skipped turn still counts toward your 50 turns; the market is unchanged.
+
+**Optional two-pass refresh.** A mode may set
+`market_refresh_after_passes = 2`. After two consecutive skipped turns, all
+three market cards are discarded and three replacements are dealt. Any legal
+action resets the consecutive-pass counter.
 
 ## 6. The Actions
 

@@ -101,7 +101,61 @@ def apply_action(state: GameState, action: Action, draw_card: CardType | None = 
         deck=tuple(deck),
         discard=tuple(discard),
         rng_state=rng.getstate(),
+        consecutive_passes=0,
         last_action=action.compact(),
+    )
+
+
+def apply_pass(
+    state: GameState,
+    draw_cards: tuple[CardType, ...] | None = None,
+) -> GameState:
+    """Advance a pass turn and refresh the market at the configured threshold.
+
+    ``draw_cards`` forces a recorded refresh outcome during CSV replay. Normal
+    gameplay leaves it unset and draws naturally from the shuffled deck.
+    """
+    player = state.current_player
+    pass_count = state.consecutive_passes + 1
+    market = list(state.market)
+    deck = list(state.deck)
+    discard = list(state.discard)
+    rng = random.Random()
+    rng.setstate(state.rng_state)
+    refreshed = False
+
+    threshold = state.config.market_refresh_after_passes
+    if threshold is not None and pass_count >= threshold:
+        discard.extend(market)
+        market = []
+        if draw_cards is not None:
+            if len(draw_cards) != state.config.market_size:
+                raise ValueError("Forced market refresh must provide exactly market_size cards")
+            for card in draw_cards:
+                if card in deck:
+                    deck.remove(card)
+                elif card in discard:
+                    discard.remove(card)
+                market.append(card)
+        else:
+            while len(market) < state.config.market_size:
+                if not deck:
+                    deck = discard
+                    discard = []
+                    rng.shuffle(deck)
+                market.append(deck.pop(0))
+        pass_count = 0
+        refreshed = True
+
+    return state.with_updates(
+        current_player=other(player),
+        turn_counts={**state.turn_counts, player: state.turn_counts[player] + 1},
+        market=tuple(market),
+        deck=tuple(deck),
+        discard=tuple(discard),
+        rng_state=rng.getstate(),
+        consecutive_passes=pass_count,
+        last_action="pass+market_refresh" if refreshed else "pass",
     )
 
 

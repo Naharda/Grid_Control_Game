@@ -1,12 +1,13 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field
+from time import perf_counter
 from typing import Callable
 
 from agents.base import Agent
 
 from .actions import Action
-from .rules import apply_action, get_legal_actions
+from .rules import apply_action, apply_pass, get_legal_actions
 from .state import GameState, initial_state
 
 StepObserver = Callable[[GameState, "Action | None", GameState], None]
@@ -18,6 +19,8 @@ class MatchResult:
     scores: dict[str, int]
     turns: dict[str, int]
     log: list[str] = field(default_factory=list)
+    decision_time_seconds: dict[str, float] = field(default_factory=dict)
+    decisions: dict[str, int] = field(default_factory=dict)
 
 
 def play_match(
@@ -30,20 +33,22 @@ def play_match(
     state = state or initial_state()
     agents = {"A": agent_a, "B": agent_b}
     history: list[str] = []
+    decision_time_seconds = {"A": 0.0, "B": 0.0}
+    decisions = {"A": 0, "B": 0}
 
     while not state.is_terminal:
         legal = get_legal_actions(state)
         if not legal:
-            new_state = state.with_updates(
-                current_player="B" if state.current_player == "A" else "A",
-                turn_counts={**state.turn_counts, state.current_player: state.turn_counts[state.current_player] + 1},
-                last_action="pass",
-            )
+            new_state = apply_pass(state)
             if on_step:
                 on_step(state, None, new_state)
             state = new_state
             continue
-        action = agents[state.current_player].choose_action(state, legal)
+        player = state.current_player
+        started = perf_counter()
+        action = agents[player].choose_action(state, legal)
+        decision_time_seconds[player] += perf_counter() - started
+        decisions[player] += 1
         new_state = apply_action(state, action)
         if on_step:
             on_step(state, action, new_state)
@@ -57,4 +62,11 @@ def play_match(
         winner = "B"
     else:
         winner = None
-    return MatchResult(winner=winner, scores=state.scores, turns=state.turn_counts, log=history)
+    return MatchResult(
+        winner=winner,
+        scores=state.scores,
+        turns=state.turn_counts,
+        log=history,
+        decision_time_seconds=decision_time_seconds,
+        decisions=decisions,
+    )

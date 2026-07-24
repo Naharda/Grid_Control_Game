@@ -1,0 +1,6 @@
+depth,benchmark_seconds,benchmark_nodes,benchmark_status,bounded_match_games,bounded_match_win_points,bounded_match_seconds_per_game,bounded_match_ms_per_decision
+2,1.166000,240.000000,completed,2,0.500000,2.318913,323.026250
+3,10.274000,3615.000000,completed,2,1.000000,13.984157,1990.531471
+4,102.444000,53545.000000,completed,2,1.000000,126.074348,18004.592979
+5,120.000000,,timeout >120 s,0,,,
+6,,,skipped after depth-5 timeout,0,,,

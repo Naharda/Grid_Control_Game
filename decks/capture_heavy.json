@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "name": "capture_heavy",
+  "description": "28-card deck emphasizing captures; expected to stress pass/deadlock behavior.",
+  "cards": {
+    "move1": 5,
+    "move2": 4,
+    "mobilize": 4,
+    "capture": 11,
+    "swap": 4
+  }
+}

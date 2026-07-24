@@ -20,6 +20,7 @@ class GameState:
     deck: tuple[CardType, ...]
     discard: tuple[CardType, ...]
     rng_state: object
+    consecutive_passes: int = 0
     last_action: str | None = None
 
     @property
@@ -28,7 +29,11 @@ class GameState:
 
     @property
     def is_terminal(self) -> bool:
-        return all(v >= self.config.turns_per_player for v in self.turn_counts.values())
+        score_goal = self.config.score_to_win
+        return (
+            score_goal is not None
+            and any(score >= score_goal for score in self.scores.values())
+        ) or all(v >= self.config.turns_per_player for v in self.turn_counts.values())
 
     @property
     def round_number(self) -> int:
@@ -48,6 +53,7 @@ class GameState:
             tuple(sorted((p, tuple(v)) for p, v in self.positions.items())),
             tuple(sorted(self.scores.items())),
             self.market,
+            self.consecutive_passes,
         )
         if include_deck:
             return base + (self.deck, self.discard)
@@ -83,4 +89,5 @@ def initial_state(config: GameConfig | None = None) -> GameState:
         deck=deck,
         discard=(),
         rng_state=rng.getstate(),
+        consecutive_passes=0,
     )

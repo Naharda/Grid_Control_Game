@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "name": "swap_heavy",
+  "description": "28-card deck emphasizing positional swaps.",
+  "cards": {
+    "move1": 6,
+    "move2": 5,
+    "mobilize": 4,
+    "capture": 4,
+    "swap": 9
+  }
+}

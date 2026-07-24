@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "name": "outer_orbit_multi_9x9",
+  "description": "The same wide orbit spawns with five distributed objectives and a moderately valuable center.",
+  "rows": 9,
+  "cols": 9,
+  "pieces_per_player": 3,
+  "spawns": {
+    "A": [[1, 4], [3, 1], [3, 7]],
+    "B": [[7, 4], [5, 7], [5, 1]]
+  },
+  "capture_cells": [
+    {"cell": [2, 4], "points": 1},
+    {"cell": [4, 1], "points": 2},
+    {"cell": [4, 4], "points": 3},
+    {"cell": [4, 7], "points": 2},
+    {"cell": [6, 4], "points": 1}
+  ],
+  "blocked_cells": []
+}

@@ -1,0 +1,5 @@
+geometry,objectives,score_goal,games,decisive_rate,goal_reached_rate,mean_total_turns,median_total_turns,mean_winning_score
+Inner ring,Distributed,40,48,1.000000,1.000000,32.750000,33.500000,40.895833
+Inner ring,Single center,40,48,1.000000,1.000000,23.479167,22.000000,41.437500
+Outer orbit,Distributed,60,48,1.000000,1.000000,27.416667,27.000000,61.916667
+Outer orbit,Single center,60,48,1.000000,1.000000,26.812500,25.500000,62.437500

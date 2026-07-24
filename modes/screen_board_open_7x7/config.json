@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "mode_name": "screen_board_open_7x7",
+  "description": "Fast-agent screen on the open 7x7 arena",
+  "created_at": "2026-07-23T12:44:01+00:00",
+  "code_version": "unknown",
+  "board": {
+    "name": "open_7x7",
+    "definition": {
+      "schema_version": 1,
+      "name": "open_7x7",
+      "description": "Open 7x7 arena with a valuable center and two secondary objectives.",
+      "rows": 7,
+      "cols": 7,
+      "pieces_per_player": 3,
+      "spawns": {
+        "A": [
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            4
+          ]
+        ],
+        "B": [
+          [
+            6,
+            2
+          ],
+          [
+            6,
+            3
+          ],
+          [
+            6,
+            4
+          ]
+        ]
+      },
+      "capture_cells": [
+        {
+          "cell": [
+            3,
+            1
+          ],
+          "points": 1
+        },
+        {
+          "cell": [
+            3,
+            3
+          ],
+          "points": 2
+        },
+        {
+          "cell": [
+            3,
+            5
+          ],
+          "points": 1
+        }
+      ],
+      "blocked_cells": []
+    }
+  },
+  "deck": {
+    "name": "default",
+    "definition": {
+      "schema_version": 1,
+      "name": "default",
+      "description": "Standard 28-card deck.",
+      "cards": {
+        "move1": 8,
+        "move2": 6,
+        "mobilize": 5,
+        "capture": 5,
+        "swap": 4
+      }
+    }
+  },
+  "rules": {
+    "turns_per_player": 50,
+    "market_size": 3,
+    "capture_score": 3,
+    "swap_range": 3,
+    "net_range": 3
+  },
+  "heuristic_weights": {
+    "score": 100,
+    "center": 10,
+    "center_distance": 2,
+    "capture_threat": 15,
+    "net_potential": 20,
+    "swap_potential": 8,
+    "safety": 10,
+    "mobility": 1
+  },
+  "agents": [
+    {
+      "name": "random",
+      "params": {
+        "seed": null
+      }
+    },
+    {
+      "name": "greedy",
+      "params": {}
+    },
+    {
+      "name": "rule",
+      "params": {}
+    }
+  ],
+  "num_games": 8,
+  "game_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "agent_seed_policy": "derived"
+}

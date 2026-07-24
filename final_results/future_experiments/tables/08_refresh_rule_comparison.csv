@@ -1,0 +1,5 @@
+environment,pass_rule,mode,games,draw_rate,deadlock_rate,mean_final_pass_streak,mean_total_score
+Default,Original pass rule,screen_board_default,48,0.062500,0.125000,11.145833,89.854167
+Default,Refresh after 2 passes,refresh2_default,48,0.000000,0.000000,0.000000,100.562500
+Capture-heavy,Original pass rule,screen_deck_capture,48,0.333333,0.833333,67.479167,50.250000
+Capture-heavy,Refresh after 2 passes,refresh2_capture_heavy,48,0.000000,0.000000,0.000000,141.104167

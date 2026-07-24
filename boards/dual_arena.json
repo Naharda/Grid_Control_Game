@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "name": "dual_arena",
+  "description": "Symmetric 5x7 arena with two equal 2-point objectives and a blocked center.",
+  "rows": 5,
+  "cols": 7,
+  "pieces_per_player": 3,
+  "spawns": {
+    "A": [[0, 2], [0, 3], [0, 4]],
+    "B": [[4, 2], [4, 3], [4, 4]]
+  },
+  "capture_cells": [
+    {"cell": [2, 1], "points": 2},
+    {"cell": [2, 5], "points": 2}
+  ],
+  "blocked_cells": [[2, 3]]
+}

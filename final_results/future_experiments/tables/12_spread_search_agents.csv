@@ -1,0 +1,7 @@
+mode,objectives,score_goal,agent,games,win_points_rate,mean_margin,milliseconds_per_decision
+spread_search_inner_center_goal40,Single center,40,expectimax,12,0.500000,-1.166667,958.731610
+spread_search_inner_center_goal40,Single center,40,mcts,12,0.500000,1.333333,244.616054
+spread_search_inner_center_goal40,Single center,40,rule,12,0.500000,-0.166667,8.407123
+spread_search_inner_multi_goal40,Distributed,40,expectimax,12,0.666667,3.583333,1134.398730
+spread_search_inner_multi_goal40,Distributed,40,mcts,12,0.250000,-7.916667,300.196622
+spread_search_inner_multi_goal40,Distributed,40,rule,12,0.583333,4.333333,22.040979

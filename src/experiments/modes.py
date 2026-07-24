@@ -36,6 +36,7 @@ from game.setup_loader import (
 MODES_ROOT = REPO_ROOT / "modes"
 
 RULE_FIELDS = ("turns_per_player", "market_size", "capture_score", "swap_range", "net_range")
+OPTIONAL_RULE_FIELDS = ("market_refresh_after_passes", "score_to_win")
 SEED_POLICIES = ("derived", "null-passthrough")
 
 
@@ -108,6 +109,14 @@ def validate_mode(mode: dict, source: str = "<mode>") -> None:
     for field in RULE_FIELDS:
         if not (isinstance(rules.get(field), int) and rules[field] >= 1):
             raise ValueError(f"{source}: rules.{field} must be a positive integer")
+    refresh_after = rules.get("market_refresh_after_passes")
+    if refresh_after is not None and not (isinstance(refresh_after, int) and refresh_after >= 2):
+        raise ValueError(
+            f"{source}: rules.market_refresh_after_passes must be null or an integer >= 2"
+        )
+    score_to_win = rules.get("score_to_win")
+    if score_to_win is not None and not (isinstance(score_to_win, int) and score_to_win >= 1):
+        raise ValueError(f"{source}: rules.score_to_win must be null or a positive integer")
     agents = mode["agents"]
     if not (isinstance(agents, list) and agents):
         raise ValueError(f"{source}: 'agents' must be a non-empty list")
@@ -146,6 +155,13 @@ def config_from_mode(mode: dict, seed: int | None = None) -> GameConfig:
     kwargs.update(board_config_kwargs(mode["board"]["definition"]))
     kwargs.update(deck_config_kwargs(mode["deck"]["definition"]))
     kwargs.update({field: mode["rules"][field] for field in RULE_FIELDS})
+    kwargs.update(
+        {
+            field: mode["rules"][field]
+            for field in OPTIONAL_RULE_FIELDS
+            if field in mode["rules"]
+        }
+    )
     if "heuristic_weights" in mode:
         kwargs["heuristic_weights"] = dict(mode["heuristic_weights"])
     return GameConfig(**kwargs)

@@ -18,7 +18,7 @@ from pathlib import Path
 from .actions import Action
 from .board import Position
 from .cards import CardType, card_from_value
-from .rules import apply_action, get_legal_actions
+from .rules import apply_action, apply_pass, get_legal_actions
 from .state import GameState
 
 EMPTY = "-1"
@@ -169,11 +169,19 @@ def replay_rows(initial: GameState, rows: list[dict], validate: bool = True) -> 
         if slot == -1:
             if validate and get_legal_actions(state):
                 raise ReplayError(f"row {turn}: recorded a pass but legal actions exist")
-            state = state.with_updates(
-                current_player="B" if state.current_player == "A" else "A",
-                turn_counts={**state.turn_counts, state.current_player: state.turn_counts[state.current_player] + 1},
-                last_action="pass",
+            threshold = state.config.market_refresh_after_passes
+            will_refresh = (
+                threshold is not None
+                and state.consecutive_passes + 1 >= threshold
             )
+            refresh_cards = (
+                tuple(parse_card(row[f"card_{i}"]) for i in range(state.config.market_size))
+                if will_refresh
+                else None
+            )
+            if refresh_cards is not None and any(card is None for card in refresh_cards):
+                raise ReplayError(f"row {turn}: refreshed market contains an empty card slot")
+            state = apply_pass(state, draw_cards=refresh_cards)
         else:
             action = _resolve_action(state, row, turn)
             state = apply_action(state, action, draw_card=parse_card(row["card_drawn"]))

@@ -1,0 +1,9 @@
+game,agent_a,agent_b,winner,score_a,score_b,decision_time_a_seconds,decision_time_b_seconds,decisions_a,decisions_b
+0,random,rule,B,8,89,0.000242299,0.594970901,49,50
+1,random,rule,B,7,94,0.000192400,0.658347900,50,50
+2,random,rule,B,2,104,0.000269200,0.497182800,50,50
+3,random,rule,draw,0,0,0.000003100,0.000000000,1,0
+4,random,rule,B,4,103,0.000676000,0.921087200,50,50
+5,random,rule,B,12,80,0.000215700,0.737829399,50,50
+6,random,rule,B,4,102,0.000185800,0.610736501,50,50
+7,random,rule,B,13,86,0.000207300,0.520369500,50,50

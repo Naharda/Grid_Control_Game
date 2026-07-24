@@ -1,0 +1,625 @@
+game,agent_a,agent_b,winner,score_a,score_b,decision_time_a_seconds,decision_time_b_seconds,decisions_a,decisions_b,mode,pair,family,condition
+0,greedy,random,A,83,7,0.5222999,0.0001685,50,50,screen_board_default,greedy_random,Board,Default 5×5
+1,greedy,random,A,99,6,0.4393804,0.00017,50,50,screen_board_default,greedy_random,Board,Default 5×5
+2,greedy,random,A,71,14,0.5242743,0.0001742,50,50,screen_board_default,greedy_random,Board,Default 5×5
+3,greedy,random,A,71,19,0.6146951,0.0002685,50,50,screen_board_default,greedy_random,Board,Default 5×5
+4,greedy,random,A,83,10,0.7473682,0.0002166,50,50,screen_board_default,greedy_random,Board,Default 5×5
+5,greedy,random,A,60,24,0.6494305,0.0002051,50,50,screen_board_default,greedy_random,Board,Default 5×5
+6,greedy,random,A,84,4,0.7593751,0.000730199,50,50,screen_board_default,greedy_random,Board,Default 5×5
+7,greedy,random,A,76,16,0.8543398,0.0003335,50,50,screen_board_default,greedy_random,Board,Default 5×5
+0,greedy,rule,B,31,76,1.1032432,0.4357721,50,50,screen_board_default,greedy_rule,Board,Default 5×5
+1,greedy,rule,B,41,63,0.7011711,0.430774301,50,50,screen_board_default,greedy_rule,Board,Default 5×5
+2,greedy,rule,B,36,71,0.689444,0.3059175,50,50,screen_board_default,greedy_rule,Board,Default 5×5
+3,greedy,rule,B,41,68,0.8241917,0.4413652,50,50,screen_board_default,greedy_rule,Board,Default 5×5
+4,greedy,rule,B,33,74,0.912763699,0.4515251,50,50,screen_board_default,greedy_rule,Board,Default 5×5
+5,greedy,rule,B,34,65,0.8146947,0.481726,50,50,screen_board_default,greedy_rule,Board,Default 5×5
+6,greedy,rule,B,47,64,0.6841359,0.4575944,50,50,screen_board_default,greedy_rule,Board,Default 5×5
+7,greedy,rule,B,40,66,0.7077754,0.4525517,50,50,screen_board_default,greedy_rule,Board,Default 5×5
+0,random,greedy,B,15,77,0.0002261,1.0132083,50,50,screen_board_default,random_greedy,Board,Default 5×5
+1,random,greedy,B,11,85,0.0001998,0.938161899,50,50,screen_board_default,random_greedy,Board,Default 5×5
+2,random,greedy,B,6,90,0.000222,1.1021247,50,50,screen_board_default,random_greedy,Board,Default 5×5
+3,random,greedy,draw,0,0,3e-06,0.0,1,0,screen_board_default,random_greedy,Board,Default 5×5
+4,random,greedy,B,16,81,0.0001814,0.7485724,50,50,screen_board_default,random_greedy,Board,Default 5×5
+5,random,greedy,draw,0,0,1.18e-05,0.0093045,3,2,screen_board_default,random_greedy,Board,Default 5×5
+6,random,greedy,B,14,80,0.000262101,0.8100196,50,50,screen_board_default,random_greedy,Board,Default 5×5
+7,random,greedy,B,13,71,0.000205401,0.6942288,50,50,screen_board_default,random_greedy,Board,Default 5×5
+0,random,rule,B,5,7,3.05e-05,0.0131927,8,7,screen_board_default,random_rule,Board,Default 5×5
+1,random,rule,B,8,99,0.0004812,0.3221918,50,50,screen_board_default,random_rule,Board,Default 5×5
+2,random,rule,B,9,94,0.000205499,0.3759278,50,50,screen_board_default,random_rule,Board,Default 5×5
+3,random,rule,draw,0,0,4e-06,0.0,1,0,screen_board_default,random_rule,Board,Default 5×5
+4,random,rule,B,2,109,0.0003081,0.3381586,50,50,screen_board_default,random_rule,Board,Default 5×5
+5,random,rule,B,10,90,0.0001946,0.3766685,50,50,screen_board_default,random_rule,Board,Default 5×5
+6,random,rule,B,8,98,0.000274001,0.3913711,50,50,screen_board_default,random_rule,Board,Default 5×5
+7,random,rule,B,4,104,0.0002129,0.4290616,50,50,screen_board_default,random_rule,Board,Default 5×5
+0,rule,greedy,A,61,45,0.3442639,0.648109001,50,50,screen_board_default,rule_greedy,Board,Default 5×5
+1,rule,greedy,A,81,29,0.3773042,0.7082329,50,50,screen_board_default,rule_greedy,Board,Default 5×5
+2,rule,greedy,A,76,30,0.493589,0.9664906,50,50,screen_board_default,rule_greedy,Board,Default 5×5
+3,rule,greedy,A,84,20,0.4227172,0.8106682,50,50,screen_board_default,rule_greedy,Board,Default 5×5
+4,rule,greedy,A,77,30,0.380032999,0.705167,50,50,screen_board_default,rule_greedy,Board,Default 5×5
+5,rule,greedy,A,79,28,0.4194695,0.7080952,50,50,screen_board_default,rule_greedy,Board,Default 5×5
+6,rule,greedy,A,72,33,0.4898218,0.731474,50,50,screen_board_default,rule_greedy,Board,Default 5×5
+7,rule,greedy,A,81,24,0.377650699,0.7491511,50,50,screen_board_default,rule_greedy,Board,Default 5×5
+0,rule,random,A,99,11,0.3679539,0.000190601,50,50,screen_board_default,rule_random,Board,Default 5×5
+1,rule,random,A,96,11,0.6627057,0.0005464,50,50,screen_board_default,rule_random,Board,Default 5×5
+2,rule,random,A,26,3,0.2664603,6.68e-05,15,15,screen_board_default,rule_random,Board,Default 5×5
+3,rule,random,A,95,6,0.3141486,0.000198,50,50,screen_board_default,rule_random,Board,Default 5×5
+4,rule,random,A,104,7,0.4773397,0.0002984,50,50,screen_board_default,rule_random,Board,Default 5×5
+5,rule,random,A,96,5,0.4035465,0.000492,50,50,screen_board_default,rule_random,Board,Default 5×5
+6,rule,random,A,11,1,0.0155214,2.72e-05,7,6,screen_board_default,rule_random,Board,Default 5×5
+7,rule,random,A,103,6,0.3517418,0.000295299,50,50,screen_board_default,rule_random,Board,Default 5×5
+0,greedy,random,A,70,7,0.5041965,0.0001117,25,24,screen_board_dual_arena,greedy_random,Board,Dual arena 5×7
+1,greedy,random,A,209,13,0.822895699,0.0002084,50,50,screen_board_dual_arena,greedy_random,Board,Dual arena 5×7
+2,greedy,random,A,122,10,0.487937,0.000162699,38,37,screen_board_dual_arena,greedy_random,Board,Dual arena 5×7
+3,greedy,random,A,57,2,0.2656518,8.2e-05,22,21,screen_board_dual_arena,greedy_random,Board,Dual arena 5×7
+4,greedy,random,A,223,7,0.8049291,0.0001977,50,50,screen_board_dual_arena,greedy_random,Board,Dual arena 5×7
+5,greedy,random,A,28,4,0.1289693,8.48e-05,13,12,screen_board_dual_arena,greedy_random,Board,Dual arena 5×7
+6,greedy,random,A,182,13,0.8324659,0.0001662,44,43,screen_board_dual_arena,greedy_random,Board,Dual arena 5×7
+7,greedy,random,A,153,15,0.7417275,0.0002309,50,50,screen_board_dual_arena,greedy_random,Board,Dual arena 5×7
+0,greedy,rule,B,0,4,0.0317027,0.0207416,4,4,screen_board_dual_arena,greedy_rule,Board,Dual arena 5×7
+1,greedy,rule,A,121,119,0.9624305,0.4302031,50,50,screen_board_dual_arena,greedy_rule,Board,Dual arena 5×7
+2,greedy,rule,A,139,107,0.979872601,0.418470001,50,50,screen_board_dual_arena,greedy_rule,Board,Dual arena 5×7
+3,greedy,rule,A,151,89,1.2064633,0.666895499,50,50,screen_board_dual_arena,greedy_rule,Board,Dual arena 5×7
+4,greedy,rule,B,65,96,0.820666,0.4028623,50,50,screen_board_dual_arena,greedy_rule,Board,Dual arena 5×7
+5,greedy,rule,A,112,92,0.9246685,0.474843,42,41,screen_board_dual_arena,greedy_rule,Board,Dual arena 5×7
+6,greedy,rule,A,128,121,1.2396603,0.530361301,50,50,screen_board_dual_arena,greedy_rule,Board,Dual arena 5×7
+7,greedy,rule,B,89,166,1.0683596,0.7213939,50,50,screen_board_dual_arena,greedy_rule,Board,Dual arena 5×7
+0,random,greedy,B,4,40,7.55e-05,0.1424338,21,22,screen_board_dual_arena,random_greedy,Board,Dual arena 5×7
+1,random,greedy,B,7,107,0.000114,0.3660874,29,28,screen_board_dual_arena,random_greedy,Board,Dual arena 5×7
+2,random,greedy,B,18,195,0.0001896,0.7469,50,50,screen_board_dual_arena,random_greedy,Board,Dual arena 5×7
+3,random,greedy,draw,0,0,2.9e-06,0.0,1,0,screen_board_dual_arena,random_greedy,Board,Dual arena 5×7
+4,random,greedy,B,0,8,1.76e-05,0.0576922,4,4,screen_board_dual_arena,random_greedy,Board,Dual arena 5×7
+5,random,greedy,draw,0,0,1.06e-05,0.0118824,3,2,screen_board_dual_arena,random_greedy,Board,Dual arena 5×7
+6,random,greedy,B,15,174,0.0002351,0.6180243,50,50,screen_board_dual_arena,random_greedy,Board,Dual arena 5×7
+7,random,greedy,B,18,207,0.0001929,0.5730512,50,50,screen_board_dual_arena,random_greedy,Board,Dual arena 5×7
+0,random,rule,B,3,7,3.11e-05,0.0122129,8,7,screen_board_dual_arena,random_rule,Board,Dual arena 5×7
+1,random,rule,B,26,191,0.0002194,0.6944634,50,50,screen_board_dual_arena,random_rule,Board,Dual arena 5×7
+2,random,rule,B,4,16,3.97e-05,0.0215682,10,9,screen_board_dual_arena,random_rule,Board,Dual arena 5×7
+3,random,rule,draw,0,0,2.5e-06,0.0,1,0,screen_board_dual_arena,random_rule,Board,Dual arena 5×7
+4,random,rule,B,26,158,0.000161699,0.381637499,50,50,screen_board_dual_arena,random_rule,Board,Dual arena 5×7
+5,random,rule,B,4,26,5.19e-05,0.0777098,13,12,screen_board_dual_arena,random_rule,Board,Dual arena 5×7
+6,random,rule,B,16,216,0.000183,0.61623,50,50,screen_board_dual_arena,random_rule,Board,Dual arena 5×7
+7,random,rule,B,22,204,0.0001816,0.5297768,50,50,screen_board_dual_arena,random_rule,Board,Dual arena 5×7
+0,rule,greedy,A,144,106,0.653905,1.3811379,50,50,screen_board_dual_arena,rule_greedy,Board,Dual arena 5×7
+1,rule,greedy,B,107,138,0.587264301,1.245316401,50,50,screen_board_dual_arena,rule_greedy,Board,Dual arena 5×7
+2,rule,greedy,A,125,117,0.642799399,0.9469034,50,50,screen_board_dual_arena,rule_greedy,Board,Dual arena 5×7
+3,rule,greedy,A,127,114,0.5112454,0.876505,50,50,screen_board_dual_arena,rule_greedy,Board,Dual arena 5×7
+4,rule,greedy,B,112,152,0.6011045,1.4679352,50,50,screen_board_dual_arena,rule_greedy,Board,Dual arena 5×7
+5,rule,greedy,A,111,109,0.537998,1.095044101,50,50,screen_board_dual_arena,rule_greedy,Board,Dual arena 5×7
+6,rule,greedy,A,145,107,0.4376595,0.7507519,50,50,screen_board_dual_arena,rule_greedy,Board,Dual arena 5×7
+7,rule,greedy,B,114,145,0.4193423,0.7291115,50,50,screen_board_dual_arena,rule_greedy,Board,Dual arena 5×7
+0,rule,random,A,16,10,0.0298258,3.18e-05,8,7,screen_board_dual_arena,rule_random,Board,Dual arena 5×7
+1,rule,random,A,211,20,0.6032152,0.0001912,50,50,screen_board_dual_arena,rule_random,Board,Dual arena 5×7
+2,rule,random,A,33,3,0.103331,6.1e-05,15,15,screen_board_dual_arena,rule_random,Board,Dual arena 5×7
+3,rule,random,A,57,2,0.1010383,0.0001356,22,21,screen_board_dual_arena,rule_random,Board,Dual arena 5×7
+4,rule,random,A,52,3,0.0719816,4.5e-05,14,13,screen_board_dual_arena,rule_random,Board,Dual arena 5×7
+5,rule,random,A,137,30,0.719922199,0.0001871,44,44,screen_board_dual_arena,rule_random,Board,Dual arena 5×7
+6,rule,random,A,196,15,0.8315554,0.000213,50,50,screen_board_dual_arena,rule_random,Board,Dual arena 5×7
+7,rule,random,A,196,4,0.3907331,0.0001917,50,50,screen_board_dual_arena,rule_random,Board,Dual arena 5×7
+0,greedy,random,draw,0,0,0.034324,1.95e-05,4,4,screen_board_open_7x7,greedy_random,Board,Open 7×7
+1,greedy,random,A,3,0,0.0067877,8.2e-06,3,2,screen_board_open_7x7,greedy_random,Board,Open 7×7
+2,greedy,random,A,156,10,0.6933758,0.000191,48,48,screen_board_open_7x7,greedy_random,Board,Open 7×7
+3,greedy,random,draw,0,0,0.0006846,0.0,1,0,screen_board_open_7x7,greedy_random,Board,Open 7×7
+4,greedy,random,A,128,1,0.5277072,0.0001785,35,35,screen_board_open_7x7,greedy_random,Board,Open 7×7
+5,greedy,random,A,31,2,0.1630602,5.31e-05,13,12,screen_board_open_7x7,greedy_random,Board,Open 7×7
+6,greedy,random,A,64,7,0.3190322,0.0001009,25,25,screen_board_open_7x7,greedy_random,Board,Open 7×7
+7,greedy,random,A,46,2,0.2660674,7.52e-05,18,18,screen_board_open_7x7,greedy_random,Board,Open 7×7
+0,greedy,rule,A,113,90,1.1378402,0.8795628,50,50,screen_board_open_7x7,greedy_rule,Board,Open 7×7
+1,greedy,rule,A,3,0,0.0064288,0.0031201,3,2,screen_board_open_7x7,greedy_rule,Board,Open 7×7
+2,greedy,rule,A,112,99,1.1626702,0.6506492,50,50,screen_board_open_7x7,greedy_rule,Board,Open 7×7
+3,greedy,rule,draw,0,0,0.0013011,0.0,1,0,screen_board_open_7x7,greedy_rule,Board,Open 7×7
+4,greedy,rule,B,94,112,0.9580072,0.6404604,50,50,screen_board_open_7x7,greedy_rule,Board,Open 7×7
+5,greedy,rule,A,27,20,0.167332,0.1128986,14,13,screen_board_open_7x7,greedy_rule,Board,Open 7×7
+6,greedy,rule,B,63,136,1.2479184,0.8739283,50,50,screen_board_open_7x7,greedy_rule,Board,Open 7×7
+7,greedy,rule,A,6,0,0.0467464,0.0202329,4,3,screen_board_open_7x7,greedy_rule,Board,Open 7×7
+0,random,greedy,B,0,2,1.52e-05,0.0260701,4,4,screen_board_open_7x7,random_greedy,Board,Open 7×7
+1,random,greedy,draw,0,0,4.4e-06,0.0030617,1,1,screen_board_open_7x7,random_greedy,Board,Open 7×7
+2,random,greedy,draw,2,2,1.81e-05,0.017894,5,4,screen_board_open_7x7,random_greedy,Board,Open 7×7
+3,random,greedy,draw,0,0,4.2e-06,0.0,1,0,screen_board_open_7x7,random_greedy,Board,Open 7×7
+4,random,greedy,B,9,173,0.0002106,0.8701808,50,50,screen_board_open_7x7,random_greedy,Board,Open 7×7
+5,random,greedy,B,3,16,4.6e-05,0.1835915,14,13,screen_board_open_7x7,random_greedy,Board,Open 7×7
+6,random,greedy,B,0,3,1.44e-05,0.0271342,4,3,screen_board_open_7x7,random_greedy,Board,Open 7×7
+7,random,greedy,draw,0,0,2.21e-05,0.0114834,3,2,screen_board_open_7x7,random_greedy,Board,Open 7×7
+0,random,rule,B,0,4,1.62e-05,0.0186899,4,4,screen_board_open_7x7,random_rule,Board,Open 7×7
+1,random,rule,draw,0,0,3.6e-06,0.0030685,1,1,screen_board_open_7x7,random_rule,Board,Open 7×7
+2,random,rule,B,2,4,1.75e-05,0.0129556,5,4,screen_board_open_7x7,random_rule,Board,Open 7×7
+3,random,rule,draw,0,0,3e-06,0.0,1,0,screen_board_open_7x7,random_rule,Board,Open 7×7
+4,random,rule,B,0,4,1.32e-05,0.0243853,4,4,screen_board_open_7x7,random_rule,Board,Open 7×7
+5,random,rule,B,4,21,5.17e-05,0.0708796,13,12,screen_board_open_7x7,random_rule,Board,Open 7×7
+6,random,rule,draw,0,0,1.56e-05,0.0068566,4,3,screen_board_open_7x7,random_rule,Board,Open 7×7
+7,random,rule,B,0,6,3.01e-05,0.0091555,8,7,screen_board_open_7x7,random_rule,Board,Open 7×7
+0,rule,greedy,B,74,133,0.8233757,1.4127399,50,50,screen_board_open_7x7,rule_greedy,Board,Open 7×7
+1,rule,greedy,B,96,100,0.6383043,1.0554017,50,50,screen_board_open_7x7,rule_greedy,Board,Open 7×7
+2,rule,greedy,A,100,72,0.599643599,0.9865975,50,50,screen_board_open_7x7,rule_greedy,Board,Open 7×7
+3,rule,greedy,draw,0,0,0.0010998,0.0,1,0,screen_board_open_7x7,rule_greedy,Board,Open 7×7
+4,rule,greedy,B,94,116,0.8129161,1.392400699,50,50,screen_board_open_7x7,rule_greedy,Board,Open 7×7
+5,rule,greedy,A,114,83,0.608022599,1.1777726,50,50,screen_board_open_7x7,rule_greedy,Board,Open 7×7
+6,rule,greedy,B,90,113,0.612503,1.1251892,50,50,screen_board_open_7x7,rule_greedy,Board,Open 7×7
+7,rule,greedy,A,119,90,0.7013286,0.9621496,50,50,screen_board_open_7x7,rule_greedy,Board,Open 7×7
+0,rule,random,A,6,0,0.0433383,1.82e-05,4,4,screen_board_open_7x7,rule_random,Board,Open 7×7
+1,rule,random,A,154,27,0.6545399,0.0002392,50,50,screen_board_open_7x7,rule_random,Board,Open 7×7
+2,rule,random,A,145,18,0.4995895,0.0001947,50,50,screen_board_open_7x7,rule_random,Board,Open 7×7
+3,rule,random,draw,0,0,0.0010258,0.0,1,0,screen_board_open_7x7,rule_random,Board,Open 7×7
+4,rule,random,A,157,27,0.6565362,0.0004331,50,50,screen_board_open_7x7,rule_random,Board,Open 7×7
+5,rule,random,A,29,4,0.1042604,7.81e-05,12,11,screen_board_open_7x7,rule_random,Board,Open 7×7
+6,rule,random,A,152,10,0.7906334,0.0002868,50,50,screen_board_open_7x7,rule_random,Board,Open 7×7
+7,rule,random,A,154,10,0.7106618,0.0001986,50,50,screen_board_open_7x7,rule_random,Board,Open 7×7
+0,greedy,random,draw,0,0,0.037729,1.69e-05,4,4,screen_board_bottleneck_7x7,greedy_random,Board,Bottleneck 7×7
+1,greedy,random,A,3,0,0.005704,8.8e-06,3,2,screen_board_bottleneck_7x7,greedy_random,Board,Bottleneck 7×7
+2,greedy,random,A,172,17,0.3530909,0.0001798,50,50,screen_board_bottleneck_7x7,greedy_random,Board,Bottleneck 7×7
+3,greedy,random,draw,0,0,0.0008195,0.0,1,0,screen_board_bottleneck_7x7,greedy_random,Board,Bottleneck 7×7
+4,greedy,random,A,129,19,0.5826175,0.0001998,39,38,screen_board_bottleneck_7x7,greedy_random,Board,Bottleneck 7×7
+5,greedy,random,A,37,3,0.2172143,4.75e-05,12,11,screen_board_bottleneck_7x7,greedy_random,Board,Bottleneck 7×7
+6,greedy,random,A,174,29,0.5538479,0.0001969,50,50,screen_board_bottleneck_7x7,greedy_random,Board,Bottleneck 7×7
+7,greedy,random,A,39,3,0.1334176,5.82e-05,14,14,screen_board_bottleneck_7x7,greedy_random,Board,Bottleneck 7×7
+0,greedy,rule,B,122,151,0.9607369,0.8213143,50,50,screen_board_bottleneck_7x7,greedy_rule,Board,Bottleneck 7×7
+1,greedy,rule,A,3,0,0.0053907,0.0036705,3,2,screen_board_bottleneck_7x7,greedy_rule,Board,Bottleneck 7×7
+2,greedy,rule,A,130,120,0.7435189,0.5499474,50,50,screen_board_bottleneck_7x7,greedy_rule,Board,Bottleneck 7×7
+3,greedy,rule,draw,0,0,0.0006535,0.0,1,0,screen_board_bottleneck_7x7,greedy_rule,Board,Bottleneck 7×7
+4,greedy,rule,B,82,159,0.9589766,0.4413253,50,50,screen_board_bottleneck_7x7,greedy_rule,Board,Bottleneck 7×7
+5,greedy,rule,A,145,111,0.621908,0.462072701,50,50,screen_board_bottleneck_7x7,greedy_rule,Board,Bottleneck 7×7
+6,greedy,rule,B,111,125,0.738889699,0.510524301,50,50,screen_board_bottleneck_7x7,greedy_rule,Board,Bottleneck 7×7
+7,greedy,rule,A,6,0,0.0229615,0.0119478,4,3,screen_board_bottleneck_7x7,greedy_rule,Board,Bottleneck 7×7
+0,random,greedy,B,0,3,1.94e-05,0.0297612,4,4,screen_board_bottleneck_7x7,random_greedy,Board,Bottleneck 7×7
+1,random,greedy,draw,0,0,3.2e-06,0.0021691,1,1,screen_board_bottleneck_7x7,random_greedy,Board,Bottleneck 7×7
+2,random,greedy,B,19,53,7.28e-05,0.1151274,19,19,screen_board_bottleneck_7x7,random_greedy,Board,Bottleneck 7×7
+3,random,greedy,draw,0,0,3e-06,0.0,1,0,screen_board_bottleneck_7x7,random_greedy,Board,Bottleneck 7×7
+4,random,greedy,B,37,180,0.0001951,0.4661039,50,50,screen_board_bottleneck_7x7,random_greedy,Board,Bottleneck 7×7
+5,random,greedy,B,6,33,9.59e-05,0.1020593,13,12,screen_board_bottleneck_7x7,random_greedy,Board,Bottleneck 7×7
+6,random,greedy,B,0,3,1.21e-05,0.0132186,4,3,screen_board_bottleneck_7x7,random_greedy,Board,Bottleneck 7×7
+7,random,greedy,draw,0,0,1e-05,0.0074211,3,2,screen_board_bottleneck_7x7,random_greedy,Board,Bottleneck 7×7
+0,random,rule,B,0,6,1.94e-05,0.0177657,4,4,screen_board_bottleneck_7x7,random_rule,Board,Bottleneck 7×7
+1,random,rule,draw,0,0,3.7e-06,0.0024873,1,1,screen_board_bottleneck_7x7,random_rule,Board,Bottleneck 7×7
+2,random,rule,B,15,119,0.0001407,0.1963995,36,36,screen_board_bottleneck_7x7,random_rule,Board,Bottleneck 7×7
+3,random,rule,draw,0,0,3.2e-06,0.0,1,0,screen_board_bottleneck_7x7,random_rule,Board,Bottleneck 7×7
+4,random,rule,B,28,206,0.0001534,0.2788893,50,50,screen_board_bottleneck_7x7,random_rule,Board,Bottleneck 7×7
+5,random,rule,B,14,24,4.44e-05,0.0648622,12,11,screen_board_bottleneck_7x7,random_rule,Board,Bottleneck 7×7
+6,random,rule,draw,0,0,1.19e-05,0.0055676,4,3,screen_board_bottleneck_7x7,random_rule,Board,Bottleneck 7×7
+7,random,rule,B,4,6,1.72e-05,0.005626,6,5,screen_board_bottleneck_7x7,random_rule,Board,Bottleneck 7×7
+0,rule,greedy,B,117,123,0.660448799,0.9514013,50,50,screen_board_bottleneck_7x7,rule_greedy,Board,Bottleneck 7×7
+1,rule,greedy,B,5,16,0.0251383,0.0280681,7,6,screen_board_bottleneck_7x7,rule_greedy,Board,Bottleneck 7×7
+2,rule,greedy,B,29,43,0.1006108,0.1961744,16,15,screen_board_bottleneck_7x7,rule_greedy,Board,Bottleneck 7×7
+3,rule,greedy,draw,0,0,0.0013645,0.0,1,0,screen_board_bottleneck_7x7,rule_greedy,Board,Bottleneck 7×7
+4,rule,greedy,A,130,117,0.7594968,1.1676944,50,50,screen_board_bottleneck_7x7,rule_greedy,Board,Bottleneck 7×7
+5,rule,greedy,A,156,85,0.6376907,0.9609304,50,50,screen_board_bottleneck_7x7,rule_greedy,Board,Bottleneck 7×7
+6,rule,greedy,draw,3,3,0.0280339,0.020572,4,3,screen_board_bottleneck_7x7,rule_greedy,Board,Bottleneck 7×7
+7,rule,greedy,A,138,131,0.4710449,0.7897715,50,50,screen_board_bottleneck_7x7,rule_greedy,Board,Bottleneck 7×7
+0,rule,random,A,9,0,0.044369,2.12e-05,4,4,screen_board_bottleneck_7x7,rule_random,Board,Bottleneck 7×7
+1,rule,random,A,215,24,0.6000501,0.000729901,50,50,screen_board_bottleneck_7x7,rule_random,Board,Bottleneck 7×7
+2,rule,random,A,42,15,0.0765768,9.24e-05,15,14,screen_board_bottleneck_7x7,rule_random,Board,Bottleneck 7×7
+3,rule,random,draw,0,0,0.0020053,0.0,1,0,screen_board_bottleneck_7x7,rule_random,Board,Bottleneck 7×7
+4,rule,random,A,66,5,0.0769597,7.02e-05,18,18,screen_board_bottleneck_7x7,rule_random,Board,Bottleneck 7×7
+5,rule,random,A,64,4,0.1063316,6.71e-05,18,16,screen_board_bottleneck_7x7,rule_random,Board,Bottleneck 7×7
+6,rule,random,A,131,25,0.332159999,0.000151399,42,42,screen_board_bottleneck_7x7,rule_random,Board,Bottleneck 7×7
+7,rule,random,A,192,15,0.3875953,0.0002246,50,50,screen_board_bottleneck_7x7,rule_random,Board,Bottleneck 7×7
+0,greedy,random,A,3,0,0.027515,2e-05,4,4,screen_pieces_2,greedy_random,Pieces,2 pieces
+1,greedy,random,A,81,9,0.3783167,0.0002363,50,50,screen_pieces_2,greedy_random,Pieces,2 pieces
+2,greedy,random,A,75,13,0.3483861,0.0002055,50,50,screen_pieces_2,greedy_random,Pieces,2 pieces
+3,greedy,random,draw,0,0,0.0010253,0.0,1,0,screen_pieces_2,greedy_random,Pieces,2 pieces
+4,greedy,random,A,78,15,0.2482669,0.0001818,50,50,screen_pieces_2,greedy_random,Pieces,2 pieces
+5,greedy,random,A,41,0,0.1471647,0.0001067,29,28,screen_pieces_2,greedy_random,Pieces,2 pieces
+6,greedy,random,A,35,4,0.1445653,0.0001039,25,25,screen_pieces_2,greedy_random,Pieces,2 pieces
+7,greedy,random,A,81,2,0.313941601,0.000805799,50,50,screen_pieces_2,greedy_random,Pieces,2 pieces
+0,greedy,rule,B,29,81,0.5175246,0.1412612,50,50,screen_pieces_2,greedy_rule,Pieces,2 pieces
+1,greedy,rule,B,47,59,0.3126109,0.1380309,50,50,screen_pieces_2,greedy_rule,Pieces,2 pieces
+2,greedy,rule,B,34,73,0.4233165,0.1812915,50,50,screen_pieces_2,greedy_rule,Pieces,2 pieces
+3,greedy,rule,draw,0,0,0.0006168,0.0,1,0,screen_pieces_2,greedy_rule,Pieces,2 pieces
+4,greedy,rule,A,57,49,0.3579601,0.100725,50,50,screen_pieces_2,greedy_rule,Pieces,2 pieces
+5,greedy,rule,B,48,55,0.3269074,0.1270743,50,50,screen_pieces_2,greedy_rule,Pieces,2 pieces
+6,greedy,rule,A,64,38,0.3790315,0.1391762,50,50,screen_pieces_2,greedy_rule,Pieces,2 pieces
+7,greedy,rule,A,6,1,0.0130877,0.0036462,4,3,screen_pieces_2,greedy_rule,Pieces,2 pieces
+0,random,greedy,B,0,1,2.01e-05,0.0152864,4,4,screen_pieces_2,random_greedy,Pieces,2 pieces
+1,random,greedy,draw,0,0,3.3e-06,0.001517,1,1,screen_pieces_2,random_greedy,Pieces,2 pieces
+2,random,greedy,B,3,93,0.0002715,0.3225177,50,50,screen_pieces_2,random_greedy,Pieces,2 pieces
+3,random,greedy,draw,0,0,2.5e-06,0.0,1,0,screen_pieces_2,random_greedy,Pieces,2 pieces
+4,random,greedy,B,15,79,0.0001707,0.2374992,50,50,screen_pieces_2,random_greedy,Pieces,2 pieces
+5,random,greedy,B,1,16,7.82e-05,0.0900024,14,13,screen_pieces_2,random_greedy,Pieces,2 pieces
+6,random,greedy,B,0,8,2.7e-05,0.0119512,7,6,screen_pieces_2,random_greedy,Pieces,2 pieces
+7,random,greedy,draw,0,0,1.69e-05,0.0046356,6,5,screen_pieces_2,random_greedy,Pieces,2 pieces
+0,random,rule,B,0,2,1.8e-05,0.0298195,4,4,screen_pieces_2,random_rule,Pieces,2 pieces
+1,random,rule,B,13,85,0.0002924,0.2124503,50,50,screen_pieces_2,random_rule,Pieces,2 pieces
+2,random,rule,B,0,1,1.75e-05,0.0065341,5,4,screen_pieces_2,random_rule,Pieces,2 pieces
+3,random,rule,draw,0,0,2.9e-06,0.0,1,0,screen_pieces_2,random_rule,Pieces,2 pieces
+4,random,rule,B,11,87,0.0001541,0.1006642,50,50,screen_pieces_2,random_rule,Pieces,2 pieces
+5,random,rule,B,4,54,0.0001233,0.0676912,38,37,screen_pieces_2,random_rule,Pieces,2 pieces
+6,random,rule,B,1,48,8.81e-05,0.0355726,28,27,screen_pieces_2,random_rule,Pieces,2 pieces
+7,random,rule,B,10,81,0.0001753,0.1049902,49,48,screen_pieces_2,random_rule,Pieces,2 pieces
+0,rule,greedy,A,57,54,0.1176099,0.3488709,50,50,screen_pieces_2,rule_greedy,Pieces,2 pieces
+1,rule,greedy,A,60,49,0.1750343,0.5291746,50,50,screen_pieces_2,rule_greedy,Pieces,2 pieces
+2,rule,greedy,A,60,41,0.1537342,0.3910849,50,50,screen_pieces_2,rule_greedy,Pieces,2 pieces
+3,rule,greedy,A,62,40,0.1090477,0.2935427,50,50,screen_pieces_2,rule_greedy,Pieces,2 pieces
+4,rule,greedy,A,57,51,0.138629799,0.4242717,50,50,screen_pieces_2,rule_greedy,Pieces,2 pieces
+5,rule,greedy,A,57,49,0.1170216,0.3249344,50,50,screen_pieces_2,rule_greedy,Pieces,2 pieces
+6,rule,greedy,B,45,58,0.14854,0.478455,50,50,screen_pieces_2,rule_greedy,Pieces,2 pieces
+7,rule,greedy,A,74,38,0.1050119,0.2560622,50,50,screen_pieces_2,rule_greedy,Pieces,2 pieces
+0,rule,random,A,47,6,0.0909762,0.0001719,27,27,screen_pieces_2,rule_random,Pieces,2 pieces
+1,rule,random,A,39,5,0.0441957,8.48e-05,28,27,screen_pieces_2,rule_random,Pieces,2 pieces
+2,rule,random,A,78,13,0.090086301,0.0002183,46,46,screen_pieces_2,rule_random,Pieces,2 pieces
+3,rule,random,A,94,5,0.1223325,0.0001908,50,50,screen_pieces_2,rule_random,Pieces,2 pieces
+4,rule,random,A,3,0,0.0075863,1.53e-05,4,4,screen_pieces_2,rule_random,Pieces,2 pieces
+5,rule,random,A,13,1,0.0275861,4.11e-05,12,11,screen_pieces_2,rule_random,Pieces,2 pieces
+6,rule,random,A,77,8,0.1045048,0.0002052,43,43,screen_pieces_2,rule_random,Pieces,2 pieces
+7,rule,random,A,86,9,0.0984899,0.0002037,50,50,screen_pieces_2,rule_random,Pieces,2 pieces
+0,greedy,random,A,66,20,0.9430517,0.000193,50,50,screen_pieces_4,greedy_random,Pieces,4 pieces
+1,greedy,random,A,65,14,1.0806813,0.0004129,50,50,screen_pieces_4,greedy_random,Pieces,4 pieces
+2,greedy,random,A,57,16,0.950118401,0.0002083,50,50,screen_pieces_4,greedy_random,Pieces,4 pieces
+3,greedy,random,draw,0,0,0.0011867,0.0,1,0,screen_pieces_4,greedy_random,Pieces,4 pieces
+4,greedy,random,A,73,11,1.3694917,0.0005131,50,50,screen_pieces_4,greedy_random,Pieces,4 pieces
+5,greedy,random,A,63,6,0.8598269,0.0001907,50,50,screen_pieces_4,greedy_random,Pieces,4 pieces
+6,greedy,random,A,3,0,0.0212687,1.02e-05,4,3,screen_pieces_4,greedy_random,Pieces,4 pieces
+7,greedy,random,A,75,3,0.8584277,0.000251,50,50,screen_pieces_4,greedy_random,Pieces,4 pieces
+0,greedy,rule,B,40,68,1.0161246,0.5616137,50,50,screen_pieces_4,greedy_rule,Pieces,4 pieces
+1,greedy,rule,B,30,73,0.8157217,0.7229743,50,50,screen_pieces_4,greedy_rule,Pieces,4 pieces
+2,greedy,rule,B,27,77,0.9294335,0.5382122,50,50,screen_pieces_4,greedy_rule,Pieces,4 pieces
+3,greedy,rule,draw,0,0,0.0011059,0.0,1,0,screen_pieces_4,greedy_rule,Pieces,4 pieces
+4,greedy,rule,B,27,81,1.218289,0.632650999,50,50,screen_pieces_4,greedy_rule,Pieces,4 pieces
+5,greedy,rule,B,27,76,0.8346611,0.7021922,50,50,screen_pieces_4,greedy_rule,Pieces,4 pieces
+6,greedy,rule,B,25,74,1.0515951,0.6395158,50,50,screen_pieces_4,greedy_rule,Pieces,4 pieces
+7,greedy,rule,B,44,62,1.0468397,0.6265853,50,50,screen_pieces_4,greedy_rule,Pieces,4 pieces
+0,random,greedy,B,20,67,0.0002279,0.7559477,50,50,screen_pieces_4,random_greedy,Pieces,4 pieces
+1,random,greedy,B,14,73,0.000183299,0.8031451,50,50,screen_pieces_4,random_greedy,Pieces,4 pieces
+2,random,greedy,B,20,61,0.0002137,0.9337351,50,50,screen_pieces_4,random_greedy,Pieces,4 pieces
+3,random,greedy,draw,0,0,4.7e-06,0.0,1,0,screen_pieces_4,random_greedy,Pieces,4 pieces
+4,random,greedy,B,6,81,0.0004598,1.0844756,50,50,screen_pieces_4,random_greedy,Pieces,4 pieces
+5,random,greedy,B,15,68,0.0002331,1.2738552,50,50,screen_pieces_4,random_greedy,Pieces,4 pieces
+6,random,greedy,B,8,75,0.0002942,2.0506122,50,50,screen_pieces_4,random_greedy,Pieces,4 pieces
+7,random,greedy,B,10,65,0.0007101,1.5475815,50,50,screen_pieces_4,random_greedy,Pieces,4 pieces
+0,random,rule,B,8,89,0.000242299,0.594970901,49,50,screen_pieces_4,random_rule,Pieces,4 pieces
+1,random,rule,B,7,94,0.0001924,0.6583479,50,50,screen_pieces_4,random_rule,Pieces,4 pieces
+2,random,rule,B,2,104,0.0002692,0.4971828,50,50,screen_pieces_4,random_rule,Pieces,4 pieces
+3,random,rule,draw,0,0,3.1e-06,0.0,1,0,screen_pieces_4,random_rule,Pieces,4 pieces
+4,random,rule,B,4,103,0.000676,0.9210872,50,50,screen_pieces_4,random_rule,Pieces,4 pieces
+5,random,rule,B,12,80,0.0002157,0.737829399,50,50,screen_pieces_4,random_rule,Pieces,4 pieces
+6,random,rule,B,4,102,0.0001858,0.610736501,50,50,screen_pieces_4,random_rule,Pieces,4 pieces
+7,random,rule,B,13,86,0.0002073,0.5203695,50,50,screen_pieces_4,random_rule,Pieces,4 pieces
+0,rule,greedy,A,75,34,0.6860368,1.046040401,50,50,screen_pieces_4,rule_greedy,Pieces,4 pieces
+1,rule,greedy,A,73,30,0.7209714,1.005334,50,50,screen_pieces_4,rule_greedy,Pieces,4 pieces
+2,rule,greedy,A,74,27,0.6213347,1.1063627,50,50,screen_pieces_4,rule_greedy,Pieces,4 pieces
+3,rule,greedy,A,85,19,0.633659501,0.8653166,50,50,screen_pieces_4,rule_greedy,Pieces,4 pieces
+4,rule,greedy,A,68,38,0.7549042,1.0667576,50,50,screen_pieces_4,rule_greedy,Pieces,4 pieces
+5,rule,greedy,A,75,31,0.8763814,1.5476583,50,50,screen_pieces_4,rule_greedy,Pieces,4 pieces
+6,rule,greedy,A,74,29,0.9170003,1.2286185,50,50,screen_pieces_4,rule_greedy,Pieces,4 pieces
+7,rule,greedy,A,79,24,0.977734699,1.1569293,50,50,screen_pieces_4,rule_greedy,Pieces,4 pieces
+0,rule,random,A,96,12,0.7761056,0.0002002,50,50,screen_pieces_4,rule_random,Pieces,4 pieces
+1,rule,random,A,86,14,0.3927369,0.0001941,50,50,screen_pieces_4,rule_random,Pieces,4 pieces
+2,rule,random,A,93,4,0.670825301,0.0001879,50,50,screen_pieces_4,rule_random,Pieces,4 pieces
+3,rule,random,A,97,4,0.644161901,0.0002526,50,50,screen_pieces_4,rule_random,Pieces,4 pieces
+4,rule,random,A,100,7,0.466817,0.000187,50,50,screen_pieces_4,rule_random,Pieces,4 pieces
+5,rule,random,A,101,2,0.5018905,0.0002312,50,50,screen_pieces_4,rule_random,Pieces,4 pieces
+6,rule,random,A,78,17,0.361239,0.000196,50,50,screen_pieces_4,rule_random,Pieces,4 pieces
+7,rule,random,A,105,5,0.5166266,0.0002056,50,50,screen_pieces_4,rule_random,Pieces,4 pieces
+0,greedy,random,A,53,7,0.8380327,0.0001973,50,50,screen_deck_movement,greedy_random,Deck,Movement-heavy
+1,greedy,random,A,55,11,0.7128596,0.0001965,50,50,screen_deck_movement,greedy_random,Deck,Movement-heavy
+2,greedy,random,A,55,11,0.7501436,0.0001721,50,50,screen_deck_movement,greedy_random,Deck,Movement-heavy
+3,greedy,random,A,52,2,0.6429985,0.0001724,50,50,screen_deck_movement,greedy_random,Deck,Movement-heavy
+4,greedy,random,A,58,7,0.6044233,0.000175,50,50,screen_deck_movement,greedy_random,Deck,Movement-heavy
+5,greedy,random,A,60,6,0.5811558,0.0001835,50,50,screen_deck_movement,greedy_random,Deck,Movement-heavy
+6,greedy,random,A,59,6,0.627029,0.000179301,50,50,screen_deck_movement,greedy_random,Deck,Movement-heavy
+7,greedy,random,A,63,3,0.6726555,0.0002132,50,50,screen_deck_movement,greedy_random,Deck,Movement-heavy
+0,greedy,rule,B,9,65,0.7213717,0.4762271,50,50,screen_deck_movement,greedy_rule,Deck,Movement-heavy
+1,greedy,rule,B,34,38,0.6335476,0.241185901,50,50,screen_deck_movement,greedy_rule,Deck,Movement-heavy
+2,greedy,rule,B,18,56,0.8176018,0.4314012,50,50,screen_deck_movement,greedy_rule,Deck,Movement-heavy
+3,greedy,rule,B,12,58,0.8669021,0.5410588,50,50,screen_deck_movement,greedy_rule,Deck,Movement-heavy
+4,greedy,rule,B,6,65,0.5107132,0.3072614,50,50,screen_deck_movement,greedy_rule,Deck,Movement-heavy
+5,greedy,rule,B,14,60,0.697237299,0.428966401,50,50,screen_deck_movement,greedy_rule,Deck,Movement-heavy
+6,greedy,rule,B,12,62,0.825967401,0.398646,50,50,screen_deck_movement,greedy_rule,Deck,Movement-heavy
+7,greedy,rule,B,11,63,0.673577899,0.4043123,50,50,screen_deck_movement,greedy_rule,Deck,Movement-heavy
+0,random,greedy,B,10,51,0.0002727,1.2342166,50,50,screen_deck_movement,random_greedy,Deck,Movement-heavy
+1,random,greedy,B,5,51,0.0002124,1.2033391,50,50,screen_deck_movement,random_greedy,Deck,Movement-heavy
+2,random,greedy,B,1,54,0.0002306,0.868207499,50,50,screen_deck_movement,random_greedy,Deck,Movement-heavy
+3,random,greedy,B,2,57,0.0001781,0.6048013,50,50,screen_deck_movement,random_greedy,Deck,Movement-heavy
+4,random,greedy,B,2,61,0.000172601,0.7186006,50,50,screen_deck_movement,random_greedy,Deck,Movement-heavy
+5,random,greedy,B,7,49,0.0001953,0.614381201,50,50,screen_deck_movement,random_greedy,Deck,Movement-heavy
+6,random,greedy,B,9,57,0.0002135,0.6959333,50,50,screen_deck_movement,random_greedy,Deck,Movement-heavy
+7,random,greedy,B,4,58,0.0002168,0.8929384,50,50,screen_deck_movement,random_greedy,Deck,Movement-heavy
+0,random,rule,B,4,70,0.0002302,0.3675069,50,50,screen_deck_movement,random_rule,Deck,Movement-heavy
+1,random,rule,B,2,73,0.0001863,0.3704267,50,50,screen_deck_movement,random_rule,Deck,Movement-heavy
+2,random,rule,B,3,68,0.0002118,0.4338611,50,50,screen_deck_movement,random_rule,Deck,Movement-heavy
+3,random,rule,B,1,72,0.000145799,0.3193997,50,50,screen_deck_movement,random_rule,Deck,Movement-heavy
+4,random,rule,B,0,74,0.0001586,0.355785,50,50,screen_deck_movement,random_rule,Deck,Movement-heavy
+5,random,rule,B,4,64,0.0011637,0.5365618,50,50,screen_deck_movement,random_rule,Deck,Movement-heavy
+6,random,rule,B,7,65,0.0001572,0.377125,50,50,screen_deck_movement,random_rule,Deck,Movement-heavy
+7,random,rule,B,1,72,0.0001702,0.391639201,50,50,screen_deck_movement,random_rule,Deck,Movement-heavy
+0,rule,greedy,A,56,18,0.4005999,0.8187853,50,50,screen_deck_movement,rule_greedy,Deck,Movement-heavy
+1,rule,greedy,A,54,17,0.3950122,0.7239366,50,50,screen_deck_movement,rule_greedy,Deck,Movement-heavy
+2,rule,greedy,A,62,11,0.351759,0.7350656,50,50,screen_deck_movement,rule_greedy,Deck,Movement-heavy
+3,rule,greedy,A,64,9,0.4374332,0.7299753,50,50,screen_deck_movement,rule_greedy,Deck,Movement-heavy
+4,rule,greedy,A,51,21,0.3702327,0.6187308,50,50,screen_deck_movement,rule_greedy,Deck,Movement-heavy
+5,rule,greedy,A,56,18,0.3587366,0.762803,50,50,screen_deck_movement,rule_greedy,Deck,Movement-heavy
+6,rule,greedy,A,56,19,0.3778367,0.8188874,50,50,screen_deck_movement,rule_greedy,Deck,Movement-heavy
+7,rule,greedy,A,55,18,0.3637217,0.7613216,50,50,screen_deck_movement,rule_greedy,Deck,Movement-heavy
+0,rule,random,A,70,4,0.3483817,0.0001532,50,50,screen_deck_movement,rule_random,Deck,Movement-heavy
+1,rule,random,A,66,4,0.3784411,0.0001858,50,50,screen_deck_movement,rule_random,Deck,Movement-heavy
+2,rule,random,A,71,2,0.3759866,0.0002018,50,50,screen_deck_movement,rule_random,Deck,Movement-heavy
+3,rule,random,A,65,4,0.3752114,0.0001669,50,50,screen_deck_movement,rule_random,Deck,Movement-heavy
+4,rule,random,A,68,6,0.545394,0.000178001,50,50,screen_deck_movement,rule_random,Deck,Movement-heavy
+5,rule,random,A,67,7,0.4437357,0.0001946,50,50,screen_deck_movement,rule_random,Deck,Movement-heavy
+6,rule,random,A,68,3,0.404493,0.0001796,50,50,screen_deck_movement,rule_random,Deck,Movement-heavy
+7,rule,random,A,67,3,0.3770226,0.0001791,50,50,screen_deck_movement,rule_random,Deck,Movement-heavy
+0,greedy,random,A,6,0,0.0098395,1.1e-05,4,3,screen_deck_capture,greedy_random,Deck,Capture-heavy
+1,greedy,random,A,10,3,0.0172487,1.93e-05,7,6,screen_deck_capture,greedy_random,Deck,Capture-heavy
+2,greedy,random,draw,0,0,0.0007359,0.0,1,0,screen_deck_capture,greedy_random,Deck,Capture-heavy
+3,greedy,random,A,37,10,0.0770253,4.33e-05,17,16,screen_deck_capture,greedy_random,Deck,Capture-heavy
+4,greedy,random,A,9,0,0.0084839,1.07e-05,4,3,screen_deck_capture,greedy_random,Deck,Capture-heavy
+5,greedy,random,A,112,23,0.2084806,0.0001279,45,44,screen_deck_capture,greedy_random,Deck,Capture-heavy
+6,greedy,random,draw,0,0,0.0,0.0,0,0,screen_deck_capture,greedy_random,Deck,Capture-heavy
+7,greedy,random,A,12,0,0.0258641,1.81e-05,7,7,screen_deck_capture,greedy_random,Deck,Capture-heavy
+0,greedy,rule,B,53,117,0.3252346,0.1362868,50,48,screen_deck_capture,greedy_rule,Deck,Capture-heavy
+1,greedy,rule,B,56,120,0.335353,0.147590601,50,50,screen_deck_capture,greedy_rule,Deck,Capture-heavy
+2,greedy,rule,draw,0,0,0.0007235,0.0,1,0,screen_deck_capture,greedy_rule,Deck,Capture-heavy
+3,greedy,rule,B,54,120,0.3811544,0.1617545,50,50,screen_deck_capture,greedy_rule,Deck,Capture-heavy
+4,greedy,rule,B,55,106,0.5612713,0.260606,50,50,screen_deck_capture,greedy_rule,Deck,Capture-heavy
+5,greedy,rule,B,45,121,0.5190812,0.260508101,50,50,screen_deck_capture,greedy_rule,Deck,Capture-heavy
+6,greedy,rule,draw,0,0,0.0,0.0,0,0,screen_deck_capture,greedy_rule,Deck,Capture-heavy
+7,greedy,rule,B,57,94,0.3312685,0.1296255,45,44,screen_deck_capture,greedy_rule,Deck,Capture-heavy
+0,random,greedy,draw,0,0,1.56e-05,0.003545,3,2,screen_deck_capture,random_greedy,Deck,Capture-heavy
+1,random,greedy,draw,3,3,1.66e-05,0.0161753,5,4,screen_deck_capture,random_greedy,Deck,Capture-heavy
+2,random,greedy,draw,0,0,2.4e-06,0.0,1,0,screen_deck_capture,random_greedy,Deck,Capture-heavy
+3,random,greedy,B,21,52,7.8799e-05,0.1347875,27,28,screen_deck_capture,random_greedy,Deck,Capture-heavy
+4,random,greedy,draw,3,3,7e-06,0.0032558,3,3,screen_deck_capture,random_greedy,Deck,Capture-heavy
+5,random,greedy,B,2,6,1.89e-05,0.0206992,6,6,screen_deck_capture,random_greedy,Deck,Capture-heavy
+6,random,greedy,draw,0,0,0.0,0.0,0,0,screen_deck_capture,random_greedy,Deck,Capture-heavy
+7,random,greedy,draw,1,1,8.7e-06,0.0122416,3,2,screen_deck_capture,random_greedy,Deck,Capture-heavy
+0,random,rule,B,0,1,1.51e-05,0.0010955,3,2,screen_deck_capture,random_rule,Deck,Capture-heavy
+1,random,rule,B,18,47,0.0017029,0.0872942,23,22,screen_deck_capture,random_rule,Deck,Capture-heavy
+2,random,rule,draw,0,0,2.8e-06,0.0,1,0,screen_deck_capture,random_rule,Deck,Capture-heavy
+3,random,rule,B,12,24,4.32e-05,0.0232165,13,13,screen_deck_capture,random_rule,Deck,Capture-heavy
+4,random,rule,B,6,10,1.8e-05,0.0040263,5,5,screen_deck_capture,random_rule,Deck,Capture-heavy
+5,random,rule,B,4,12,3.16e-05,0.007219,10,9,screen_deck_capture,random_rule,Deck,Capture-heavy
+6,random,rule,draw,0,0,0.0,0.0,0,0,screen_deck_capture,random_rule,Deck,Capture-heavy
+7,random,rule,B,4,5,1.02e-05,0.006192,5,5,screen_deck_capture,random_rule,Deck,Capture-heavy
+0,rule,greedy,B,2,6,0.0033079,0.0067125,4,3,screen_deck_capture,rule_greedy,Deck,Capture-heavy
+1,rule,greedy,A,19,6,0.0121744,0.0609565,9,9,screen_deck_capture,rule_greedy,Deck,Capture-heavy
+2,rule,greedy,draw,0,0,0.0004471,0.0,1,0,screen_deck_capture,rule_greedy,Deck,Capture-heavy
+3,rule,greedy,A,113,55,0.2468455,0.4692349,50,50,screen_deck_capture,rule_greedy,Deck,Capture-heavy
+4,rule,greedy,A,104,64,0.169617901,0.3733836,50,50,screen_deck_capture,rule_greedy,Deck,Capture-heavy
+5,rule,greedy,A,85,47,0.176756601,0.4109345,42,42,screen_deck_capture,rule_greedy,Deck,Capture-heavy
+6,rule,greedy,draw,0,0,0.0,0.0,0,0,screen_deck_capture,rule_greedy,Deck,Capture-heavy
+7,rule,greedy,A,137,42,0.176523201,0.3465924,50,50,screen_deck_capture,rule_greedy,Deck,Capture-heavy
+0,rule,random,A,5,0,0.0024335,7.5e-06,3,3,screen_deck_capture,rule_random,Deck,Capture-heavy
+1,rule,random,A,18,6,0.0116762,1.99e-05,9,9,screen_deck_capture,rule_random,Deck,Capture-heavy
+2,rule,random,draw,0,0,0.0006285,0.0,1,0,screen_deck_capture,rule_random,Deck,Capture-heavy
+3,rule,random,A,84,9,0.0421914,6.23e-05,30,30,screen_deck_capture,rule_random,Deck,Capture-heavy
+4,rule,random,A,2,0,0.0019707,5.2e-06,2,1,screen_deck_capture,rule_random,Deck,Capture-heavy
+5,rule,random,A,78,33,0.0422386,9.12e-05,36,36,screen_deck_capture,rule_random,Deck,Capture-heavy
+6,rule,random,draw,0,0,0.0,0.0,0,0,screen_deck_capture,rule_random,Deck,Capture-heavy
+7,rule,random,A,27,12,0.0148554,0.000533,13,13,screen_deck_capture,rule_random,Deck,Capture-heavy
+0,greedy,random,A,56,5,0.4201372,0.000194401,50,50,screen_deck_swap,greedy_random,Deck,Swap-heavy
+1,greedy,random,A,62,6,0.3267501,0.0001881,50,50,screen_deck_swap,greedy_random,Deck,Swap-heavy
+2,greedy,random,A,68,9,0.4615773,0.0001658,50,50,screen_deck_swap,greedy_random,Deck,Swap-heavy
+3,greedy,random,A,54,19,0.4173834,0.0001914,50,50,screen_deck_swap,greedy_random,Deck,Swap-heavy
+4,greedy,random,A,66,14,0.3223811,0.0001483,50,50,screen_deck_swap,greedy_random,Deck,Swap-heavy
+5,greedy,random,A,64,13,0.289197999,0.0001701,50,50,screen_deck_swap,greedy_random,Deck,Swap-heavy
+6,greedy,random,draw,0,0,0.0,0.0,0,0,screen_deck_swap,greedy_random,Deck,Swap-heavy
+7,greedy,random,A,70,10,0.3485252,0.0001578,50,50,screen_deck_swap,greedy_random,Deck,Swap-heavy
+0,greedy,rule,B,23,77,0.4816945,0.2190625,50,50,screen_deck_swap,greedy_rule,Deck,Swap-heavy
+1,greedy,rule,B,29,70,0.561843201,0.3129804,50,50,screen_deck_swap,greedy_rule,Deck,Swap-heavy
+2,greedy,rule,B,23,66,0.7262989,0.3778334,50,50,screen_deck_swap,greedy_rule,Deck,Swap-heavy
+3,greedy,rule,B,25,70,0.4900672,0.2844168,50,50,screen_deck_swap,greedy_rule,Deck,Swap-heavy
+4,greedy,rule,B,30,63,0.6477927,0.3149252,50,50,screen_deck_swap,greedy_rule,Deck,Swap-heavy
+5,greedy,rule,B,26,73,0.3757075,0.1958744,50,50,screen_deck_swap,greedy_rule,Deck,Swap-heavy
+6,greedy,rule,draw,0,0,0.0,0.0,0,0,screen_deck_swap,greedy_rule,Deck,Swap-heavy
+7,greedy,rule,B,34,64,0.5113845,0.3436648,50,50,screen_deck_swap,greedy_rule,Deck,Swap-heavy
+0,random,greedy,B,19,54,0.0001847,0.3457014,50,50,screen_deck_swap,random_greedy,Deck,Swap-heavy
+1,random,greedy,B,13,70,0.0001688,0.527755001,50,50,screen_deck_swap,random_greedy,Deck,Swap-heavy
+2,random,greedy,draw,0,0,2.9e-06,0.0,1,0,screen_deck_swap,random_greedy,Deck,Swap-heavy
+3,random,greedy,B,19,63,0.0001625,0.3466262,50,50,screen_deck_swap,random_greedy,Deck,Swap-heavy
+4,random,greedy,B,14,65,0.0001638,0.3626802,50,50,screen_deck_swap,random_greedy,Deck,Swap-heavy
+5,random,greedy,B,18,63,0.0001952,0.359191001,50,50,screen_deck_swap,random_greedy,Deck,Swap-heavy
+6,random,greedy,draw,0,0,0.0,0.0,0,0,screen_deck_swap,random_greedy,Deck,Swap-heavy
+7,random,greedy,B,3,64,0.000144299,0.281431001,50,50,screen_deck_swap,random_greedy,Deck,Swap-heavy
+0,random,rule,B,4,94,0.0001791,0.2054193,50,50,screen_deck_swap,random_rule,Deck,Swap-heavy
+1,random,rule,B,14,88,0.0001291,0.1473073,50,50,screen_deck_swap,random_rule,Deck,Swap-heavy
+2,random,rule,draw,0,0,4.1e-06,0.0,1,0,screen_deck_swap,random_rule,Deck,Swap-heavy
+3,random,rule,B,14,82,0.0001515,0.198678,50,50,screen_deck_swap,random_rule,Deck,Swap-heavy
+4,random,rule,B,6,87,0.000146,0.2293426,50,50,screen_deck_swap,random_rule,Deck,Swap-heavy
+5,random,rule,B,12,79,0.0002087,0.4106604,50,50,screen_deck_swap,random_rule,Deck,Swap-heavy
+6,random,rule,draw,0,0,0.0,0.0,0,0,screen_deck_swap,random_rule,Deck,Swap-heavy
+7,random,rule,B,7,91,0.0001649,0.2088909,50,50,screen_deck_swap,random_rule,Deck,Swap-heavy
+0,rule,greedy,A,75,26,0.2782722,0.4300354,50,50,screen_deck_swap,rule_greedy,Deck,Swap-heavy
+1,rule,greedy,A,69,25,0.287409,0.5936575,50,50,screen_deck_swap,rule_greedy,Deck,Swap-heavy
+2,rule,greedy,A,68,24,0.261031,0.523651399,50,50,screen_deck_swap,rule_greedy,Deck,Swap-heavy
+3,rule,greedy,A,74,21,0.2463446,0.4726497,50,50,screen_deck_swap,rule_greedy,Deck,Swap-heavy
+4,rule,greedy,A,67,31,0.2789859,0.498352,50,50,screen_deck_swap,rule_greedy,Deck,Swap-heavy
+5,rule,greedy,A,68,31,0.2880238,0.5772216,50,50,screen_deck_swap,rule_greedy,Deck,Swap-heavy
+6,rule,greedy,draw,0,0,0.0,0.0,0,0,screen_deck_swap,rule_greedy,Deck,Swap-heavy
+7,rule,greedy,A,83,13,0.2999129,0.6477209,50,50,screen_deck_swap,rule_greedy,Deck,Swap-heavy
+0,rule,random,A,84,13,0.2013967,0.0001375,50,50,screen_deck_swap,rule_random,Deck,Swap-heavy
+1,rule,random,A,89,8,0.1834988,0.0001521,50,50,screen_deck_swap,rule_random,Deck,Swap-heavy
+2,rule,random,A,91,8,0.2512086,0.0001561,50,50,screen_deck_swap,rule_random,Deck,Swap-heavy
+3,rule,random,A,85,17,0.1930807,0.000169,50,50,screen_deck_swap,rule_random,Deck,Swap-heavy
+4,rule,random,A,2,1,0.0044391,2.37e-05,2,2,screen_deck_swap,rule_random,Deck,Swap-heavy
+5,rule,random,A,91,6,0.1761573,0.0001769,50,50,screen_deck_swap,rule_random,Deck,Swap-heavy
+6,rule,random,draw,0,0,0.0,0.0,0,0,screen_deck_swap,rule_random,Deck,Swap-heavy
+7,rule,random,A,86,10,0.188427,0.000156,50,50,screen_deck_swap,rule_random,Deck,Swap-heavy
+0,greedy,random,A,50,7,0.508574399,0.0001921,50,50,screen_capture_score_1,greedy_random,Scoring,Capture = 1
+1,greedy,random,A,49,6,0.4406671,0.0001855,50,50,screen_capture_score_1,greedy_random,Scoring,Capture = 1
+2,greedy,random,A,39,10,0.5683689,0.0001865,50,50,screen_capture_score_1,greedy_random,Scoring,Capture = 1
+3,greedy,random,A,43,11,0.8031588,0.0001909,50,50,screen_capture_score_1,greedy_random,Scoring,Capture = 1
+4,greedy,random,A,36,16,0.4920983,0.0001774,50,50,screen_capture_score_1,greedy_random,Scoring,Capture = 1
+5,greedy,random,A,36,10,0.4645497,0.0002009,50,50,screen_capture_score_1,greedy_random,Scoring,Capture = 1
+6,greedy,random,A,19,0,0.2553787,0.000108,23,23,screen_capture_score_1,greedy_random,Scoring,Capture = 1
+7,greedy,random,A,43,12,0.5050368,0.000311501,50,50,screen_capture_score_1,greedy_random,Scoring,Capture = 1
+0,greedy,rule,B,15,54,0.730555899,0.3168404,50,50,screen_capture_score_1,greedy_rule,Scoring,Capture = 1
+1,greedy,rule,B,15,51,0.498762201,0.3121491,50,50,screen_capture_score_1,greedy_rule,Scoring,Capture = 1
+2,greedy,rule,B,14,55,0.5465482,0.2604209,50,50,screen_capture_score_1,greedy_rule,Scoring,Capture = 1
+3,greedy,rule,B,15,54,0.601268,0.327331899,50,50,screen_capture_score_1,greedy_rule,Scoring,Capture = 1
+4,greedy,rule,B,19,50,0.553486,0.2719757,50,50,screen_capture_score_1,greedy_rule,Scoring,Capture = 1
+5,greedy,rule,B,12,53,0.7300233,0.362362,50,50,screen_capture_score_1,greedy_rule,Scoring,Capture = 1
+6,greedy,rule,B,10,58,0.553188,0.2775016,50,50,screen_capture_score_1,greedy_rule,Scoring,Capture = 1
+7,greedy,rule,B,17,52,0.464172199,0.278680401,50,50,screen_capture_score_1,greedy_rule,Scoring,Capture = 1
+0,random,greedy,B,9,47,0.0002045,0.4139285,50,50,screen_capture_score_1,random_greedy,Scoring,Capture = 1
+1,random,greedy,B,7,53,0.0001665,0.4601534,50,50,screen_capture_score_1,random_greedy,Scoring,Capture = 1
+2,random,greedy,B,9,47,0.0001741,0.4333622,50,50,screen_capture_score_1,random_greedy,Scoring,Capture = 1
+3,random,greedy,draw,0,0,4.8e-06,0.0,1,0,screen_capture_score_1,random_greedy,Scoring,Capture = 1
+4,random,greedy,B,14,47,0.0001834,0.7157969,50,50,screen_capture_score_1,random_greedy,Scoring,Capture = 1
+5,random,greedy,draw,0,0,7.9e-06,0.0085064,3,2,screen_capture_score_1,random_greedy,Scoring,Capture = 1
+6,random,greedy,B,16,29,0.0001956,0.3330207,50,50,screen_capture_score_1,random_greedy,Scoring,Capture = 1
+7,random,greedy,B,3,13,5.45e-05,0.1186296,17,16,screen_capture_score_1,random_greedy,Scoring,Capture = 1
+0,random,rule,B,3,5,4.63e-05,0.01569,8,7,screen_capture_score_1,random_rule,Scoring,Capture = 1
+1,random,rule,B,6,63,0.0001713,0.229937799,50,50,screen_capture_score_1,random_rule,Scoring,Capture = 1
+2,random,rule,B,5,62,0.0001352,0.1872511,50,50,screen_capture_score_1,random_rule,Scoring,Capture = 1
+3,random,rule,draw,0,0,3.8e-06,0.0,1,0,screen_capture_score_1,random_rule,Scoring,Capture = 1
+4,random,rule,B,2,69,0.0001534,0.1695581,50,50,screen_capture_score_1,random_rule,Scoring,Capture = 1
+5,random,rule,B,6,60,0.0001828,0.409329,50,50,screen_capture_score_1,random_rule,Scoring,Capture = 1
+6,random,rule,B,6,62,0.0001926,0.223373,50,50,screen_capture_score_1,random_rule,Scoring,Capture = 1
+7,random,rule,B,2,68,0.000147,0.2204606,50,50,screen_capture_score_1,random_rule,Scoring,Capture = 1
+0,rule,greedy,A,46,26,0.2918446,0.537542,50,50,screen_capture_score_1,rule_greedy,Scoring,Capture = 1
+1,rule,greedy,A,56,16,0.2572234,0.4718598,50,50,screen_capture_score_1,rule_greedy,Scoring,Capture = 1
+2,rule,greedy,A,58,10,0.327055,0.6016022,50,50,screen_capture_score_1,rule_greedy,Scoring,Capture = 1
+3,rule,greedy,A,58,8,0.2565534,0.5326971,50,50,screen_capture_score_1,rule_greedy,Scoring,Capture = 1
+4,rule,greedy,A,59,10,0.2830114,0.5138506,50,50,screen_capture_score_1,rule_greedy,Scoring,Capture = 1
+5,rule,greedy,A,59,10,0.2566734,0.3924617,50,50,screen_capture_score_1,rule_greedy,Scoring,Capture = 1
+6,rule,greedy,A,56,11,0.3569578,0.5555863,50,50,screen_capture_score_1,rule_greedy,Scoring,Capture = 1
+7,rule,greedy,A,62,7,0.3006462,0.5475553,50,50,screen_capture_score_1,rule_greedy,Scoring,Capture = 1
+0,rule,random,A,65,5,0.2845899,0.0001677,50,50,screen_capture_score_1,rule_random,Scoring,Capture = 1
+1,rule,random,A,60,9,0.2775678,0.000190301,50,50,screen_capture_score_1,rule_random,Scoring,Capture = 1
+2,rule,random,A,18,1,0.117084,5.56e-05,15,15,screen_capture_score_1,rule_random,Scoring,Capture = 1
+3,rule,random,A,61,4,0.218464901,0.0001689,50,50,screen_capture_score_1,rule_random,Scoring,Capture = 1
+4,rule,random,A,66,5,0.2679926,0.000164,50,50,screen_capture_score_1,rule_random,Scoring,Capture = 1
+5,rule,random,A,64,3,0.3246486,0.0001866,50,50,screen_capture_score_1,rule_random,Scoring,Capture = 1
+6,rule,random,A,7,1,0.0117714,2.71e-05,7,6,screen_capture_score_1,rule_random,Scoring,Capture = 1
+7,rule,random,A,63,6,0.2193572,0.0001721,50,50,screen_capture_score_1,rule_random,Scoring,Capture = 1
+0,greedy,random,A,119,9,0.497779,0.0001793,50,50,screen_capture_score_5,greedy_random,Scoring,Capture = 5
+1,greedy,random,A,139,6,0.4399226,0.0002066,50,50,screen_capture_score_5,greedy_random,Scoring,Capture = 5
+2,greedy,random,A,103,18,0.5618382,0.0001716,50,50,screen_capture_score_5,greedy_random,Scoring,Capture = 5
+3,greedy,random,A,99,27,0.4753216,0.0003048,50,50,screen_capture_score_5,greedy_random,Scoring,Capture = 5
+4,greedy,random,A,121,10,0.4963233,0.0001692,50,50,screen_capture_score_5,greedy_random,Scoring,Capture = 5
+5,greedy,random,A,88,26,0.4063835,0.0001636,50,50,screen_capture_score_5,greedy_random,Scoring,Capture = 5
+6,greedy,random,A,120,4,0.4906073,0.0001721,50,50,screen_capture_score_5,greedy_random,Scoring,Capture = 5
+7,greedy,random,A,114,18,0.5230518,0.0001791,50,50,screen_capture_score_5,greedy_random,Scoring,Capture = 5
+0,greedy,rule,B,47,98,0.7432301,0.2849812,50,50,screen_capture_score_5,greedy_rule,Scoring,Capture = 5
+1,greedy,rule,B,67,75,0.4644739,0.3040136,50,50,screen_capture_score_5,greedy_rule,Scoring,Capture = 5
+2,greedy,rule,B,54,93,0.522206501,0.2573617,50,50,screen_capture_score_5,greedy_rule,Scoring,Capture = 5
+3,greedy,rule,B,67,82,0.5663355,0.298805299,50,50,screen_capture_score_5,greedy_rule,Scoring,Capture = 5
+4,greedy,rule,B,47,98,0.590185901,0.293778,50,50,screen_capture_score_5,greedy_rule,Scoring,Capture = 5
+5,greedy,rule,B,56,77,0.548355001,0.3055983,50,50,screen_capture_score_5,greedy_rule,Scoring,Capture = 5
+6,greedy,rule,B,73,78,0.5404693,0.2871574,50,50,screen_capture_score_5,greedy_rule,Scoring,Capture = 5
+7,greedy,rule,B,66,78,0.556628901,0.3392381,50,50,screen_capture_score_5,greedy_rule,Scoring,Capture = 5
+0,random,greedy,B,17,111,0.0002476,0.7652614,50,50,screen_capture_score_5,random_greedy,Scoring,Capture = 5
+1,random,greedy,B,15,117,0.0006958,0.6195502,50,50,screen_capture_score_5,random_greedy,Scoring,Capture = 5
+2,random,greedy,B,6,130,0.000177,0.4529363,50,50,screen_capture_score_5,random_greedy,Scoring,Capture = 5
+3,random,greedy,draw,0,0,4.6e-06,0.0,1,0,screen_capture_score_5,random_greedy,Scoring,Capture = 5
+4,random,greedy,B,18,115,0.000188701,0.4727829,50,50,screen_capture_score_5,random_greedy,Scoring,Capture = 5
+5,random,greedy,draw,0,0,1e-05,0.009292,3,2,screen_capture_score_5,random_greedy,Scoring,Capture = 5
+6,random,greedy,B,18,116,0.000182999,0.497793601,50,50,screen_capture_score_5,random_greedy,Scoring,Capture = 5
+7,random,greedy,B,15,105,0.0002386,0.5042607,50,50,screen_capture_score_5,random_greedy,Scoring,Capture = 5
+0,random,rule,B,7,9,2.04e-05,0.0111691,8,7,screen_capture_score_5,random_rule,Scoring,Capture = 5
+1,random,rule,B,10,135,0.0001626,0.2189612,50,50,screen_capture_score_5,random_rule,Scoring,Capture = 5
+2,random,rule,B,13,126,0.0001692,0.3091471,50,50,screen_capture_score_5,random_rule,Scoring,Capture = 5
+3,random,rule,draw,0,0,4.3e-06,0.0,1,0,screen_capture_score_5,random_rule,Scoring,Capture = 5
+4,random,rule,B,2,149,0.0001602,0.1684753,50,50,screen_capture_score_5,random_rule,Scoring,Capture = 5
+5,random,rule,B,14,120,0.0001719,0.2329507,50,50,screen_capture_score_5,random_rule,Scoring,Capture = 5
+6,random,rule,B,10,134,0.0001858,0.232632699,50,50,screen_capture_score_5,random_rule,Scoring,Capture = 5
+7,random,rule,B,6,140,0.0001375,0.2073612,50,50,screen_capture_score_5,random_rule,Scoring,Capture = 5
+0,rule,greedy,B,71,75,0.2329793,0.4170476,50,50,screen_capture_score_5,rule_greedy,Scoring,Capture = 5
+1,rule,greedy,A,107,43,0.276185,0.5234339,50,50,screen_capture_score_5,rule_greedy,Scoring,Capture = 5
+2,rule,greedy,A,94,50,0.3981721,0.734602,50,50,screen_capture_score_5,rule_greedy,Scoring,Capture = 5
+3,rule,greedy,A,110,32,0.265737899,0.5415846,50,50,screen_capture_score_5,rule_greedy,Scoring,Capture = 5
+4,rule,greedy,A,95,50,0.285642,0.5224475,50,50,screen_capture_score_5,rule_greedy,Scoring,Capture = 5
+5,rule,greedy,A,99,46,0.2524427,0.4083259,50,50,screen_capture_score_5,rule_greedy,Scoring,Capture = 5
+6,rule,greedy,A,88,55,0.3460164,0.5517885,50,50,screen_capture_score_5,rule_greedy,Scoring,Capture = 5
+7,rule,greedy,A,103,40,0.2365736,0.4348268,50,50,screen_capture_score_5,rule_greedy,Scoring,Capture = 5
+0,rule,random,A,133,17,0.250372,0.000156699,50,50,screen_capture_score_5,rule_random,Scoring,Capture = 5
+1,rule,random,A,132,13,0.2574346,0.0001939,50,50,screen_capture_score_5,rule_random,Scoring,Capture = 5
+2,rule,random,A,34,5,0.1060996,5.39e-05,15,15,screen_capture_score_5,rule_random,Scoring,Capture = 5
+3,rule,random,A,129,8,0.2093968,0.0001423,50,50,screen_capture_score_5,rule_random,Scoring,Capture = 5
+4,rule,random,A,142,9,0.2378856,0.0001475,50,50,screen_capture_score_5,rule_random,Scoring,Capture = 5
+5,rule,random,A,128,7,0.2221695,0.0001335,50,50,screen_capture_score_5,rule_random,Scoring,Capture = 5
+6,rule,random,A,15,1,0.0095084,1.84e-05,7,6,screen_capture_score_5,rule_random,Scoring,Capture = 5
+7,rule,random,A,143,6,0.3202223,0.0002443,50,50,screen_capture_score_5,rule_random,Scoring,Capture = 5
+0,greedy,random,A,39,4,0.1932803,8.4e-05,25,25,screen_horizon_25,greedy_random,Horizon,25 turns/player
+1,greedy,random,A,52,3,0.2021167,0.000101,25,25,screen_horizon_25,greedy_random,Horizon,25 turns/player
+2,greedy,random,A,36,5,0.2489509,8.49e-05,25,25,screen_horizon_25,greedy_random,Horizon,25 turns/player
+3,greedy,random,A,39,8,0.276270199,0.0001808,25,25,screen_horizon_25,greedy_random,Horizon,25 turns/player
+4,greedy,random,A,43,2,0.2006423,8.74e-05,25,25,screen_horizon_25,greedy_random,Horizon,25 turns/player
+5,greedy,random,A,34,9,0.2181946,0.0001093,25,25,screen_horizon_25,greedy_random,Horizon,25 turns/player
+6,greedy,random,A,41,2,0.2144528,8.31e-05,25,25,screen_horizon_25,greedy_random,Horizon,25 turns/player
+7,greedy,random,A,38,5,0.2425742,8.29e-05,25,25,screen_horizon_25,greedy_random,Horizon,25 turns/player
+0,greedy,rule,B,21,34,0.3179976,0.1343437,25,25,screen_horizon_25,greedy_rule,Horizon,25 turns/player
+1,greedy,rule,B,24,28,0.2164064,0.1812835,25,25,screen_horizon_25,greedy_rule,Horizon,25 turns/player
+2,greedy,rule,B,18,34,0.2091722,0.0880589,25,25,screen_horizon_25,greedy_rule,Horizon,25 turns/player
+3,greedy,rule,B,24,29,0.406736299,0.2298454,25,25,screen_horizon_25,greedy_rule,Horizon,25 turns/player
+4,greedy,rule,B,21,33,0.307543,0.1381299,25,25,screen_horizon_25,greedy_rule,Horizon,25 turns/player
+5,greedy,rule,A,25,22,0.2330348,0.1328058,25,25,screen_horizon_25,greedy_rule,Horizon,25 turns/player
+6,greedy,rule,A,31,24,0.2687274,0.1387983,25,25,screen_horizon_25,greedy_rule,Horizon,25 turns/player
+7,greedy,rule,B,19,35,0.2698737,0.149141,25,25,screen_horizon_25,greedy_rule,Horizon,25 turns/player
+0,random,greedy,B,5,39,8.78e-05,0.3039137,25,25,screen_horizon_25,random_greedy,Horizon,25 turns/player
+1,random,greedy,B,4,48,9.99e-05,0.1989538,25,25,screen_horizon_25,random_greedy,Horizon,25 turns/player
+2,random,greedy,B,4,46,8.27e-05,0.233242101,25,25,screen_horizon_25,random_greedy,Horizon,25 turns/player
+3,random,greedy,draw,0,0,2.3e-06,0.0,1,0,screen_horizon_25,random_greedy,Horizon,25 turns/player
+4,random,greedy,B,9,40,8.15e-05,0.2146885,25,25,screen_horizon_25,random_greedy,Horizon,25 turns/player
+5,random,greedy,draw,0,0,9.1e-06,0.0094547,3,2,screen_horizon_25,random_greedy,Horizon,25 turns/player
+6,random,greedy,B,7,35,8.34e-05,0.2407147,25,25,screen_horizon_25,random_greedy,Horizon,25 turns/player
+7,random,greedy,B,2,42,0.0001161,0.2242935,25,25,screen_horizon_25,random_greedy,Horizon,25 turns/player
+0,random,rule,B,5,7,4.29e-05,0.013349,8,7,screen_horizon_25,random_rule,Horizon,25 turns/player
+1,random,rule,B,3,52,0.0001035,0.1552727,25,25,screen_horizon_25,random_rule,Horizon,25 turns/player
+2,random,rule,B,8,45,0.0001378,0.1758761,25,25,screen_horizon_25,random_rule,Horizon,25 turns/player
+3,random,rule,draw,0,0,3.4e-06,0.0,1,0,screen_horizon_25,random_rule,Horizon,25 turns/player
+4,random,rule,B,1,51,7.95e-05,0.1048154,25,25,screen_horizon_25,random_rule,Horizon,25 turns/player
+5,random,rule,B,6,42,6.84e-05,0.0917096,25,25,screen_horizon_25,random_rule,Horizon,25 turns/player
+6,random,rule,B,1,50,0.0001059,0.2387823,25,25,screen_horizon_25,random_rule,Horizon,25 turns/player
+7,random,rule,B,3,52,9.27e-05,0.1054813,25,25,screen_horizon_25,random_rule,Horizon,25 turns/player
+0,rule,greedy,A,29,21,0.1217749,0.178665,25,25,screen_horizon_25,rule_greedy,Horizon,25 turns/player
+1,rule,greedy,A,44,12,0.1110972,0.2231168,25,25,screen_horizon_25,rule_greedy,Horizon,25 turns/player
+2,rule,greedy,A,39,12,0.1813045,0.2970995,25,25,screen_horizon_25,rule_greedy,Horizon,25 turns/player
+3,rule,greedy,A,46,6,0.1319497,0.2080648,25,25,screen_horizon_25,rule_greedy,Horizon,25 turns/player
+4,rule,greedy,A,43,12,0.1446015,0.2999235,25,25,screen_horizon_25,rule_greedy,Horizon,25 turns/player
+5,rule,greedy,A,39,13,0.141445701,0.1972077,25,25,screen_horizon_25,rule_greedy,Horizon,25 turns/player
+6,rule,greedy,A,41,12,0.1434401,0.2347967,25,25,screen_horizon_25,rule_greedy,Horizon,25 turns/player
+7,rule,greedy,A,35,18,0.121938,0.184918,25,25,screen_horizon_25,rule_greedy,Horizon,25 turns/player
+0,rule,random,A,45,6,0.1467929,9.82e-05,25,25,screen_horizon_25,rule_random,Horizon,25 turns/player
+1,rule,random,A,46,10,0.1387467,9.73e-05,25,25,screen_horizon_25,rule_random,Horizon,25 turns/player
+2,rule,random,A,26,3,0.1078287,5.58e-05,15,15,screen_horizon_25,rule_random,Horizon,25 turns/player
+3,rule,random,A,46,1,0.1059099,8.82e-05,25,25,screen_horizon_25,rule_random,Horizon,25 turns/player
+4,rule,random,A,50,5,0.1429134,0.0001589,25,25,screen_horizon_25,rule_random,Horizon,25 turns/player
+5,rule,random,A,48,1,0.1600669,9.94e-05,25,25,screen_horizon_25,rule_random,Horizon,25 turns/player
+6,rule,random,A,11,1,0.0099028,1.53e-05,7,6,screen_horizon_25,rule_random,Horizon,25 turns/player
+7,rule,random,A,46,5,0.0677862,7.05e-05,25,25,screen_horizon_25,rule_random,Horizon,25 turns/player
+0,greedy,random,A,124,11,0.7390562,0.000273201,75,75,screen_horizon_75,greedy_random,Horizon,75 turns/player
+1,greedy,random,A,135,15,0.6864765,0.0003518,75,75,screen_horizon_75,greedy_random,Horizon,75 turns/player
+2,greedy,random,A,115,20,1.0070962,0.000348101,75,75,screen_horizon_75,greedy_random,Horizon,75 turns/player
+3,greedy,random,A,121,22,0.7375751,0.0002554,75,75,screen_horizon_75,greedy_random,Horizon,75 turns/player
+4,greedy,random,A,117,13,0.7228627,0.000255901,75,75,screen_horizon_75,greedy_random,Horizon,75 turns/player
+5,greedy,random,A,113,25,0.659051699,0.000277301,75,75,screen_horizon_75,greedy_random,Horizon,75 turns/player
+6,greedy,random,A,117,8,0.7918043,0.000311,75,75,screen_horizon_75,greedy_random,Horizon,75 turns/player
+7,greedy,random,A,117,19,0.7056006,0.0002342,75,75,screen_horizon_75,greedy_random,Horizon,75 turns/player
+0,greedy,rule,B,66,98,0.9230197,0.4005436,75,75,screen_horizon_75,greedy_rule,Horizon,75 turns/player
+1,greedy,rule,B,59,103,0.7531571,0.466210801,75,75,screen_horizon_75,greedy_rule,Horizon,75 turns/player
+2,greedy,rule,B,52,104,0.8008682,0.4053742,75,75,screen_horizon_75,greedy_rule,Horizon,75 turns/player
+3,greedy,rule,B,51,107,0.8599064,0.462296599,75,75,screen_horizon_75,greedy_rule,Horizon,75 turns/player
+4,greedy,rule,B,48,114,0.9268333,0.500284801,75,75,screen_horizon_75,greedy_rule,Horizon,75 turns/player
+5,greedy,rule,B,53,107,0.892478201,0.4725855,75,75,screen_horizon_75,greedy_rule,Horizon,75 turns/player
+6,greedy,rule,B,65,98,0.8056178,0.4532012,75,75,screen_horizon_75,greedy_rule,Horizon,75 turns/player
+7,greedy,rule,B,70,91,0.877351301,0.496654799,75,75,screen_horizon_75,greedy_rule,Horizon,75 turns/player
+0,random,greedy,B,25,112,0.0002704,0.7909956,75,75,screen_horizon_75,random_greedy,Horizon,75 turns/player
+1,random,greedy,B,15,133,0.0002758,0.6506306,75,75,screen_horizon_75,random_greedy,Horizon,75 turns/player
+2,random,greedy,B,8,127,0.0002444,0.7316587,75,75,screen_horizon_75,random_greedy,Horizon,75 turns/player
+3,random,greedy,draw,0,0,3.6e-06,0.0,1,0,screen_horizon_75,random_greedy,Horizon,75 turns/player
+4,random,greedy,B,24,126,0.0002714,0.858225,75,75,screen_horizon_75,random_greedy,Horizon,75 turns/player
+5,random,greedy,draw,0,0,9e-06,0.0093966,3,2,screen_horizon_75,random_greedy,Horizon,75 turns/player
+6,random,greedy,B,16,120,0.000273699,0.759042499,75,75,screen_horizon_75,random_greedy,Horizon,75 turns/player
+7,random,greedy,B,23,108,0.000242399,0.5446263,75,75,screen_horizon_75,random_greedy,Horizon,75 turns/player
+0,random,rule,B,5,7,1.85e-05,0.0110211,8,7,screen_horizon_75,random_rule,Horizon,75 turns/player
+1,random,rule,B,9,154,0.0002953,0.377432799,75,75,screen_horizon_75,random_rule,Horizon,75 turns/player
+2,random,rule,B,12,141,0.0002428,0.3473579,75,75,screen_horizon_75,random_rule,Horizon,75 turns/player
+3,random,rule,draw,0,0,3.4e-06,0.0,1,0,screen_horizon_75,random_rule,Horizon,75 turns/player
+4,random,rule,B,4,162,0.0002607,0.389096699,75,75,screen_horizon_75,random_rule,Horizon,75 turns/player
+5,random,rule,B,11,145,0.0003324,0.4043862,75,75,screen_horizon_75,random_rule,Horizon,75 turns/player
+6,random,rule,B,8,150,0.0002543,0.3707295,75,75,screen_horizon_75,random_rule,Horizon,75 turns/player
+7,random,rule,B,12,146,0.0002105,0.341869101,75,75,screen_horizon_75,random_rule,Horizon,75 turns/player
+0,rule,greedy,A,101,54,0.400114,0.7120512,75,75,screen_horizon_75,rule_greedy,Horizon,75 turns/player
+1,rule,greedy,A,107,58,0.348097799,0.7398841,75,75,screen_horizon_75,rule_greedy,Horizon,75 turns/player
+2,rule,greedy,A,113,48,0.5117495,0.9984451,75,75,screen_horizon_75,rule_greedy,Horizon,75 turns/player
+3,rule,greedy,A,113,42,0.3910145,0.8380081,75,75,screen_horizon_75,rule_greedy,Horizon,75 turns/player
+4,rule,greedy,A,109,54,0.4384924,0.731117,75,75,screen_horizon_75,rule_greedy,Horizon,75 turns/player
+5,rule,greedy,A,119,46,0.405666901,0.6533408,75,75,screen_horizon_75,rule_greedy,Horizon,75 turns/player
+6,rule,greedy,A,112,48,0.5500428,0.9149214,75,75,screen_horizon_75,rule_greedy,Horizon,75 turns/player
+7,rule,greedy,A,124,33,0.396351401,0.7548088,75,75,screen_horizon_75,rule_greedy,Horizon,75 turns/player
+0,rule,random,A,149,14,0.420391299,0.0002491,75,75,screen_horizon_75,rule_random,Horizon,75 turns/player
+1,rule,random,A,139,17,0.370541,0.000241801,75,75,screen_horizon_75,rule_random,Horizon,75 turns/player
+2,rule,random,A,26,3,0.1015963,4.87e-05,15,15,screen_horizon_75,rule_random,Horizon,75 turns/player
+3,rule,random,A,141,11,0.4341195,0.0002398,75,75,screen_horizon_75,rule_random,Horizon,75 turns/player
+4,rule,random,A,153,10,0.507066101,0.0010772,75,75,screen_horizon_75,rule_random,Horizon,75 turns/player
+5,rule,random,A,145,7,0.336666699,0.0002188,75,75,screen_horizon_75,rule_random,Horizon,75 turns/player
+6,rule,random,A,11,1,0.01029,4.3e-05,7,6,screen_horizon_75,rule_random,Horizon,75 turns/player
+7,rule,random,A,108,8,0.2861674,0.0001909,55,55,screen_horizon_75,rule_random,Horizon,75 turns/player

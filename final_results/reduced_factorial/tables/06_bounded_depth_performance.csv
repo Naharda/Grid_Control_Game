@@ -1,0 +1,13 @@
+mode,board,agent,games,win_points_rate,mean_margin,mean_score,total_decision_time,total_decisions,mean_turns,milliseconds_per_decision
+reduced_depth_bottleneck_7x7_goal20_r2,Bottleneck 7x7,expectimax_d2,6,0.000000,-6.166667,15.500000,9.551062,70,12.333333,136.443747
+reduced_depth_bottleneck_7x7_goal20_r2,Bottleneck 7x7,expectimax_d3,6,1.000000,6.666667,21.333333,59.710828,71,12.500000,840.997570
+reduced_depth_bottleneck_7x7_goal20_r2,Bottleneck 7x7,expectimax_d4,6,0.666667,2.333333,19.166667,528.593318,70,12.333333,7551.333119
+reduced_depth_bottleneck_7x7_goal20_r2,Bottleneck 7x7,rule,6,0.333333,-2.833333,17.000000,0.336010,67,11.166667,5.015069
+reduced_depth_default_goal20_r2,Default,expectimax_d2,6,0.333333,-6.500000,10.666667,12.613439,87,14.500000,144.982056
+reduced_depth_default_goal20_r2,Default,expectimax_d3,6,0.500000,-0.333333,13.833333,92.184397,88,14.666667,1047.549963
+reduced_depth_default_goal20_r2,Default,expectimax_d4,6,0.666667,3.666667,15.833333,847.712897,90,15.000000,9419.032193
+reduced_depth_default_goal20_r2,Default,rule,6,0.500000,3.166667,16.500000,0.511082,85,14.166667,6.012728
+reduced_depth_inner_ring_center_7x7_goal20_r2,Inner ring,expectimax_d2,6,0.500000,2.333333,15.500000,8.436274,32,5.333333,263.633553
+reduced_depth_inner_ring_center_7x7_goal20_r2,Inner ring,expectimax_d3,6,0.500000,0.500000,15.000000,52.273643,32,5.333333,1633.551337
+reduced_depth_inner_ring_center_7x7_goal20_r2,Inner ring,expectimax_d4,6,0.500000,-1.000000,14.000000,500.153854,32,5.333333,15629.807944
+reduced_depth_inner_ring_center_7x7_goal20_r2,Inner ring,rule,6,0.500000,-1.833333,13.000000,0.182263,30,5.000000,6.075450

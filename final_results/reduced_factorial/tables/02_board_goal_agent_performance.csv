@@ -1,0 +1,73 @@
+mode,board,end_condition,condition,agent,games,win_points_rate,mean_margin,mean_score,total_decision_time,total_decisions,mean_turns,milliseconds_per_decision
+reduced_board_bottleneck_7x7_fixed_r2,Bottleneck 7x7,Fixed 25,"Bottleneck 7x7
+Fixed 25",expectimax_d2,30,0.533333,9.800000,53.366667,121.717898,720,25.000000,169.052636
+reduced_board_bottleneck_7x7_fixed_r2,Bottleneck 7x7,Fixed 25,"Bottleneck 7x7
+Fixed 25",expectimax_d3,30,0.683333,20.566667,60.300000,887.578700,726,25.000000,1222.560193
+reduced_board_bottleneck_7x7_fixed_r2,Bottleneck 7x7,Fixed 25,"Bottleneck 7x7
+Fixed 25",greedy,30,0.733333,21.900000,62.000000,12.055482,727,25.000000,16.582507
+reduced_board_bottleneck_7x7_fixed_r2,Bottleneck 7x7,Fixed 25,"Bottleneck 7x7
+Fixed 25",mcts,30,0.583333,10.333333,51.533333,134.041089,710,25.000000,188.790266
+reduced_board_bottleneck_7x7_fixed_r2,Bottleneck 7x7,Fixed 25,"Bottleneck 7x7
+Fixed 25",random,30,0.000000,-69.566667,9.566667,0.002619,711,25.000000,0.003683
+reduced_board_bottleneck_7x7_fixed_r2,Bottleneck 7x7,Fixed 25,"Bottleneck 7x7
+Fixed 25",rule,30,0.466667,6.966667,57.166667,7.729253,731,25.000000,10.573533
+reduced_board_bottleneck_7x7_goal40_r2,Bottleneck 7x7,Goal 40,"Bottleneck 7x7
+Goal 40",expectimax_d2,30,0.600000,8.166667,35.533333,71.615050,515,18.000000,139.058350
+reduced_board_bottleneck_7x7_goal40_r2,Bottleneck 7x7,Goal 40,"Bottleneck 7x7
+Goal 40",expectimax_d3,30,0.700000,9.233333,36.600000,518.517539,511,17.833333,1014.711427
+reduced_board_bottleneck_7x7_goal40_r2,Bottleneck 7x7,Goal 40,"Bottleneck 7x7
+Goal 40",greedy,30,0.700000,10.700000,36.833333,6.231654,493,17.100000,12.640272
+reduced_board_bottleneck_7x7_goal40_r2,Bottleneck 7x7,Goal 40,"Bottleneck 7x7
+Goal 40",mcts,30,0.500000,5.800000,34.933333,88.488598,533,19.033333,166.019884
+reduced_board_bottleneck_7x7_goal40_r2,Bottleneck 7x7,Goal 40,"Bottleneck 7x7
+Goal 40",random,30,0.000000,-36.766667,5.466667,0.001712,432,15.466667,0.003964
+reduced_board_bottleneck_7x7_goal40_r2,Bottleneck 7x7,Goal 40,"Bottleneck 7x7
+Goal 40",rule,30,0.500000,2.866667,33.266667,3.539204,474,16.333333,7.466674
+reduced_board_default_fixed_r2,Default,Fixed 25,"Default
+Fixed 25",expectimax_d2,30,0.516667,2.033333,25.700000,147.337010,750,25.000000,196.449347
+reduced_board_default_fixed_r2,Default,Fixed 25,"Default
+Fixed 25",expectimax_d3,30,0.533333,6.233333,28.300000,1228.177347,750,25.000000,1637.569795
+reduced_board_default_fixed_r2,Default,Fixed 25,"Default
+Fixed 25",greedy,30,0.366667,-1.000000,24.133333,11.913065,750,25.000000,15.884087
+reduced_board_default_fixed_r2,Default,Fixed 25,"Default
+Fixed 25",mcts,30,0.700000,14.400000,32.300000,193.390934,747,25.000000,258.890139
+reduced_board_default_fixed_r2,Default,Fixed 25,"Default
+Fixed 25",random,30,0.000000,-38.166667,4.800000,0.002956,745,25.000000,0.003968
+reduced_board_default_fixed_r2,Default,Fixed 25,"Default
+Fixed 25",rule,30,0.883333,16.500000,34.600000,5.836507,748,25.000000,7.802817
+reduced_board_default_goal40_r2,Default,Goal 40,"Default
+Goal 40",expectimax_d2,30,0.533333,2.100000,31.366667,149.377363,909,30.300000,164.331533
+reduced_board_default_goal40_r2,Default,Goal 40,"Default
+Goal 40",expectimax_d3,30,0.566667,4.766667,33.566667,1277.573052,919,30.633333,1390.177423
+reduced_board_default_goal40_r2,Default,Goal 40,"Default
+Goal 40",greedy,30,0.366667,-1.200000,30.100000,12.335432,923,30.766667,13.364498
+reduced_board_default_goal40_r2,Default,Goal 40,"Default
+Goal 40",mcts,30,0.666667,13.733333,37.166667,206.095076,892,29.833333,231.048292
+reduced_board_default_goal40_r2,Default,Goal 40,"Default
+Goal 40",random,30,0.000000,-36.733333,4.466667,0.002502,701,23.533333,0.003570
+reduced_board_default_goal40_r2,Default,Goal 40,"Default
+Goal 40",rule,30,0.866667,17.333333,39.533333,5.243022,873,29.166667,6.005752
+reduced_board_inner_ring_center_7x7_fixed_r2,Inner ring,Fixed 25,"Inner ring
+Fixed 25",expectimax_d2,30,0.700000,17.366667,74.500000,203.421512,745,25.000000,273.049009
+reduced_board_inner_ring_center_7x7_fixed_r2,Inner ring,Fixed 25,"Inner ring
+Fixed 25",expectimax_d3,30,0.633333,21.033333,77.366667,1326.826940,747,25.000000,1776.207417
+reduced_board_inner_ring_center_7x7_fixed_r2,Inner ring,Fixed 25,"Inner ring
+Fixed 25",greedy,30,0.566667,28.933333,80.166667,17.964348,746,25.000000,24.080895
+reduced_board_inner_ring_center_7x7_fixed_r2,Inner ring,Fixed 25,"Inner ring
+Fixed 25",mcts,30,0.466667,14.733333,70.300000,176.896973,735,25.000000,240.676154
+reduced_board_inner_ring_center_7x7_fixed_r2,Inner ring,Fixed 25,"Inner ring
+Fixed 25",random,30,0.000000,-105.533333,8.033333,0.002961,743,25.000000,0.003985
+reduced_board_inner_ring_center_7x7_fixed_r2,Inner ring,Fixed 25,"Inner ring
+Fixed 25",rule,30,0.633333,23.466667,78.833333,6.193461,747,25.000000,8.291112
+reduced_board_inner_ring_center_7x7_goal40_r2,Inner ring,Goal 40,"Inner ring
+Goal 40",expectimax_d2,30,0.566667,5.000000,33.333333,80.438383,353,11.933333,227.870773
+reduced_board_inner_ring_center_7x7_goal40_r2,Inner ring,Goal 40,"Inner ring
+Goal 40",expectimax_d3,30,0.600000,8.566667,35.866667,540.480736,350,11.733333,1544.230675
+reduced_board_inner_ring_center_7x7_goal40_r2,Inner ring,Goal 40,"Inner ring
+Goal 40",greedy,30,0.700000,12.166667,36.766667,7.565651,356,12.000000,21.251829
+reduced_board_inner_ring_center_7x7_goal40_r2,Inner ring,Goal 40,"Inner ring
+Goal 40",mcts,30,0.466667,2.466667,31.966667,75.564593,368,12.566667,205.338568
+reduced_board_inner_ring_center_7x7_goal40_r2,Inner ring,Goal 40,"Inner ring
+Goal 40",random,30,0.000000,-37.933333,3.766667,0.000914,269,9.100000,0.003397
+reduced_board_inner_ring_center_7x7_goal40_r2,Inner ring,Goal 40,"Inner ring
+Goal 40",rule,30,0.666667,9.733333,35.666667,2.506667,344,11.566667,7.286824

@@ -1,0 +1,119 @@
+{
+  "schema_version": 1,
+  "mode_name": "refresh2_search_capture_25",
+  "description": "Search-agent capture-heavy screen with refresh after two passes",
+  "created_at": "2026-07-23T13:50:20+00:00",
+  "code_version": "unknown",
+  "board": {
+    "name": "default",
+    "definition": {
+      "schema_version": 1,
+      "name": "default",
+      "description": "Standard 5x5 board; one 1-point capture cell at the center.",
+      "rows": 5,
+      "cols": 5,
+      "spawns": {
+        "A": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ]
+        ],
+        "B": [
+          [
+            4,
+            1
+          ],
+          [
+            4,
+            2
+          ],
+          [
+            4,
+            3
+          ]
+        ]
+      },
+      "capture_cells": [
+        {
+          "cell": [
+            2,
+            2
+          ],
+          "points": 1
+        }
+      ],
+      "blocked_cells": []
+    }
+  },
+  "deck": {
+    "name": "capture_heavy",
+    "definition": {
+      "schema_version": 1,
+      "name": "capture_heavy",
+      "description": "28-card deck emphasizing captures; expected to stress pass/deadlock behavior.",
+      "cards": {
+        "move1": 5,
+        "move2": 4,
+        "mobilize": 4,
+        "capture": 11,
+        "swap": 4
+      }
+    }
+  },
+  "rules": {
+    "turns_per_player": 25,
+    "market_size": 3,
+    "capture_score": 3,
+    "swap_range": 3,
+    "net_range": 3,
+    "market_refresh_after_passes": 2
+  },
+  "heuristic_weights": {
+    "score": 100,
+    "center": 10,
+    "center_distance": 2,
+    "capture_threat": 15,
+    "net_potential": 20,
+    "swap_potential": 8,
+    "safety": 10,
+    "mobility": 1
+  },
+  "agents": [
+    {
+      "name": "rule",
+      "params": {}
+    },
+    {
+      "name": "expectimax",
+      "params": {
+        "method": "expectimax",
+        "depth": 2,
+        "top_k": 6
+      }
+    },
+    {
+      "name": "mcts",
+      "params": {
+        "simulations": 100,
+        "rollout_depth": 10,
+        "seed": null
+      }
+    }
+  ],
+  "num_games": 3,
+  "game_seeds": [
+    0,
+    1,
+    2
+  ],
+  "agent_seed_policy": "derived"
+}

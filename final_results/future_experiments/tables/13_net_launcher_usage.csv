@@ -1,0 +1,6 @@
+agent,adjacent,net,total_captures,net_share
+expectimax,58,10,68,0.147059
+greedy,256,72,328,0.219512
+mcts,56,13,69,0.188406
+random,178,104,282,0.368794
+rule,325,62,387,0.160207

@@ -1,0 +1,28 @@
+mode,family,condition,agent,games,win_points_rate,mean_margin,total_decision_time,total_decisions,milliseconds_per_decision
+search_board_bottleneck_7x7_25,Board,Bottleneck 7×7,expectimax,12,0.625000,4.500000,47.633782,109,437.007178
+search_board_bottleneck_7x7_25,Board,Bottleneck 7×7,mcts,12,0.500000,-1.500000,9.180351,85,108.004126
+search_board_bottleneck_7x7_25,Board,Bottleneck 7×7,rule,12,0.375000,-3.000000,0.680385,113,6.021104
+search_board_default_25,Board,Default 5×5,expectimax,12,0.416667,-1.666667,152.237237,300,507.457457
+search_board_default_25,Board,Default 5×5,mcts,12,0.500000,1.250000,50.263658,300,167.545526
+search_board_default_25,Board,Default 5×5,rule,12,0.583333,0.416667,1.173211,300,3.910705
+search_board_dual_arena_25,Board,Dual arena 5×7,expectimax,12,0.291667,0.000000,119.009746,237,502.150827
+search_board_dual_arena_25,Board,Dual arena 5×7,mcts,12,0.666667,6.083333,44.916317,279,160.990385
+search_board_dual_arena_25,Board,Dual arena 5×7,rule,12,0.541667,-6.083333,1.750286,258,6.784053
+search_board_open_7x7_25,Board,Open 7×7,expectimax,12,0.458333,-0.500000,75.310675,148,508.855909
+search_board_open_7x7_25,Board,Open 7×7,mcts,12,0.750000,2.083333,14.428809,117,123.323151
+search_board_open_7x7_25,Board,Open 7×7,rule,12,0.291667,-1.583333,1.422490,183,7.773168
+search_deck_capture_25,Deck,Capture-heavy,expectimax,12,0.416667,0.500000,38.898686,97,401.017379
+search_deck_capture_25,Deck,Capture-heavy,mcts,12,0.583333,-1.833333,10.108959,103,98.145232
+search_deck_capture_25,Deck,Capture-heavy,rule,12,0.500000,1.333333,0.247330,120,2.061085
+search_deck_movement_25,Deck,Movement-heavy,expectimax,12,0.000000,-16.250000,165.586803,300,551.956009
+search_deck_movement_25,Deck,Movement-heavy,mcts,12,0.583333,4.833333,58.913495,300,196.378316
+search_deck_movement_25,Deck,Movement-heavy,rule,12,0.916667,11.416667,1.962968,300,6.543228
+search_deck_swap_25,Deck,Swap-heavy,expectimax,12,0.416667,-3.000000,125.136474,279,448.517828
+search_deck_swap_25,Deck,Swap-heavy,mcts,12,0.166667,-6.666667,43.108623,279,154.511195
+search_deck_swap_25,Deck,Swap-heavy,rule,12,0.916667,9.666667,1.151824,300,3.839414
+search_pieces_2_25,Pieces,2 pieces,expectimax,12,0.333333,-1.666667,56.893890,225,252.861734
+search_pieces_2_25,Pieces,2 pieces,mcts,12,0.625000,0.666667,23.347464,226,103.307364
+search_pieces_2_25,Pieces,2 pieces,rule,12,0.541667,1.000000,0.502347,300,1.674491
+search_pieces_4_25,Pieces,4 pieces,expectimax,12,0.125000,-13.250000,170.450287,279,610.932929
+search_pieces_4_25,Pieces,4 pieces,mcts,12,0.458333,-2.166667,53.154660,279,190.518494
+search_pieces_4_25,Pieces,4 pieces,rule,12,0.916667,15.416667,2.102706,299,7.032460

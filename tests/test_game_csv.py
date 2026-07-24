@@ -138,3 +138,17 @@ def test_pass_turns_are_recorded_and_replayed() -> None:
     assert all(row["card_1"] == "None" for row in rows)
     states = replay_rows(initial, rows, validate=True)
     assert states[-1].is_terminal
+
+
+def test_market_refresh_passes_are_recorded_and_replayed() -> None:
+    config = GameConfig(seed=1, turns_per_player=3, market_refresh_after_passes=2)
+    initial = initial_state(config).with_updates(
+        positions={"A": ((0, 0), (0, 1), (0, 2)), "B": ((4, 2), (4, 3), (4, 4))},
+        market=(CardType.CAPTURE, CardType.CAPTURE, CardType.CAPTURE),
+    )
+    recorder = GameCsvRecorder(config.market_size)
+    result = play_match(RandomAgent(seed=0), RandomAgent(seed=1), initial, on_step=recorder.record_step)
+    rows = recorder.finalize()
+    states = replay_rows(initial, rows, validate=True)
+    assert states[-1].scores == result.scores
+    assert any(states[i].market != states[i - 1].market for i in range(1, len(states)))

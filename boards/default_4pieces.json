@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "name": "default_4pieces",
+  "description": "Default 5x5 geometry with four pieces per player.",
+  "rows": 5,
+  "cols": 5,
+  "pieces_per_player": 4,
+  "spawns": {
+    "A": [[0, 0], [0, 1], [0, 3], [0, 4]],
+    "B": [[4, 0], [4, 1], [4, 3], [4, 4]]
+  },
+  "capture_cells": [
+    {"cell": [2, 2], "points": 1}
+  ],
+  "blocked_cells": []
+}

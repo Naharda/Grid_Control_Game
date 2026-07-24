@@ -1,0 +1,4 @@
+depth,top_k,games,win_points_rate,mean_margin,milliseconds_per_decision,total_decisions
+1,4,6,0.250000,-9.833333,18.437690,90
+2,4,6,0.166667,-8.166667,272.241102,90
+3,4,6,0.666667,-1.666667,3730.182410,90

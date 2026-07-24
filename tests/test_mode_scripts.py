@@ -80,11 +80,38 @@ def test_created_mode_records_defaults_and_params(tmp_path) -> None:
     assert config["game_seeds"] == [0, 1]
     assert config["num_games"] == 2
     assert config["rules"]["turns_per_player"] == 4
+    assert config["rules"]["market_refresh_after_passes"] is None
+    assert config["rules"]["score_to_win"] is None
     assert config["board"]["definition"]["rows"] == 5
     assert config["deck"]["definition"]["cards"]["move1"] == 8
     by_name = {entry["name"]: entry["params"] for entry in config["agents"]}
     assert by_name["minimax"] == {"method": "minimax", "depth": 3, "top_k": 10}
     assert by_name["greedy"] == {}
+
+
+def test_mode_records_market_refresh_rule(tmp_path) -> None:
+    config = _create_mode(tmp_path, refresh_after_passes=2)
+    assert config["rules"]["market_refresh_after_passes"] == 2
+    assert config_from_mode(config).market_refresh_after_passes == 2
+
+
+def test_mode_records_score_goal(tmp_path) -> None:
+    config = _create_mode(tmp_path, score_to_win=25)
+    assert config["rules"]["score_to_win"] == 25
+    assert config_from_mode(config).score_to_win == 25
+
+
+def test_named_expectimax_depth_variants_have_distinct_parameters() -> None:
+    from experiments.run_match import build_agent
+
+    depth_2 = build_agent("expectimax_d2")
+    depth_3 = build_agent("expectimax_d3")
+    depth_4 = build_agent("expectimax_d4")
+
+    assert depth_2.depth == 2
+    assert depth_3.depth == 3
+    assert depth_4.depth == 4
+    assert depth_2.top_k == depth_3.top_k == depth_4.top_k == 2
 
 
 def test_create_rejects_existing_mode(tmp_path) -> None:

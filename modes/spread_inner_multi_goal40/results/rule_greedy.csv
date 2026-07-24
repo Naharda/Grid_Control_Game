@@ -1,0 +1,9 @@
+game,agent_a,agent_b,winner,score_a,score_b,decision_time_a_seconds,decision_time_b_seconds,decisions_a,decisions_b,turns_a,turns_b
+0,rule,greedy,B,32,40,0.312475700,0.529529600,23,23,23,23
+1,rule,greedy,A,41,29,0.233459500,0.449969500,18,17,18,17
+2,rule,greedy,B,28,40,0.276084400,0.497843600,17,17,17,17
+3,rule,greedy,A,41,23,0.256213200,0.546544200,18,17,18,17
+4,rule,greedy,B,33,40,0.322631100,0.704128300,20,20,20,20
+5,rule,greedy,A,40,25,0.271204900,0.387997800,15,14,15,14
+6,rule,greedy,B,27,40,0.363872900,0.590697700,21,21,21,21
+7,rule,greedy,A,42,23,0.317213500,0.465731500,17,16,17,16

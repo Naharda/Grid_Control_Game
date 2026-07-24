@@ -65,7 +65,8 @@ def code_version() -> str:
     try:
         out = subprocess.run(
             ["git", "rev-parse", "--short", "HEAD"],
-            cwd=REPO_ROOT, capture_output=True, text=True, timeout=5,
+            cwd=REPO_ROOT, capture_output=True, text=True, encoding="utf-8",
+            errors="replace", timeout=5,
         )
         return out.stdout.strip() or "unknown"
     except OSError:
@@ -94,6 +95,16 @@ def interactive_fill(args: argparse.Namespace) -> None:
     args.capture_score = _prompt("capture score", args.capture_score, int)
     args.swap_range = _prompt("swap range", args.swap_range, int)
     args.net_range = _prompt("net range", args.net_range, int)
+    args.refresh_after_passes = _prompt(
+        "refresh market after consecutive passes (None disables)",
+        args.refresh_after_passes,
+        lambda value: None if value.lower() == "none" else int(value),
+    )
+    args.score_to_win = _prompt(
+        "first-to score goal (None disables)",
+        args.score_to_win,
+        lambda value: None if value.lower() == "none" else int(value),
+    )
     args.seed_policy = _prompt(f"agent seed policy {SEED_POLICIES}", args.seed_policy)
 
 
@@ -143,6 +154,8 @@ def build_mode_config(args: argparse.Namespace) -> dict:
             "capture_score": args.capture_score,
             "swap_range": args.swap_range,
             "net_range": args.net_range,
+            "market_refresh_after_passes": getattr(args, "refresh_after_passes", None),
+            "score_to_win": getattr(args, "score_to_win", None),
         },
         "heuristic_weights": dict(_DEFAULTS.heuristic_weights),
         "agents": agents,
@@ -169,6 +182,16 @@ def main() -> None:
     parser.add_argument("--capture-score", type=int, default=_DEFAULTS.capture_score)
     parser.add_argument("--swap-range", type=int, default=_DEFAULTS.swap_range)
     parser.add_argument("--net-range", type=int, default=_DEFAULTS.net_range)
+    parser.add_argument(
+        "--refresh-after-passes",
+        type=int,
+        help="Refresh the full market after this many consecutive passes (recommended: 2).",
+    )
+    parser.add_argument(
+        "--score-to-win",
+        type=int,
+        help="End immediately when either player reaches this score; unset keeps fixed-horizon play.",
+    )
     parser.add_argument("--description", default="")
     parser.add_argument("--param", action="append", default=[], metavar="AGENT.KEY=VALUE",
                         help="Agent hyperparameter override, e.g. minimax.depth=3. Repeatable.")

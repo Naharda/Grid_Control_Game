@@ -1,0 +1,9 @@
+game,agent_a,agent_b,winner,score_a,score_b,decision_time_a_seconds,decision_time_b_seconds,decisions_a,decisions_b
+0,greedy,random,A,50,7,0.508574399,0.000192100,50,50
+1,greedy,random,A,49,6,0.440667100,0.000185500,50,50
+2,greedy,random,A,39,10,0.568368900,0.000186500,50,50
+3,greedy,random,A,43,11,0.803158800,0.000190900,50,50
+4,greedy,random,A,36,16,0.492098300,0.000177400,50,50
+5,greedy,random,A,36,10,0.464549700,0.000200900,50,50
+6,greedy,random,A,19,0,0.255378700,0.000108000,23,23
+7,greedy,random,A,43,12,0.505036800,0.000311501,50,50

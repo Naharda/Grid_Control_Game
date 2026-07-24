@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "name": "movement_heavy",
+  "description": "28-card deck emphasizing movement while retaining every action type.",
+  "cards": {
+    "move1": 10,
+    "move2": 8,
+    "mobilize": 6,
+    "capture": 2,
+    "swap": 2
+  }
+}

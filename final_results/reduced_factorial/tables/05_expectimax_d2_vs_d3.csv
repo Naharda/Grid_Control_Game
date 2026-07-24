@@ -1,0 +1,13 @@
+mode,board,end_condition,agent,games,win_points_rate,mean_margin,milliseconds_per_decision
+reduced_board_default_fixed_r2,Default,Fixed 25,expectimax_d2,6,0.666667,0.000000,212.918091
+reduced_board_default_fixed_r2,Default,Fixed 25,expectimax_d3,6,0.333333,0.000000,1814.411701
+reduced_board_default_goal40_r2,Default,Goal 40,expectimax_d2,6,0.666667,3.000000,181.119690
+reduced_board_default_goal40_r2,Default,Goal 40,expectimax_d3,6,0.333333,-3.000000,1505.443775
+reduced_board_bottleneck_7x7_fixed_r2,Bottleneck 7x7,Fixed 25,expectimax_d2,6,0.500000,-4.166667,184.014916
+reduced_board_bottleneck_7x7_fixed_r2,Bottleneck 7x7,Fixed 25,expectimax_d3,6,0.500000,4.166667,1273.748687
+reduced_board_bottleneck_7x7_goal40_r2,Bottleneck 7x7,Goal 40,expectimax_d2,6,0.333333,-1.333333,157.423406
+reduced_board_bottleneck_7x7_goal40_r2,Bottleneck 7x7,Goal 40,expectimax_d3,6,0.666667,1.333333,1070.230884
+reduced_board_inner_ring_center_7x7_fixed_r2,Inner ring,Fixed 25,expectimax_d2,6,0.500000,-6.666667,271.387133
+reduced_board_inner_ring_center_7x7_fixed_r2,Inner ring,Fixed 25,expectimax_d3,6,0.500000,6.666667,1904.620901
+reduced_board_inner_ring_center_7x7_goal40_r2,Inner ring,Goal 40,expectimax_d2,6,0.500000,-4.666667,236.559563
+reduced_board_inner_ring_center_7x7_goal40_r2,Inner ring,Goal 40,expectimax_d3,6,0.500000,4.666667,1602.651623

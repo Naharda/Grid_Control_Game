@@ -1,0 +1,27 @@
+mode,family,condition,agent,games,win_points_rate,mean_margin,mean_ms_per_decision
+screen_board_bottleneck_7x7,Board,Bottleneck 7×7,greedy,16,0.531250,-7.937500,12.712065
+screen_board_bottleneck_7x7,Board,Bottleneck 7×7,rule,16,0.468750,7.937500,8.689833
+screen_board_default,Board,Default 5×5,greedy,16,0.000000,-38.500000,15.581010
+screen_board_default,Board,Default 5×5,rule,16,1.000000,38.500000,8.452594
+screen_board_dual_arena,Board,Dual arena 5×7,greedy,16,0.500000,0.875000,20.334047
+screen_board_dual_arena,Board,Dual arena 5×7,rule,16,0.500000,-0.875000,10.499814
+screen_board_open_7x7,Board,Open 7×7,greedy,16,0.625000,-1.187500,18.630444
+screen_board_open_7x7,Board,Open 7×7,rule,16,0.375000,1.187500,11.660170
+screen_capture_score_1,Scoring,Capture = 1,greedy,16,0.000000,-41.625000,11.038948
+screen_capture_score_1,Scoring,Capture = 1,rule,16,1.000000,41.625000,5.921534
+screen_capture_score_5,Scoring,Capture = 5,greedy,16,0.062500,-36.125000,10.832427
+screen_capture_score_5,Scoring,Capture = 5,rule,16,0.937500,36.125000,5.830853
+screen_deck_capture,Deck,Capture-heavy,greedy,16,0.187500,-37.375000,7.161979
+screen_deck_capture,Deck,Capture-heavy,rule,16,0.812500,37.375000,3.160733
+screen_deck_movement,Deck,Movement-heavy,greedy,16,0.000000,-42.125000,14.645531
+screen_deck_movement,Deck,Movement-heavy,rule,16,1.000000,42.125000,7.855489
+screen_deck_swap,Deck,Swap-heavy,greedy,16,0.062500,-39.125000,10.768681
+screen_deck_swap,Deck,Swap-heavy,rule,16,0.937500,39.125000,5.698196
+screen_horizon_25,Horizon,25 turns/player,greedy,16,0.125000,-16.625000,10.133208
+screen_horizon_25,Horizon,25 turns/player,rule,16,0.875000,16.625000,5.724895
+screen_horizon_75,Horizon,75 turns/player,greedy,16,0.000000,-54.562500,10.984840
+screen_horizon_75,Horizon,75 turns/player,rule,16,1.000000,54.562500,5.915567
+screen_pieces_2,Pieces,2 pieces,greedy,16,0.281250,-10.187500,6.947730
+screen_pieces_2,Pieces,2 pieces,rule,16,0.718750,10.187500,2.603945
+screen_pieces_4,Pieces,4 pieces,greedy,16,0.031250,-41.375000,19.988721
+screen_pieces_4,Pieces,4 pieces,rule,16,0.968750,41.375000,14.149023

@@ -15,6 +15,8 @@ class GameConfig:
     capture_score: int = 3
     swap_range: int = 3
     net_range: int = 3
+    market_refresh_after_passes: int | None = None
+    score_to_win: int | None = None
     seed: int | None = 1
     player_a_spawns: tuple[tuple[int, int], ...] = ((0, 1), (0, 2), (0, 3))
     player_b_spawns: tuple[tuple[int, int], ...] = ((4, 1), (4, 2), (4, 3))

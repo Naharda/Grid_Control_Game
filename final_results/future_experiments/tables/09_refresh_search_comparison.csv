@@ -1,0 +1,7 @@
+pass_rule,mode,agent,games,win_points_rate,mean_margin,milliseconds_per_decision,mean_decisions_per_game
+Original pass rule,search_deck_capture_25,rule,12,0.500000,1.333333,2.061085,10.000000
+Original pass rule,search_deck_capture_25,expectimax,12,0.416667,0.500000,401.017379,8.083333
+Original pass rule,search_deck_capture_25,mcts,12,0.583333,-1.833333,98.145232,8.583333
+Refresh after 2 passes,refresh2_search_capture_25,rule,12,0.708333,6.583333,3.743744,23.250000
+Refresh after 2 passes,refresh2_search_capture_25,expectimax,12,0.291667,-3.166667,654.420036,23.250000
+Refresh after 2 passes,refresh2_search_capture_25,mcts,12,0.500000,-3.416667,171.343080,23.000000

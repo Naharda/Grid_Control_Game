@@ -1,0 +1,14 @@
+mode,family,condition,games,deadlock_rate,mean_final_pass_streak
+screen_board_bottleneck_7x7,Board,Bottleneck 7×7,48,0.687500,56.020833
+screen_board_default,Board,Default 5×5,48,0.125000,11.145833
+screen_board_dual_arena,Board,Dual arena 5×7,48,0.437500,28.166667
+screen_board_open_7x7,Board,Open 7×7,48,0.625000,54.208333
+screen_capture_score_1,Scoring,Capture = 1,48,0.166667,13.666667
+screen_capture_score_5,Scoring,Capture = 5,48,0.125000,11.145833
+screen_deck_capture,Deck,Capture-heavy,48,0.833333,67.479167
+screen_deck_movement,Deck,Movement-heavy,48,0.000000,0.000000
+screen_deck_swap,Deck,Swap-heavy,48,0.187500,18.625000
+screen_horizon_25,Horizon,25 turns/player,48,0.125000,4.895833
+screen_horizon_75,Horizon,75 turns/player,48,0.145833,18.229167
+screen_pieces_2,Pieces,2 pieces,48,0.458333,34.395833
+screen_pieces_4,Pieces,4 pieces,48,0.104167,10.187500
