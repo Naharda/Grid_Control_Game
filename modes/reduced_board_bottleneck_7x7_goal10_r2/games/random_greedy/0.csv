@@ -1,0 +1,16 @@
+turn,player,score_a,score_b,card_0,card_1,card_2,action,card_drawn,src_0,dst_0,src_1,dst_1
+0,0,0,0,move1,mobilize,move2,-1,None,-1,-1,-1,-1
+1,1,0,0,move1,mobilize,mobilize,2,mobilize,4-0,5-1,-1,-1
+2,0,0,0,move1,move1,mobilize,1,move1,2-6,2-5,4-6,4-5
+3,1,0,0,move1,move1,move1,2,move1,2-0,1-0,5-1,5-0
+4,0,0,0,move1,move1,move1,0,move1,3-6,3-5,-1,-1
+5,1,0,0,move1,move1,capture,2,capture,5-0,5-1,-1,-1
+6,0,0,0,capture,move1,capture,0,capture,3-5,3-4,-1,-1
+7,1,0,0,capture,mobilize,capture,1,mobilize,5-1,5-0,-1,-1
+8,0,0,3,capture,capture,capture,1,capture,2-5,3-5,3-4,3-3
+9,1,0,3,capture,capture,capture,-1,None,-1,-1,-1,-1
+10,0,0,3,swap,move1,move1,-1,None,-1,-1,-1,-1
+11,1,0,3,swap,capture,move1,1,capture,1-0,1-1,-1,-1
+12,0,0,6,swap,capture,move1,2,move1,3-5,3-4,-1,-1
+13,1,0,6,swap,capture,move2,2,move2,1-1,2-1,-1,-1
+14,0,0,12,swap,capture,move2,1,capture,3-3,3-0,3-4,-1

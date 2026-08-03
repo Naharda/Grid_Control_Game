@@ -1,0 +1,73 @@
+mode,pair,game,agent,opponent,seat,outcome,score,margin,decision_time_seconds,decisions,turns,milliseconds_per_decision,board
+corrected_reduced_depth_default_goal20_r2,expectimax_d2_expectimax_d3,0,expectimax_d2,expectimax_d3,first,0.0,3,-17,1.2401326,11,11,112.73932727272727,Default
+corrected_reduced_depth_default_goal20_r2,expectimax_d2_expectimax_d3,0,expectimax_d3,expectimax_d2,second,1.0,20,17,11.9426444,11,11,1085.6949454545456,Default
+corrected_reduced_depth_default_goal20_r2,expectimax_d2_expectimax_d4,0,expectimax_d2,expectimax_d4,first,0.0,3,-17,1.2345681,11,11,112.23346363636364,Default
+corrected_reduced_depth_default_goal20_r2,expectimax_d2_expectimax_d4,0,expectimax_d4,expectimax_d2,second,1.0,20,17,95.7971576,11,11,8708.83250909091,Default
+corrected_reduced_depth_default_goal20_r2,expectimax_d2_rule,0,expectimax_d2,rule,first,0.0,3,-17,0.9143706,9,9,101.59673333333335,Default
+corrected_reduced_depth_default_goal20_r2,expectimax_d2_rule,0,rule,expectimax_d2,second,1.0,20,17,0.0217408,9,9,2.4156444444444443,Default
+corrected_reduced_depth_default_goal20_r2,expectimax_d3_expectimax_d2,0,expectimax_d3,expectimax_d2,first,0.0,9,-9,13.7292989,15,15,915.2865933333334,Default
+corrected_reduced_depth_default_goal20_r2,expectimax_d3_expectimax_d2,0,expectimax_d2,expectimax_d3,second,1.0,18,9,1.6198538,15,15,107.99025333333334,Default
+corrected_reduced_depth_default_goal20_r2,expectimax_d3_expectimax_d4,0,expectimax_d3,expectimax_d4,first,0.0,3,-17,10.3752508,12,12,864.6042333333334,Default
+corrected_reduced_depth_default_goal20_r2,expectimax_d3_expectimax_d4,0,expectimax_d4,expectimax_d3,second,1.0,20,17,94.8571912,12,12,7904.765933333333,Default
+corrected_reduced_depth_default_goal20_r2,expectimax_d3_rule,0,expectimax_d3,rule,first,0.0,3,-17,7.7897172,9,9,865.5241333333333,Default
+corrected_reduced_depth_default_goal20_r2,expectimax_d3_rule,0,rule,expectimax_d3,second,1.0,20,17,0.0255949,9,9,2.8438777777777777,Default
+corrected_reduced_depth_default_goal20_r2,expectimax_d4_expectimax_d2,0,expectimax_d4,expectimax_d2,first,0.0,6,-15,114.9813851,15,15,7665.425673333333,Default
+corrected_reduced_depth_default_goal20_r2,expectimax_d4_expectimax_d2,0,expectimax_d2,expectimax_d4,second,1.0,21,15,1.6139031,15,15,107.59354,Default
+corrected_reduced_depth_default_goal20_r2,expectimax_d4_expectimax_d3,0,expectimax_d4,expectimax_d3,first,0.0,3,-17,108.7936166,12,12,9066.134716666666,Default
+corrected_reduced_depth_default_goal20_r2,expectimax_d4_expectimax_d3,0,expectimax_d3,expectimax_d4,second,1.0,20,17,11.8234657,12,12,985.2888083333333,Default
+corrected_reduced_depth_default_goal20_r2,expectimax_d4_rule,0,expectimax_d4,rule,first,0.0,3,-17,96.5339237,9,9,10725.991522222223,Default
+corrected_reduced_depth_default_goal20_r2,expectimax_d4_rule,0,rule,expectimax_d4,second,1.0,20,17,0.0233162,9,9,2.590688888888889,Default
+corrected_reduced_depth_default_goal20_r2,rule_expectimax_d2,0,rule,expectimax_d2,first,0.0,12,-7,0.0633693,15,15,4.22462,Default
+corrected_reduced_depth_default_goal20_r2,rule_expectimax_d2,0,expectimax_d2,rule,second,1.0,19,7,1.5949121,15,15,106.32747333333333,Default
+corrected_reduced_depth_default_goal20_r2,rule_expectimax_d3,0,rule,expectimax_d3,first,0.0,12,-7,0.0686064,15,15,4.573759999999999,Default
+corrected_reduced_depth_default_goal20_r2,rule_expectimax_d3,0,expectimax_d3,rule,second,1.0,19,7,12.6779578,15,15,845.1971866666667,Default
+corrected_reduced_depth_default_goal20_r2,rule_expectimax_d4,0,rule,expectimax_d4,first,0.0,11,-9,0.0694069,15,15,4.627126666666666,Default
+corrected_reduced_depth_default_goal20_r2,rule_expectimax_d4,0,expectimax_d4,rule,second,1.0,20,9,122.5464966,15,15,8169.76644,Default
+corrected_reduced_depth_bottleneck_7x7_goal20_r2,expectimax_d2_expectimax_d3,0,expectimax_d2,expectimax_d3,first,0.0,18,-3,1.210949,14,15,86.49635714285715,Bottleneck 7x7
+corrected_reduced_depth_bottleneck_7x7_goal20_r2,expectimax_d2_expectimax_d3,0,expectimax_d3,expectimax_d2,second,1.0,21,3,10.5107761,14,15,750.7697214285714,Bottleneck 7x7
+corrected_reduced_depth_bottleneck_7x7_goal20_r2,expectimax_d2_expectimax_d4,0,expectimax_d2,expectimax_d4,first,0.0,18,-3,1.1798932,14,15,84.27808571428571,Bottleneck 7x7
+corrected_reduced_depth_bottleneck_7x7_goal20_r2,expectimax_d2_expectimax_d4,0,expectimax_d4,expectimax_d2,second,1.0,21,3,77.3095606,14,15,5522.111471428571,Bottleneck 7x7
+corrected_reduced_depth_bottleneck_7x7_goal20_r2,expectimax_d2_rule,0,expectimax_d2,rule,first,1.0,21,9,1.1562553,9,9,128.47281111111113,Bottleneck 7x7
+corrected_reduced_depth_bottleneck_7x7_goal20_r2,expectimax_d2_rule,0,rule,expectimax_d2,second,0.0,12,-9,0.0365198,8,8,4.564975,Bottleneck 7x7
+corrected_reduced_depth_bottleneck_7x7_goal20_r2,expectimax_d3_expectimax_d2,0,expectimax_d3,expectimax_d2,first,0.0,15,-6,7.6473866,13,14,588.2605076923077,Bottleneck 7x7
+corrected_reduced_depth_bottleneck_7x7_goal20_r2,expectimax_d3_expectimax_d2,0,expectimax_d2,expectimax_d3,second,1.0,21,6,0.8840125,13,14,68.00096153846154,Bottleneck 7x7
+corrected_reduced_depth_bottleneck_7x7_goal20_r2,expectimax_d3_expectimax_d4,0,expectimax_d3,expectimax_d4,first,0.0,15,-5,7.5025841,13,14,577.1218538461538,Bottleneck 7x7
+corrected_reduced_depth_bottleneck_7x7_goal20_r2,expectimax_d3_expectimax_d4,0,expectimax_d4,expectimax_d3,second,1.0,20,5,66.0985984,13,14,5084.507569230769,Bottleneck 7x7
+corrected_reduced_depth_bottleneck_7x7_goal20_r2,expectimax_d3_rule,0,expectimax_d3,rule,first,1.0,21,6,6.8788952,12,12,573.2412666666667,Bottleneck 7x7
+corrected_reduced_depth_bottleneck_7x7_goal20_r2,expectimax_d3_rule,0,rule,expectimax_d3,second,0.0,15,-6,0.0262761,11,11,2.3887363636363634,Bottleneck 7x7
+corrected_reduced_depth_bottleneck_7x7_goal20_r2,expectimax_d4_expectimax_d2,0,expectimax_d4,expectimax_d2,first,0.0,15,-6,78.2261218,13,14,6017.393984615385,Bottleneck 7x7
+corrected_reduced_depth_bottleneck_7x7_goal20_r2,expectimax_d4_expectimax_d2,0,expectimax_d2,expectimax_d4,second,1.0,21,6,0.8812172,13,14,67.78593846153846,Bottleneck 7x7
+corrected_reduced_depth_bottleneck_7x7_goal20_r2,expectimax_d4_expectimax_d3,0,expectimax_d4,expectimax_d3,first,1.0,22,4,73.1365194,13,14,5625.886107692307,Bottleneck 7x7
+corrected_reduced_depth_bottleneck_7x7_goal20_r2,expectimax_d4_expectimax_d3,0,expectimax_d3,expectimax_d4,second,0.0,18,-4,10.4487574,12,13,870.7297833333333,Bottleneck 7x7
+corrected_reduced_depth_bottleneck_7x7_goal20_r2,expectimax_d4_rule,0,expectimax_d4,rule,first,1.0,22,14,74.2581545,11,11,6750.741318181818,Bottleneck 7x7
+corrected_reduced_depth_bottleneck_7x7_goal20_r2,expectimax_d4_rule,0,rule,expectimax_d4,second,0.0,8,-14,0.0290849,10,10,2.90849,Bottleneck 7x7
+corrected_reduced_depth_bottleneck_7x7_goal20_r2,rule_expectimax_d2,0,rule,expectimax_d2,first,0.0,15,-7,0.0383598,11,11,3.4872545454545456,Bottleneck 7x7
+corrected_reduced_depth_bottleneck_7x7_goal20_r2,rule_expectimax_d2,0,expectimax_d2,rule,second,1.0,22,7,1.0228218,11,11,92.9838,Bottleneck 7x7
+corrected_reduced_depth_bottleneck_7x7_goal20_r2,rule_expectimax_d3,0,rule,expectimax_d3,first,1.0,21,3,0.061588,12,12,5.1323333333333325,Bottleneck 7x7
+corrected_reduced_depth_bottleneck_7x7_goal20_r2,rule_expectimax_d3,0,expectimax_d3,rule,second,0.0,18,-3,7.7027613,11,11,700.2510272727272,Bottleneck 7x7
+corrected_reduced_depth_bottleneck_7x7_goal20_r2,rule_expectimax_d4,0,rule,expectimax_d4,first,0.0,15,-7,0.0423991,11,11,3.854463636363637,Bottleneck 7x7
+corrected_reduced_depth_bottleneck_7x7_goal20_r2,rule_expectimax_d4,0,expectimax_d4,rule,second,1.0,22,7,65.1303772,11,11,5920.9433818181815,Bottleneck 7x7
+corrected_reduced_depth_inner_ring_center_7x7_goal20_r2,expectimax_d2_expectimax_d3,0,expectimax_d2,expectimax_d3,first,1.0,22,15,0.998969,6,6,166.49483333333333,Inner ring
+corrected_reduced_depth_inner_ring_center_7x7_goal20_r2,expectimax_d2_expectimax_d3,0,expectimax_d3,expectimax_d2,second,0.0,7,-15,7.499328,5,5,1499.8656,Inner ring
+corrected_reduced_depth_inner_ring_center_7x7_goal20_r2,expectimax_d2_expectimax_d4,0,expectimax_d2,expectimax_d4,first,1.0,22,15,1.0599228,6,6,176.65380000000002,Inner ring
+corrected_reduced_depth_inner_ring_center_7x7_goal20_r2,expectimax_d2_expectimax_d4,0,expectimax_d4,expectimax_d2,second,0.0,7,-15,79.9023629,5,5,15980.472579999998,Inner ring
+corrected_reduced_depth_inner_ring_center_7x7_goal20_r2,expectimax_d2_rule,0,expectimax_d2,rule,first,1.0,20,14,0.9940788,5,5,198.81576,Inner ring
+corrected_reduced_depth_inner_ring_center_7x7_goal20_r2,expectimax_d2_rule,0,rule,expectimax_d2,second,0.0,6,-14,0.0153072,4,4,3.8268,Inner ring
+corrected_reduced_depth_inner_ring_center_7x7_goal20_r2,expectimax_d3_expectimax_d2,0,expectimax_d3,expectimax_d2,first,1.0,22,15,10.6024367,6,6,1767.0727833333333,Inner ring
+corrected_reduced_depth_inner_ring_center_7x7_goal20_r2,expectimax_d3_expectimax_d2,0,expectimax_d2,expectimax_d3,second,0.0,7,-15,1.1714197,5,5,234.28393999999997,Inner ring
+corrected_reduced_depth_inner_ring_center_7x7_goal20_r2,expectimax_d3_expectimax_d4,0,expectimax_d3,expectimax_d4,first,1.0,22,15,9.3494103,6,6,1558.2350500000002,Inner ring
+corrected_reduced_depth_inner_ring_center_7x7_goal20_r2,expectimax_d3_expectimax_d4,0,expectimax_d4,expectimax_d3,second,0.0,7,-15,77.8177744,5,5,15563.554880000002,Inner ring
+corrected_reduced_depth_inner_ring_center_7x7_goal20_r2,expectimax_d3_rule,0,expectimax_d3,rule,first,1.0,20,14,8.859157,5,5,1771.8313999999998,Inner ring
+corrected_reduced_depth_inner_ring_center_7x7_goal20_r2,expectimax_d3_rule,0,rule,expectimax_d3,second,0.0,6,-14,0.0169238,4,4,4.23095,Inner ring
+corrected_reduced_depth_inner_ring_center_7x7_goal20_r2,expectimax_d4_expectimax_d2,0,expectimax_d4,expectimax_d2,first,1.0,22,15,68.8166505,6,6,11469.441749999998,Inner ring
+corrected_reduced_depth_inner_ring_center_7x7_goal20_r2,expectimax_d4_expectimax_d2,0,expectimax_d2,expectimax_d4,second,0.0,7,-15,1.084818,5,5,216.96359999999999,Inner ring
+corrected_reduced_depth_inner_ring_center_7x7_goal20_r2,expectimax_d4_expectimax_d3,0,expectimax_d4,expectimax_d3,first,1.0,22,15,68.9787151,6,6,11496.452516666666,Inner ring
+corrected_reduced_depth_inner_ring_center_7x7_goal20_r2,expectimax_d4_expectimax_d3,0,expectimax_d3,expectimax_d4,second,0.0,7,-15,8.2664307,5,5,1653.2861400000002,Inner ring
+corrected_reduced_depth_inner_ring_center_7x7_goal20_r2,expectimax_d4_rule,0,expectimax_d4,rule,first,1.0,20,14,64.9535315,5,5,12990.7063,Inner ring
+corrected_reduced_depth_inner_ring_center_7x7_goal20_r2,expectimax_d4_rule,0,rule,expectimax_d4,second,0.0,6,-14,0.0161122,4,4,4.02805,Inner ring
+corrected_reduced_depth_inner_ring_center_7x7_goal20_r2,rule_expectimax_d2,0,rule,expectimax_d2,first,1.0,22,15,0.031083,6,6,5.180499999999999,Inner ring
+corrected_reduced_depth_inner_ring_center_7x7_goal20_r2,rule_expectimax_d2,0,expectimax_d2,rule,second,0.0,7,-15,1.0285934,5,5,205.71868000000003,Inner ring
+corrected_reduced_depth_inner_ring_center_7x7_goal20_r2,rule_expectimax_d3,0,rule,expectimax_d3,first,1.0,22,15,0.0307677,6,6,5.127949999999999,Inner ring
+corrected_reduced_depth_inner_ring_center_7x7_goal20_r2,rule_expectimax_d3,0,expectimax_d3,rule,second,0.0,7,-15,7.4553679,5,5,1491.0735799999998,Inner ring
+corrected_reduced_depth_inner_ring_center_7x7_goal20_r2,rule_expectimax_d4,0,rule,expectimax_d4,first,1.0,22,15,0.039706,6,6,6.617666666666666,Inner ring
+corrected_reduced_depth_inner_ring_center_7x7_goal20_r2,rule_expectimax_d4,0,expectimax_d4,rule,second,0.0,7,-15,73.3886124,5,5,14677.72248,Inner ring

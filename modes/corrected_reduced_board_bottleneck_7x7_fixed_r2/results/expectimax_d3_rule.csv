@@ -1,0 +1,4 @@
+game,agent_a,agent_b,winner,score_a,score_b,decision_time_a_seconds,decision_time_b_seconds,decisions_a,decisions_b,turns_a,turns_b
+0,expectimax_d3,rule,A,62,43,19.489305300,0.123520900,25,25,25,25
+1,expectimax_d3,rule,A,70,28,23.976199500,0.140189800,24,24,25,25
+2,expectimax_d3,rule,B,40,60,26.406948500,0.165424200,24,24,25,25

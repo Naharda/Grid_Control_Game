@@ -1,4 +1,4 @@
-"""Replay and validate every game in the reduced factorial suite."""
+"""Replay and validate every game in the corrected reduced-factorial suite."""
 
 from __future__ import annotations
 
@@ -35,8 +35,8 @@ def main() -> None:
             for game_path in sorted(pair_dir.glob("*.csv"), key=lambda p: int(p.stem)):
                 reconstruct_states(mode, agent_a, agent_b, int(game_path.stem), validate=True)
                 checked += 1
-    if checked != 846:
-        raise ValueError(f"Expected 846 validated games, got {checked}")
+    if checked != 1116:
+        raise ValueError(f"Expected 1116 validated games, got {checked}")
     print(f"Validated {checked} game logs and result rows.")
 
 

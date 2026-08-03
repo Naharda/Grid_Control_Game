@@ -1,6 +1,6 @@
 # Reduced factorial results
 
-Start with [01_ANALYSIS.md](01_ANALYSIS.md). The suite contains 846 games, uses the two-pass market refresh throughout, compares every planned ordered pair, and includes net-launcher statistics.
+Start with [01_ANALYSIS.md](01_ANALYSIS.md). The suite contains 1,116 games, uses the two-pass market refresh throughout, compares every planned ordered pair, and includes net-launcher statistics.
 
 ## Files
 

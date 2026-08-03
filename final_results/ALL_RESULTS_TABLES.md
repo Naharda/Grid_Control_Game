@@ -7,19 +7,19 @@ individual rows.
 
 ## 0. Reduced factorial suite (current primary experiment)
 
-This is the current internally consistent suite: all 846 games use the
+This is the current internally consistent suite: all 1,116 games use the
 two-consecutive-pass market refresh, native runtime logging, and net-launcher
 statistics. The main/deck matrix uses all 30 ordered non-self pairs and three
 matched seeds per condition.
 
 | Agent | Main-suite games | Win points | First-seat WP | Second-seat WP | Weighted ms/decision |
 |---|---:|---:|---:|---:|---:|
-| Rule | 270 | 75.4% | 78.5% | 72.2% | 7.2 |
-| MCTS | 270 | 61.7% | 63.0% | 60.4% | 209.5 |
-| Expectimax d3 | 270 | 57.6% | 61.5% | 53.7% | 1,335.3 |
-| Expectimax d2 | 270 | 54.3% | 54.8% | 53.7% | 176.3 |
-| Greedy | 270 | 51.1% | 51.9% | 50.4% | 15.3 |
-| Random | 270 | 0.0% | 0.0% | 0.0% | 0.004 |
+| Rule | 360 | 69.0% | 71.7% | 66.4% | 7.0 |
+| MCTS | 360 | 62.1% | 61.1% | 63.1% | 201.4 |
+| Expectimax d3 | 360 | 59.0% | 62.8% | 55.3% | 1,303.2 |
+| Expectimax d2 | 360 | 55.7% | 57.8% | 53.6% | 173.2 |
+| Greedy | 360 | 53.9% | 55.0% | 52.8% | 15.0 |
+| Random | 360 | 0.3% | 0.6% | 0.0% | 0.004 |
 
 Full package: [reduced factorial index](reduced_factorial/00_INDEX.md),
 [coverage manifest](reduced_factorial/tables/01_coverage_manifest.csv),
@@ -206,8 +206,8 @@ Full table: [net-launcher usage](future_experiments/tables/13_net_launcher_usage
 |---|---:|
 | Baseline full | 1,080 |
 | Follow-up experiments | 1,206 |
-| Reduced factorial suite | 846 |
-| **Total games run** | **3,132** |
+| Reduced factorial suite | 1,116 |
+| **Total games run** | **3,402** |
 
 The individual-game aggregate result rows are available in
 [baseline matchup details](baseline_full/tables/05_matchup_detail.csv),

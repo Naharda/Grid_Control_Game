@@ -1,0 +1,19 @@
+mode,board,end_condition,agent,games,win_points_rate,mean_margin,milliseconds_per_decision
+corrected_reduced_board_default_fixed_r2,Default,Fixed 25,expectimax_d2,6,0.3333333333333333,-2.8333333333333335,104.68672933333333
+corrected_reduced_board_default_fixed_r2,Default,Fixed 25,expectimax_d3,6,0.6666666666666666,2.8333333333333335,936.9407980000001
+corrected_reduced_board_default_goal10_r2,Default,Goal 10,expectimax_d2,6,0.3333333333333333,-3.0,108.65664285714284
+corrected_reduced_board_default_goal10_r2,Default,Goal 10,expectimax_d3,6,0.6666666666666666,3.0,1020.1923939999999
+corrected_reduced_board_default_goal40_r2,Default,Goal 40,expectimax_d2,6,0.3333333333333333,-3.6666666666666665,114.85672089552239
+corrected_reduced_board_default_goal40_r2,Default,Goal 40,expectimax_d3,6,0.6666666666666666,3.6666666666666665,1027.6011985148516
+corrected_reduced_board_bottleneck_7x7_fixed_r2,Bottleneck 7x7,Fixed 25,expectimax_d2,6,0.5833333333333334,2.0,104.37515547945205
+corrected_reduced_board_bottleneck_7x7_fixed_r2,Bottleneck 7x7,Fixed 25,expectimax_d3,6,0.4166666666666667,-2.0,878.2222808219179
+corrected_reduced_board_bottleneck_7x7_goal10_r2,Bottleneck 7x7,Goal 10,expectimax_d2,6,0.5,1.5,81.06679130434782
+corrected_reduced_board_bottleneck_7x7_goal10_r2,Bottleneck 7x7,Goal 10,expectimax_d3,6,0.5,-1.5,698.8097804347826
+corrected_reduced_board_bottleneck_7x7_goal40_r2,Bottleneck 7x7,Goal 40,expectimax_d2,6,0.5,-1.0,101.4736954954955
+corrected_reduced_board_bottleneck_7x7_goal40_r2,Bottleneck 7x7,Goal 40,expectimax_d3,6,0.5,1.0,851.0207963963965
+corrected_reduced_board_inner_ring_center_7x7_fixed_r2,Inner ring,Fixed 25,expectimax_d2,6,0.5,-0.5,152.84783378378378
+corrected_reduced_board_inner_ring_center_7x7_fixed_r2,Inner ring,Fixed 25,expectimax_d3,6,0.5,0.5,1349.3875317567565
+corrected_reduced_board_inner_ring_center_7x7_goal10_r2,Inner ring,Goal 10,expectimax_d2,6,0.6666666666666666,1.5,105.19857142857143
+corrected_reduced_board_inner_ring_center_7x7_goal10_r2,Inner ring,Goal 10,expectimax_d3,6,0.3333333333333333,-1.5,804.2476899999999
+corrected_reduced_board_inner_ring_center_7x7_goal40_r2,Inner ring,Goal 40,expectimax_d2,6,0.5,-1.1666666666666667,172.85385625000004
+corrected_reduced_board_inner_ring_center_7x7_goal40_r2,Inner ring,Goal 40,expectimax_d3,6,0.5,1.1666666666666667,1432.327725

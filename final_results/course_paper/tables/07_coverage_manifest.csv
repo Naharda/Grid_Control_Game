@@ -1,0 +1,16 @@
+mode,board,deck,turns_per_player,score_to_win,market_refresh_after_passes,agents,expected_pairs,result_pair_files,expected_games,result_rows,game_logs,coverage_ok
+corrected_reduced_board_default_fixed_r2,default,default,25,,2,"random,greedy,rule,expectimax_d2,expectimax_d3,mcts",30,30,90,90,90,True
+corrected_reduced_board_default_goal10_r2,default,default,50,10.0,2,"random,greedy,rule,expectimax_d2,expectimax_d3,mcts",30,30,90,90,90,True
+corrected_reduced_board_default_goal40_r2,default,default,50,40.0,2,"random,greedy,rule,expectimax_d2,expectimax_d3,mcts",30,30,90,90,90,True
+corrected_reduced_board_bottleneck_7x7_fixed_r2,bottleneck_7x7,default,25,,2,"random,greedy,rule,expectimax_d2,expectimax_d3,mcts",30,30,90,90,90,True
+corrected_reduced_board_bottleneck_7x7_goal10_r2,bottleneck_7x7,default,50,10.0,2,"random,greedy,rule,expectimax_d2,expectimax_d3,mcts",30,30,90,90,90,True
+corrected_reduced_board_bottleneck_7x7_goal40_r2,bottleneck_7x7,default,50,40.0,2,"random,greedy,rule,expectimax_d2,expectimax_d3,mcts",30,30,90,90,90,True
+corrected_reduced_board_inner_ring_center_7x7_fixed_r2,inner_ring_center_7x7,default,25,,2,"random,greedy,rule,expectimax_d2,expectimax_d3,mcts",30,30,90,90,90,True
+corrected_reduced_board_inner_ring_center_7x7_goal10_r2,inner_ring_center_7x7,default,50,10.0,2,"random,greedy,rule,expectimax_d2,expectimax_d3,mcts",30,30,90,90,90,True
+corrected_reduced_board_inner_ring_center_7x7_goal40_r2,inner_ring_center_7x7,default,50,40.0,2,"random,greedy,rule,expectimax_d2,expectimax_d3,mcts",30,30,90,90,90,True
+corrected_reduced_deck_movement_heavy_fixed_r2,default,movement_heavy,25,,2,"random,greedy,rule,expectimax_d2,expectimax_d3,mcts",30,30,90,90,90,True
+corrected_reduced_deck_capture_heavy_fixed_r2,default,capture_heavy,25,,2,"random,greedy,rule,expectimax_d2,expectimax_d3,mcts",30,30,90,90,90,True
+corrected_reduced_deck_swap_heavy_fixed_r2,default,swap_heavy,25,,2,"random,greedy,rule,expectimax_d2,expectimax_d3,mcts",30,30,90,90,90,True
+corrected_reduced_depth_default_goal20_r2,default,default,15,20.0,2,"rule,expectimax_d2,expectimax_d3,expectimax_d4",12,12,12,12,12,True
+corrected_reduced_depth_bottleneck_7x7_goal20_r2,bottleneck_7x7,default,15,20.0,2,"rule,expectimax_d2,expectimax_d3,expectimax_d4",12,12,12,12,12,True
+corrected_reduced_depth_inner_ring_center_7x7_goal20_r2,inner_ring_center_7x7,default,15,20.0,2,"rule,expectimax_d2,expectimax_d3,expectimax_d4",12,12,12,12,12,True

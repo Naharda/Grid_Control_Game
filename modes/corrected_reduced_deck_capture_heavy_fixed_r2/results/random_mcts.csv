@@ -1,0 +1,4 @@
+game,agent_a,agent_b,winner,score_a,score_b,decision_time_a_seconds,decision_time_b_seconds,decisions_a,decisions_b,turns_a,turns_b
+0,random,mcts,B,9,37,0.000064400,3.030358700,22,22,25,25
+1,random,mcts,B,8,35,0.000062700,2.735986500,21,22,25,25
+2,random,mcts,B,4,24,0.000055700,2.543691000,20,20,25,25

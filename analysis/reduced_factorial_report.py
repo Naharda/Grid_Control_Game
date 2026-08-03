@@ -1,4 +1,4 @@
-"""Analyze the reduced, refresh-rule experiment matrix."""
+"""Analyze the corrected public-information reduced-factorial matrix."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "final_results" / "reduced_factorial"
+OUT = ROOT / "final_results" / "corrected_factorial"
 FIGURES = OUT / "figures"
 TABLES = OUT / "tables"
 os.environ.setdefault("MPLCONFIGDIR", str(ROOT / ".mplconfig"))
@@ -42,23 +42,26 @@ COLORS = {
 }
 
 BOARD_MODES = {
-    "reduced_board_default_fixed_r2": ("Default", "Fixed 25"),
-    "reduced_board_default_goal40_r2": ("Default", "Goal 40"),
-    "reduced_board_bottleneck_7x7_fixed_r2": ("Bottleneck 7x7", "Fixed 25"),
-    "reduced_board_bottleneck_7x7_goal40_r2": ("Bottleneck 7x7", "Goal 40"),
-    "reduced_board_inner_ring_center_7x7_fixed_r2": ("Inner ring", "Fixed 25"),
-    "reduced_board_inner_ring_center_7x7_goal40_r2": ("Inner ring", "Goal 40"),
+    "corrected_reduced_board_default_fixed_r2": ("Default", "Fixed 25"),
+    "corrected_reduced_board_default_goal10_r2": ("Default", "Goal 10"),
+    "corrected_reduced_board_default_goal40_r2": ("Default", "Goal 40"),
+    "corrected_reduced_board_bottleneck_7x7_fixed_r2": ("Bottleneck 7x7", "Fixed 25"),
+    "corrected_reduced_board_bottleneck_7x7_goal10_r2": ("Bottleneck 7x7", "Goal 10"),
+    "corrected_reduced_board_bottleneck_7x7_goal40_r2": ("Bottleneck 7x7", "Goal 40"),
+    "corrected_reduced_board_inner_ring_center_7x7_fixed_r2": ("Inner ring", "Fixed 25"),
+    "corrected_reduced_board_inner_ring_center_7x7_goal10_r2": ("Inner ring", "Goal 10"),
+    "corrected_reduced_board_inner_ring_center_7x7_goal40_r2": ("Inner ring", "Goal 40"),
 }
 DECK_MODES = {
-    "reduced_board_default_fixed_r2": "Default",
-    "reduced_deck_movement_heavy_fixed_r2": "Movement-heavy",
-    "reduced_deck_capture_heavy_fixed_r2": "Capture-heavy",
-    "reduced_deck_swap_heavy_fixed_r2": "Swap-heavy",
+    "corrected_reduced_board_default_fixed_r2": "Default",
+    "corrected_reduced_deck_movement_heavy_fixed_r2": "Movement-heavy",
+    "corrected_reduced_deck_capture_heavy_fixed_r2": "Capture-heavy",
+    "corrected_reduced_deck_swap_heavy_fixed_r2": "Swap-heavy",
 }
 DEPTH_MODES = {
-    "reduced_depth_default_goal20_r2": "Default",
-    "reduced_depth_bottleneck_7x7_goal20_r2": "Bottleneck 7x7",
-    "reduced_depth_inner_ring_center_7x7_goal20_r2": "Inner ring",
+    "corrected_reduced_depth_default_goal20_r2": "Default",
+    "corrected_reduced_depth_bottleneck_7x7_goal20_r2": "Bottleneck 7x7",
+    "corrected_reduced_depth_inner_ring_center_7x7_goal20_r2": "Inner ring",
 }
 ALL_MODES = list(BOARD_MODES) + [
     mode for mode in DECK_MODES if mode not in BOARD_MODES
@@ -207,6 +210,42 @@ def extract_net_usage(modes: list[str]) -> tuple[pd.DataFrame, pd.DataFrame]:
     counts = counts.reset_index()
     counts["total_captures"] = counts.adjacent + counts.net
     counts["net_share"] = counts.net / counts.total_captures
+    return raw, counts.sort_values("agent")
+
+
+def extract_action_usage(modes: list[str]) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Reconstruct played card types from trailing previous-action log fields."""
+    cards = ["move1", "move2", "mobilize", "capture", "swap"]
+    events = []
+    for mode in modes:
+        for path in sorted((ROOT / "modes" / mode / "games").glob("*/*.csv")):
+            pair = path.parent.name
+            result_rows = pd.read_csv(ROOT / "modes" / mode / "results" / f"{pair}.csv")
+            game_result = result_rows[result_rows.game == int(path.stem)].iloc[0]
+            agent_a, agent_b = game_result.agent_a, game_result.agent_b
+            with path.open(newline="", encoding="utf-8") as handle:
+                rows = list(csv.DictReader(handle))
+            for row in rows[1:]:
+                card = row["card_drawn"]
+                if card not in cards:
+                    continue
+                mover = 1 - int(row["player"])
+                events.append({
+                    "mode": mode,
+                    "agent": agent_a if mover == 0 else agent_b,
+                    "card": card,
+                })
+    raw = pd.DataFrame(events)
+    counts = raw.groupby(["agent", "card"]).size().unstack(fill_value=0)
+    for card in cards:
+        if card not in counts:
+            counts[card] = 0
+    counts = counts[cards].reset_index()
+    counts["played_actions"] = counts[cards].sum(axis=1)
+    for card in cards:
+        counts[f"{card}_share"] = counts[card] / counts.played_actions
+    counts["most_used_card"] = counts[cards].idxmax(axis=1)
+    counts["most_used_share"] = counts[[f"{card}_share" for card in cards]].max(axis=1)
     return raw, counts.sort_values("agent")
 
 
@@ -436,16 +475,17 @@ def write_report(data: dict[str, pd.DataFrame]) -> None:
     net_total = int(net.net.sum())
     capture_total = int(net.total_captures.sum())
     lengths = data["board_game_summary"]
-    goal_turns = lengths[lengths.end_condition == "Goal 40"].mean_total_turns.mean()
+    goal10_turns = lengths[lengths.end_condition == "Goal 10"].mean_total_turns.mean()
+    goal40_turns = lengths[lengths.end_condition == "Goal 40"].mean_total_turns.mean()
     fixed_turns = lengths[lengths.end_condition == "Fixed 25"].mean_total_turns.mean()
 
     text = f"""# Reduced factorial experiment report
 
 ## Design and coverage
 
-The completed suite contains **846 games**:
+The completed suite contains **1,116 games**:
 
-- 540 games crossing three boards (default, bottleneck 7x7, inner-ring center) with fixed 25-turn and first-to-40 end conditions;
+- 810 games crossing three boards (default, bottleneck 7x7, inner-ring center) with fixed 25-turn, first-to-10, and first-to-40 end conditions;
 - 270 independent deck games on the default board (movement-heavy, capture-heavy, swap-heavy; the default-deck control is shared with the board suite);
 - 36 bounded first-to-20 games directly comparing rule and expectimax depths 2, 3, and 4.
 
@@ -453,7 +493,7 @@ Every main/deck condition contains six agents, all 30 ordered non-self pairs, th
 
 ## Main performance
 
-Across the nine unique main/deck modes, **{AGENT_LABELS[best.agent]}** has the highest aggregate win-points rate ({best.win_points_rate:.1%}). Figure 01 shows that rankings depend on board and end condition; Figure 03 isolates deck composition.
+Across the 12 unique main/deck modes, **{AGENT_LABELS[best.agent]}** has the highest aggregate win-points rate ({best.win_points_rate:.1%}). Figure 01 shows that rankings depend on board and end condition; Figure 03 isolates deck composition.
 
 These are screening estimates: each agent has 30 games per condition, but each direct matchup has only six games. Interpret large reversals, not small percentage differences.
 
@@ -463,7 +503,7 @@ All matchups use identical seeds in both orientations. The largest aggregate fir
 
 ## Boards and point goal
 
-The first-to-40 condition ended after {goal_turns:.1f} combined turns on average across boards, versus {fixed_turns:.1f} scheduled turns under the 25-turn-per-player condition. This changes both strategy and compute cost, so goal-based and fixed-horizon results should be reported separately rather than pooled as interchangeable replications.
+The first-to-10 condition ended after {goal10_turns:.1f} combined turns on average across boards; first-to-40 ended after {goal40_turns:.1f}, versus {fixed_turns:.1f} scheduled turns under the 25-turn-per-player condition. This changes both strategy and compute cost, so goal-based and fixed-horizon results should be reported separately rather than pooled as interchangeable replications.
 
 The inner-ring single-center board is the concentrated-objective condition: its +4 center reward exceeds the default +3 capture reward, making rushing and holding the center locally more valuable than one capture.
 
@@ -514,7 +554,7 @@ python analysis/reduced_factorial_report.py
     links = "\n".join(f"- [{path}]({path}) — {description}" for path, description in files)
     index = f"""# Reduced factorial results
 
-Start with [01_ANALYSIS.md](01_ANALYSIS.md). The suite contains 846 games, uses the two-pass market refresh throughout, compares every planned ordered pair, and includes net-launcher statistics.
+Start with [01_ANALYSIS.md](01_ANALYSIS.md). The suite contains 1,116 games, uses the two-pass market refresh throughout, compares every planned ordered pair, and includes net-launcher statistics.
 
 ## Files
 
@@ -528,7 +568,7 @@ def main() -> None:
     write_report(data)
     print(f"Wrote {OUT}")
     print(f"Coverage rows: {len(data['coverage'])}; all valid: {data['coverage'].coverage_ok.all()}")
-    print("Games analyzed: 846")
+    print("Games analyzed: 1116")
 
 
 if __name__ == "__main__":

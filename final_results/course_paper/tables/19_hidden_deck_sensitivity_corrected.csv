@@ -1,0 +1,5 @@
+agent,states_tested,deck_permutations_per_state,sensitive_states,sensitive_state_rate,mean_unique_actions
+greedy,12,12,0,0.0,1.0
+rule,12,12,0,0.0,1.0
+expectimax_d2,12,12,0,0.0,1.0
+mcts,8,12,0,0.0,1.0

@@ -1,0 +1,7 @@
+turn,player,score_a,score_b,card_0,card_1,card_2,action,card_drawn,src_0,dst_0,src_1,dst_1
+0,0,0,0,capture,swap,move2,-1,None,-1,-1,-1,-1
+1,1,4,0,capture,swap,move2,2,move2,3-1,3-3,-1,-1
+2,0,4,0,capture,swap,capture,2,capture,5-4,5-3,-1,-1
+3,1,8,0,capture,move1,capture,1,move1,5-2,5-3,-1,-1
+4,0,8,0,capture,move1,capture,1,move1,1-4,1-5,-1,-1
+5,1,15,0,swap,move1,capture,0,swap,5-3,5-2,-1,-1

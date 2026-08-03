@@ -1,0 +1,4 @@
+game,agent_a,agent_b,winner,score_a,score_b,decision_time_a_seconds,decision_time_b_seconds,decisions_a,decisions_b,turns_a,turns_b
+0,greedy,expectimax_d2,B,6,12,0.055725800,0.910262700,9,9,10,10
+1,greedy,expectimax_d2,A,12,9,0.045144000,0.519703000,7,6,8,7
+2,greedy,expectimax_d2,B,3,12,0.039039500,0.488180600,7,7,7,7

@@ -3,6 +3,7 @@ from __future__ import annotations
 from game.actions import Action
 from game.rules import apply_action, get_legal_actions, possible_draws
 from game.state import GameState
+from search.chance import public_ordering_successor
 from search.heuristic import evaluate_state
 from search.minimax import SearchStats
 
@@ -50,5 +51,10 @@ def _expected_after_action(
 
 
 def _ordered_actions(state: GameState, actions: list[Action], player: str, top_k: int | None) -> list[Action]:
-    ordered = sorted(actions, key=lambda a: evaluate_state(apply_action(state, a), player), reverse=True)
+    maximizing = state.current_player == player
+    ordered = sorted(
+        actions,
+        key=lambda action: evaluate_state(public_ordering_successor(state, action), player),
+        reverse=maximizing,
+    )
     return ordered[:top_k] if top_k else ordered

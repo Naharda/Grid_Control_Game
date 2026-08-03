@@ -1,0 +1,4 @@
+game,agent_a,agent_b,winner,score_a,score_b,decision_time_a_seconds,decision_time_b_seconds,decisions_a,decisions_b,turns_a,turns_b
+0,greedy,mcts,A,12,0,0.132896200,0.221830100,3,2,3,2
+1,greedy,mcts,B,4,11,0.014994300,0.148201900,2,2,2,2
+2,greedy,mcts,B,6,11,0.088329300,1.015323700,5,5,5,5

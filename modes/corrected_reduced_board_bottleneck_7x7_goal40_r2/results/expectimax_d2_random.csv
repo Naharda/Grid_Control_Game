@@ -1,0 +1,4 @@
+game,agent_a,agent_b,winner,score_a,score_b,decision_time_a_seconds,decision_time_b_seconds,decisions_a,decisions_b,turns_a,turns_b
+0,expectimax_d2,random,A,43,4,1.208776900,0.000055300,18,17,20,19
+1,expectimax_d2,random,A,42,2,0.774376100,0.000041000,13,12,14,13
+2,expectimax_d2,random,A,40,2,0.701721100,0.000046300,14,13,16,15

@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from game.actions import Action
 from game.cards import CardType
-from game.rules import apply_action
 from game.state import GameState
+from search.chance import public_ordering_successor
 from search.heuristic import evaluate_state, nearest_scoring_distance
 
 from .base import Agent
@@ -16,16 +16,16 @@ class RuleBasedAgent(Agent):
         player = state.current_player
         captures = [a for a in legal_actions if a.card_type == CardType.CAPTURE]
         if captures:
-            return max(captures, key=lambda action: evaluate_state(apply_action(state, action), player))
+            return max(captures, key=lambda action: evaluate_state(public_ordering_successor(state, action), player))
 
         scoring = state.config.scoring_cells
         center_actions = [
             action
             for action in legal_actions
-            if any(cell in apply_action(state, action).positions[player] for cell in scoring)
+            if any(cell in public_ordering_successor(state, action).positions[player] for cell in scoring)
         ]
         if center_actions:
-            return max(center_actions, key=lambda action: evaluate_state(apply_action(state, action), player))
+            return max(center_actions, key=lambda action: evaluate_state(public_ordering_successor(state, action), player))
 
         movable = [
             action
@@ -37,8 +37,11 @@ class RuleBasedAgent(Agent):
                 movable,
                 key=lambda action: min(
                     nearest_scoring_distance(pos, scoring)
-                    for pos in apply_action(state, action).positions[player]
+                    for pos in public_ordering_successor(state, action).positions[player]
                 ),
             )
 
-        return max(legal_actions, key=lambda action: evaluate_state(apply_action(state, action), player))
+        return max(
+            legal_actions,
+            key=lambda action: evaluate_state(public_ordering_successor(state, action), player),
+        )
