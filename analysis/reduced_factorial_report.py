@@ -189,8 +189,14 @@ def extract_net_usage(modes: list[str]) -> tuple[pd.DataFrame, pd.DataFrame]:
             agent_a, agent_b = game_result.agent_a, game_result.agent_b
             with path.open(newline="", encoding="utf-8") as handle:
                 rows = list(csv.DictReader(handle))
-            for row in rows[1:]:
-                if row["card_drawn"] != "capture":
+            # Each row's action fields describe the PREVIOUS turn's move; the
+            # played card is the previous row's card_<action> slot (card_drawn
+            # is the replacement drawn afterwards).
+            for prev, row in zip(rows, rows[1:]):
+                slot = row["action"]
+                if slot in ("-1", "", "None"):
+                    continue
+                if prev[f"card_{slot}"] != "capture":
                     continue
                 mover = 1 - int(row["player"])
                 events.append(
@@ -225,8 +231,12 @@ def extract_action_usage(modes: list[str]) -> tuple[pd.DataFrame, pd.DataFrame]:
             agent_a, agent_b = game_result.agent_a, game_result.agent_b
             with path.open(newline="", encoding="utf-8") as handle:
                 rows = list(csv.DictReader(handle))
-            for row in rows[1:]:
-                card = row["card_drawn"]
+            # Played card = previous row's card_<action>; see extract_net_usage.
+            for prev, row in zip(rows, rows[1:]):
+                slot = row["action"]
+                if slot in ("-1", "", "None"):
+                    continue
+                card = prev[f"card_{slot}"]
                 if card not in cards:
                     continue
                 mover = 1 - int(row["player"])

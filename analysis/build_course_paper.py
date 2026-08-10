@@ -623,7 +623,7 @@ LEGENDS = {
         "<b>(B-C)</b> Weighted mean decision time and win points, respectively, in the bounded goal-20 feasibility study. Bars summarize six agent-game observations per board and depth; all variants use a top-2 action cap. Runtime uses a logarithmic axis and the dashed performance line marks 50%. Depth 4 used one seed and is interpreted as a feasibility measurement; depth 5 exceeded 120 s for one benchmark decision and depth 6 was not run.",
     "net": "<b>Figure 7: Net launches are a recurring but minority capture mode.</b> "
         "<b>(A)</b> Adjacent and net-launcher capture actions reconstructed from all per-turn logs in the 1,080-game main and deck suite. Counts are events, not games, and therefore reflect both opportunity and agent behavior. "
-        "<b>(B)</b> Net launches as a percentage of each agent's captures, with exact percentages printed beside the bars. Expectimax depth 4 is excluded because it appears only in the smaller bounded feasibility study. Across the displayed agents, the net share ranges from 19.4% to 26.0%.",
+        "<b>(B)</b> Net launches as a percentage of each agent's captures, with exact percentages printed beside the bars. Expectimax depth 4 is excluded because it appears only in the smaller bounded feasibility study. Across the displayed agents, the net share ranges from 9.5% to 23.5%.",
 }
 
 
@@ -667,10 +667,11 @@ def build_paper(data: dict[str, pd.DataFrame], figs: dict[str, Path]) -> Path:
     game_duration = data["game_summary"].set_index(["board", "end_condition"])
     goal10_duration = [float(game_duration.loc[(board, "Goal 10"), "mean_total_turns"]) for board in BOARD_ORDER]
     goal40_duration = [float(game_duration.loc[(board, "Goal 40"), "mean_total_turns"]) for board in BOARD_ORDER]
-    deck_winners = (
-        data["deck_summary"].sort_values(["deck", "win_points_rate"], ascending=[True, False])
-        .groupby("deck", as_index=False).first().set_index("deck").reindex(DECK_ORDER)
-    )
+    deck_table = data["deck_summary"].pivot(index="agent", columns="deck", values="win_points_rate")
+    deck_leader = deck_table.idxmax().iloc[0]
+    deck_leader_low = float(deck_table.loc[deck_leader].min())
+    deck_leader_high = float(deck_table.loc[deck_leader].max())
+    d2_decks = deck_table.loc["expectimax_d2"]
     main_net = data["net_main_summary"]
     all_net = data["net_summary"]
     main_net_count, main_capture_count = int(main_net.net.sum()), int(main_net.total_captures.sum())
@@ -726,9 +727,10 @@ def build_paper(data: dict[str, pd.DataFrame], figs: dict[str, Path]) -> Path:
                 balance_after=False)
 
     table_rows = [["Agent", "N", "Win points", "Margin", "ms/decision"]]
-    for agent, row in overall.iterrows():
+    for agent, row in overall.sort_values("win_points_rate", ascending=False).iterrows():
+        ms = row.milliseconds_per_decision
         table_rows.append([AGENT_LABELS[agent], str(int(row.games)), f"{100*row.win_points_rate:.1f}%",
-                           f"{row.mean_margin:+.2f}", f"{row.milliseconds_per_decision:.2f}"])
+                           f"{row.mean_margin:+.2f}", f"{ms:.2f}" if ms >= 0.005 else "<0.01"])
     net_by_agent = main_net.set_index("agent")
     move1_low, move1_high = 100*action_summary.move1_share.min(), 100*action_summary.move1_share.max()
     capture_low, capture_high = 100*action_summary.capture_share.min(), 100*action_summary.capture_share.max()
@@ -736,6 +738,12 @@ def build_paper(data: dict[str, pd.DataFrame], figs: dict[str, Path]) -> Path:
         agent: net_by_agent.loc[agent, "total_captures"] / overall.loc[agent, "games"]
         for agent in AGENT_ORDER
     })
+    capture_second = 100 * action_summary.capture_share.nsmallest(2).iloc[-1]
+    net_share_min_agent = net_by_agent.net_share.idxmin()
+    net_share_min = float(net_by_agent.net_share.min())
+    non_rule_shares = net_by_agent.net_share.loc[["mcts", "greedy", "expectimax_d2", "expectimax_d3"]]
+    net_share_others_low = float(non_rule_shares.min())
+    net_share_others_high = float(non_rule_shares.max())
 
     wide_figure(story, st, figs["board_goal"], "board_goal", 2.20 * inch, [
         para("Experimental Results", st, "h1"),
@@ -749,12 +757,12 @@ def build_paper(data: dict[str, pd.DataFrame], figs: dict[str, Path]) -> Path:
         para(f"Performance did not increase monotonically with decision time (Figure 4A). Measured costs were {overall.loc['rule','milliseconds_per_decision']:.1f} ms for rule, {overall.loc['greedy','milliseconds_per_decision']:.1f} ms for greedy, {d2_ms:.1f} ms for expectimax depth 2, {overall.loc['mcts','milliseconds_per_decision']:.1f} ms for MCTS, and {d3_ms:.1f} ms for expectimax depth 3. Depth 3 was {d3_ms/d2_ms:.1f} times slower than depth 2, while their aggregate win-points difference was {100*(overall.loc['expectimax_d3','win_points_rate']-overall.loc['expectimax_d2','win_points_rate']):+.1f} percentage points. Additional lookahead changed decisions, but its cost was not matched by a uniform direct advantage.", st),
         para(f"Move-order effects were smaller than the full spread between agents but remained visible (Figure 4B). The largest absolute first-minus-second contrast was {seat_delta[largest_seat_agent]:+.1f} percentage points for {AGENT_LABELS[largest_seat_agent]}; MCTS was {seat_delta['mcts']:+.1f}, depth-3 expectimax {seat_delta['expectimax_d3']:+.1f}, and rule {seat_delta['rule']:+.1f}. Because every pair is mirrored with the same seed, these contrasts control opponent identity and the seeded refill process more closely than an unmatched tournament.", st),
         para("Independent deck-composition test", st, "h2"),
-        para("Changing card frequencies altered relative performance even though board, stopping rule, market refresh, and seed design were fixed (Figure 5). The leading agents were " + "; ".join(f"{deck}: {AGENT_LABELS[row.agent]} ({100*row.win_points_rate:.1f}%)" for deck, row in deck_winners.iterrows()) + ". Thus a ranking from one action distribution should not be generalized to the game family. Because deck and board were not crossed, this experiment estimates deck effects on the default board, not deck-by-geometry interactions.", st),
+        para(f"Changing card frequencies shifted relative performance even though board, stopping rule, market refresh, and seed design were fixed (Figure 5). {AGENT_LABELS[deck_leader]} led every deck ({100*deck_leader_low:.1f}-{100*deck_leader_high:.1f}%), but the mid-ranking reordered: depth-2 expectimax ranged from {100*d2_decks.min():.1f}% under the {d2_decks.idxmin().lower()} deck to {100*d2_decks.max():.1f}% under the {d2_decks.idxmax().lower()} deck and fell behind greedy when movement cards dominated. Thus a ranking from one action distribution should not be generalized to the game family. Because deck and board were not crossed, this experiment estimates deck effects on the default board, not deck-by-geometry interactions.", st),
         para("Expectimax depth", st, "h2"),
         para(f"Across nine direct board/stopping-rule cells, depth 3 obtained {100*d3_direct_wp:.1f}% of win points against depth 2 over {d3_direct_n} agent-game observations (Figure 6A). The bounded study shows the computational reason for stopping at depth 4: runtime rises steeply on all boards (Figure 6B), while the corresponding performance estimates use only one seed and are unstable (Figure 6C). Depth 5 exceeded 120 seconds for one benchmark decision; depth 6 was therefore not run. The branching structure and approximate top-2 beam make this result plausible, but the experiment does not isolate a causal mechanism and does not establish search pathology.", st),
         para("Dominant strategies and net-launcher use", st, "h2"),
-        para(f"Rule is explicitly capture-first and objective-first, whereas greedy and expectimax optimize a broader multi-term heuristic that can trade immediate score for mobility, safety, or formation potential. In the main suite, Move 1 was every agent's most-used card ({move1_low:.1f}-{move1_high:.1f}% of played actions), largely reflecting its 8/28 deck prevalence. Capture-card shares were also similar ({capture_low:.1f}-{capture_high:.1f}%), while capture rates ranged from {capture_rates.min():.2f} to {capture_rates.max():.2f} per agent-game. These availability-conditioned summaries do not isolate a winning mechanism; that requires policy and heuristic-weight ablation. Complete action counts are available in the accompanying results archive (<font name='Courier'>tables/16_action_usage_summary.csv</font>).", st),
-        para(f"The net launcher accounted for {all_net_count:,} of {all_capture_count:,} captures ({100*all_net_count/all_capture_count:.1f}%) across the complete suite. In the comparable 1,080-game main/deck suite, {main_net_count:,} of {main_capture_count:,} captures were net launches ({100*main_net_count/main_capture_count:.1f}%; Figure 7). This frequency establishes that the mechanic affects play, but event counts alone do not establish that using it causes wins.", st),
+        para(f"Rule is explicitly capture-first and objective-first, whereas greedy and expectimax optimize a broader multi-term heuristic that can trade immediate score for mobility, safety, or formation potential. In the main suite, Move 1 was every agent's most-used card ({move1_low:.1f}-{move1_high:.1f}% of played actions), consistent with its 8/28 deck prevalence. Capture-card shares, by contrast, separated the agents: {AGENT_LABELS[action_summary.capture_share.idxmin()]} played captures in only {capture_low:.1f}% of its actions against {capture_second:.1f}-{capture_high:.1f}% for the other agents, and capture rates ranged from {capture_rates.min():.2f} ({AGENT_LABELS[capture_rates.idxmin()]}) to {capture_rates.max():.2f} ({AGENT_LABELS[capture_rates.idxmax()]}) per agent-game. Deliberate capture seeking therefore distinguishes every non-random agent from the random baseline, but these summaries still do not isolate a winning mechanism; that requires policy and heuristic-weight ablation. Complete action counts are available in the accompanying results archive (<font name='Courier'>tables/16_action_usage_summary.csv</font>).", st),
+        para(f"The net launcher accounted for {all_net_count:,} of {all_capture_count:,} captures ({100*all_net_count/all_capture_count:.1f}%) across the complete suite. In the comparable 1,080-game main/deck suite, {main_net_count:,} of {main_capture_count:,} captures were net launches ({100*main_net_count/main_capture_count:.1f}%; Figure 7). Net use also varied by agent: {AGENT_LABELS[net_share_min_agent]} fired nets in {100*net_share_min:.1f}% of its captures, against {100*net_share_others_low:.1f}-{100*net_share_others_high:.1f}% for MCTS, greedy, and the expectimax variants. This frequency establishes that the mechanic affects play, but event counts alone do not establish that using it causes wins.", st),
     ], next_template=None)
 
     # Pair related wide figures on full-width pages. This retains final-size

@@ -6,8 +6,8 @@ AAAI-style format is recommended,requirement,project_instructions_en.md,US-Lette
 Rule aggregate win points: 66.0%,derived,tables/01_overall_agent_performance.csv,360 agent-game observations
 MCTS aggregate win points: 62.4%,derived,tables/01_overall_agent_performance.csv,fixed 100-simulation implementation
 Expectimax d3 direct win points vs d2: 52.8%,derived,tables/04_direct_expectimax_depth.csv,54 agent-game observations across nine conditions
-"Main-suite net launches: 1,729/7,863",derived,tables/06_net_launcher.csv,"events from the comparable 1,080-game main/deck cohort"
-"Full-suite net launches: 1,769/8,020",derived,tables/14_all_capture_events.csv,"all 1,116 games; event count is not a causal win analysis"
+"Main-suite net launches: 1,367/7,155",derived,tables/06_net_launcher.csv,"events from the comparable 1,080-game main/deck cohort"
+"Full-suite net launches: 1,424/7,302",derived,tables/14_all_capture_events.csv,"all 1,116 games; event count is not a causal win analysis"
 Dominant action profiles are availability-conditioned,derived,tables/16_action_usage_summary.csv,most-used played card and shares; no causal claim
 Expectimax expands refill chance outcomes exactly,observed,src/search/expectimax.py,possible_draws with forced draw_card successors
 MCTS samples public chance and minimizes opponent choices,observed,src/search/mcts.py,stochastic action edges; adversarial UCB selection

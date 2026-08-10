@@ -138,11 +138,11 @@ Across the 12 unique main and deck conditions, the aggregate order was Rule (66.
 Agent & N & Win points & Margin & ms/decision \\
 \midrule
 Rule & 360 & 66.0\% & +10.31 & 4.76 \\
-MCTS & 360 & 62.4\% & +6.36 & 166.94 \\
 Expectimax d3 & 360 & 63.6\% & +8.37 & 956.34 \\
+MCTS & 360 & 62.4\% & +6.36 & 166.94 \\
 Expectimax d2 & 360 & 56.8\% & +6.77 & 110.88 \\
 Greedy & 360 & 51.0\% & +5.30 & 9.42 \\
-Random & 360 & 0.3\% & -37.11 & 0.00 \\
+Random & 360 & 0.3\% & -37.11 & $<$0.01 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -166,7 +166,7 @@ Move-order effects were smaller than the full spread between agents but remained
 
 \subsection{Independent deck-composition test}
 
-Changing card frequencies altered relative performance even though board, stopping rule, market refresh, and seed design were fixed (Figure 5). The leading agents were Default: Rule (83.3\%); Movement-heavy: Rule (83.3\%); Capture-heavy: Rule (81.7\%); Swap-heavy: Rule (93.3\%). Thus a ranking from one action distribution should not be generalized to the game family. Because deck and board were not crossed, this experiment estimates deck effects on the default board, not deck-by-geometry interactions.
+Changing card frequencies shifted relative performance even though board, stopping rule, market refresh, and seed design were fixed (Figure 5). Rule led every deck (81.7-93.3\%), but the mid-ranking reordered: depth-2 expectimax ranged from 40.0\% under the movement-heavy deck to 53.3\% under the capture-heavy deck and fell behind greedy when movement cards dominated. Thus a ranking from one action distribution should not be generalized to the game family. Because deck and board were not crossed, this experiment estimates deck effects on the default board, not deck-by-geometry interactions.
 
 \begin{figure*}[t]
 \centering
@@ -188,14 +188,14 @@ Across nine direct board/stopping-rule cells, depth 3 obtained 52.8\% of win poi
 
 \subsection{Dominant strategies and net-launcher use}
 
-Rule is explicitly capture-first and objective-first, whereas greedy and expectimax optimize a broader multi-term heuristic that can trade immediate score for mobility, safety, or formation potential. In the main suite, Move 1 was every agent's most-used card (26.7-28.0\% of played actions), largely reflecting its 8/28 deck prevalence. Capture-card shares were also similar (19.0-20.3\%), while capture rates ranged from 3.32 to 3.82 per agent-game. These availability-conditioned summaries do not isolate a winning mechanism; that requires policy and heuristic-weight ablation. Complete action counts are available in the accompanying results archive (\texttt{tables/16\_action\_usage\_summary.csv}).
+Rule is explicitly capture-first and objective-first, whereas greedy and expectimax optimize a broader multi-term heuristic that can trade immediate score for mobility, safety, or formation potential. In the main suite, Move 1 was every agent's most-used card (24.8-32.5\% of played actions), consistent with its 8/28 deck prevalence. Capture-card shares, by contrast, separated the agents: random played captures in only 3.1\% of its actions against 16.4-22.7\% for the other agents, and capture rates ranged from 0.53 (random) to 4.26 (depth-3 expectimax) per agent-game. Deliberate capture seeking therefore distinguishes every non-random agent from the random baseline, but these summaries still do not isolate a winning mechanism; that requires policy and heuristic-weight ablation. Complete action counts are available in the accompanying results archive (\texttt{tables/16\_action\_usage\_summary.csv}).
 
-The net launcher accounted for 1,769 of 8,020 captures (22.1\%) across the complete suite. In the comparable 1,080-game main/deck suite, 1,729 of 7,863 captures were net launches (22.0\%; Figure 7). This frequency establishes that the mechanic affects play, but event counts alone do not establish that using it causes wins.
+The net launcher accounted for 1,424 of 7,302 captures (19.5\%) across the complete suite. In the comparable 1,080-game main/deck suite, 1,367 of 7,155 captures were net launches (19.1\%; Figure 7). Net use also varied by agent: rule fired nets in 9.5\% of its captures, against 17.7-23.5\% for MCTS, greedy, and the expectimax variants. This frequency establishes that the mechanic affects play, but event counts alone do not establish that using it causes wins.
 
 \begin{figure*}[t]
 \centering
 \includegraphics[width=\textwidth]{07_net_launcher}
-\caption{\textbf{Net launches are a recurring but minority capture mode.} \textbf{(A)} Adjacent and net-launcher capture actions reconstructed from all per-turn logs in the 1,080-game main and deck suite (7,863 captures; 1,729 net launches). Counts are events, not games, and therefore reflect both opportunity and agent behavior. \textbf{(B)} Net launches as a percentage of each agent's captures, with exact percentages printed beside the bars. Expectimax depth 4 is excluded because it appears only in the smaller bounded feasibility study. Across the displayed agents, the net share ranges from 19.3\% (Expectimax d3) to 27.5\% (Random).}
+\caption{\textbf{Net launches are a recurring but minority capture mode.} \textbf{(A)} Adjacent and net-launcher capture actions reconstructed from all per-turn logs in the 1,080-game main and deck suite (7,155 captures; 1,367 net launches). Counts are events, not games, and therefore reflect both opportunity and agent behavior. \textbf{(B)} Net launches as a percentage of each agent's captures, with exact percentages printed beside the bars. Expectimax depth 4 is excluded because it appears only in the smaller bounded feasibility study. Across the displayed agents, the net share ranges from 9.5\% (Rule) to 23.5\% (Expectimax d2).}
 \label{fig:net}
 \end{figure*}
 
