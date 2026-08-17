@@ -2,6 +2,8 @@
 
 Small stochastic, perfect-information, turn-based abstract game for Search Methods in AI experiments.
 
+The final report is [`graph_card_control_final_report.pdf`](graph_card_control_final_report.pdf); its figures and source tables live under [`final_results/`](final_results/00_INDEX.md).
+
 ## Quick Start
 
 Use Python 3.10+ (`pip install -r requirements.txt`).

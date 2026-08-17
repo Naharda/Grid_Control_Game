@@ -1,8 +1,0 @@
-figure,principal_claim,chosen_layout,why,verification
-1,A visible public market isolates one stochastic refill event,"three equal panels: turn, cards, two framed capture modes/scoring",contrasts regular and net captures without crowding the narrow panel,render at final 7.05-inch width; inspect all labels and arrows
-2,Geometry and objective value are controlled factors,three symmetric board panels,preserves spatial comparison and equal scale,compare cells against boards/*.json
-3,Rankings vary by board and stopping rule,three matched annotated heatmaps,compact 54-cell comparison with exact values,cross-check against board_summary
-4,Computation is not monotonically related to performance,log scatter plus horizontal order bars,pairs cost and strength while separating seat effect,cross-check overall and seat tables
-5,Deck composition shifts performance,stacked composition bars plus heatmap,shows manipulation and outcome in one reading path,counts sum to 28; cross-check deck_summary
-6,Depth has steep cost without uniform benefit,direct heatmap plus two grouped bar panels,"separates matched comparison, runtime, and bounded strength",cross-check direct_depth/depth_summary
-7,Net launchers are recurrent but a minority,stacked counts plus normalized horizontal bars,shows denominators and within-agent shares,cross-check net_main_summary; exclude incomparable d4

@@ -1,8 +1,0 @@
-agent,adjacent,net,total_captures,net_share
-expectimax_d2,1109,286,1395,0.205018
-expectimax_d3,1103,289,1392,0.207615
-expectimax_d4,29,11,40,0.275000
-greedy,1062,279,1341,0.208054
-mcts,1049,281,1330,0.211278
-random,863,303,1166,0.259863
-rule,1111,266,1377,0.193174
